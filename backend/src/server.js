@@ -8,9 +8,11 @@ async function main() {
   await prisma.$connect();
   console.log("✔ Database connected");
 
-  app.listen(env.port, () => {
+  const PORT = Number(process.env.PORT) || 3000;
+
+  app.listen(PORT, () => {
     console.log(
-      `✔ Server running on http://localhost:${env.port} [${env.nodeEnv}]`,
+      `✔ Server running on http://localhost:${PORT} [${process.env.NODE_ENV}]`,
     );
   });
 }
