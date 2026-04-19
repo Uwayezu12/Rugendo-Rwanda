@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg:      #ffffff;
+    --color-bg-muted:#f8f7ff;
+    --color-surface: #ffffff;
+    --color-text:    #111827;
+    --color-muted:   #6b7280;
+    --color-border:  #e8e3ff;
+    --color-brand:   #6e26ff;
+    --color-accent:  #fa26ae;
+  }
+
+  .dark {
+    --color-bg:      #0e0a1f;
+    --color-bg-muted:#130d2e;
+    --color-surface: #1a1035;
+    --color-text:    #f1f5f9;
+    --color-muted:   #94a3b8;
+    --color-border:  #2d1a5e;
+    --color-brand:   #9b72ff;
+    --color-accent:  #ff65c1;
+  }
+
+  body {
+    @apply font-sans;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  * {
+    @apply border-[var(--color-border)];
+  }
+}
+
+@layer components {
+  /* ── Buttons ──────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center
+           bg-brand-600 hover:bg-brand-700 active:bg-brand-800
+           text-white font-semibold px-5 py-2.5 rounded-xl
+           transition-all duration-200 shadow-brand
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2
+           disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center
+           bg-accent-500 hover:bg-accent-600 active:bg-accent-700
+           text-white font-semibold px-5 py-2.5 rounded-xl
+           transition-all duration-200 shadow-accent
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 focus-visible:ring-offset-2
+           disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+
+  .btn-gradient {
+    @apply inline-flex items-center justify-center
+           bg-brand-gradient text-white font-semibold px-5 py-2.5 rounded-xl
+           transition-all duration-200 shadow-brand
+           hover:opacity-90 active:opacity-80
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2
+           disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center
+           bg-white dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700
+           text-brand-700 dark:text-brand-300 font-semibold px-5 py-2.5 rounded-xl
+           border border-brand-200 dark:border-brand-800
+           transition-all duration-200
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center
+           bg-transparent hover:bg-brand-50 dark:hover:bg-brand-950
+           text-brand-600 dark:text-brand-300 font-medium px-4 py-2 rounded-xl
+           transition-all duration-200;
+  }
+
+  /* ── Cards ────────────────────────────────────── */
+  .card {
+    @apply bg-white dark:bg-[#1a1035] rounded-2xl shadow-card
+           border border-[#e8e3ff] dark:border-[#2d1a5e] p-6;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-200
+           hover:shadow-brand hover:-translate-y-0.5;
+  }
+
+  .card-gradient {
+    @apply rounded-2xl p-6 bg-brand-gradient-soft dark:bg-brand-950
+           border border-brand-200 dark:border-brand-800;
+  }
+
+  /* ── Form inputs ──────────────────────────────── */
+  .input {
+    @apply w-full rounded-xl border border-[#e8e3ff] dark:border-[#2d1a5e]
+           bg-white dark:bg-[#1a1035]
+           text-gray-900 dark:text-slate-100
+           placeholder:text-gray-400 dark:placeholder:text-slate-500
+           px-4 py-2.5 text-sm
+           focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
+           transition-all duration-150;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1.5;
+  }
+
+  /* ── Section wrappers ─────────────────────────── */
+  .section {
+    @apply py-16 px-4;
+  }
+
+  .section-muted {
+    @apply py-16 px-4 bg-[#f8f7ff] dark:bg-[#130d2e];
+  }
+
+  .container-page {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* ── Badges ───────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-brand {
+    @apply badge bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300;
+  }
+
+  .badge-accent {
+    @apply badge bg-accent-100 dark:bg-accent-900 text-accent-700 dark:text-accent-300;
+  }
+
+  .badge-success {
+    @apply badge bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300;
+  }
+
+  .badge-warning {
+    @apply badge bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300;
+  }
+
+  .badge-error {
+    @apply badge bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300;
+  }
+}

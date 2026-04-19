@@ -1,0 +1,247 @@
+// Rugendo Rwanda — Prisma Schema
+// Database: MySQL
+// ORM: Prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Enums ───────────────────────────────────────────────────────────────────
+
+// Note: GUEST is not a stored role. Guests are unauthenticated visitors — they
+// never have a User row. All DB users are at minimum PASSENGER.
+enum Role {
+  PASSENGER
+  ADMIN
+  SUPER_ADMIN
+  OPERATOR
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum BusStatus {
+  ACTIVE
+  INACTIVE
+  MAINTENANCE
+}
+
+enum ScheduleStatus {
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+// ─── Models ──────────────────────────────────────────────────────────────────
+
+model User {
+  id                     Int       @id @default(autoincrement())
+  name                   String
+  // Email is optional — users may register with phone only. Unique when provided.
+  email                  String?   @unique
+  // Nullable to support Google-auth accounts that have no password.
+  passwordHash           String?
+  // Phone is optional but must be unique when present (used as login identifier).
+  phone                  String?   @unique
+  role                   Role      @default(PASSENGER)
+  isActive               Boolean   @default(true)
+  // companyId is only set for OPERATOR-role users. Null for all other roles.
+  companyId              Int?
+  // Google OAuth identity. Null for users who registered with email/password.
+  googleId               String?   @unique
+  // Password reset token (hex string) and expiry. Null when no reset is in progress.
+  passwordResetToken     String?   @unique @db.VarChar(512)
+  passwordResetExpiresAt DateTime?
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+
+  bookings           Booking[]
+  validatedBoardings Booking[]      @relation("BoardingValidator")
+  refreshTokens      RefreshToken[]
+  company            Company?       @relation(fields: [companyId], references: [id])
+
+  @@index([companyId])
+  @@map("users")
+}
+
+model RefreshToken {
+  id        Int      @id @default(autoincrement())
+  // VarChar(512) supports JWT strings and allows a proper unique index in MySQL.
+  // @db.Text cannot have a standard unique index in MySQL (only a prefix index).
+  token     String   @unique @db.VarChar(512)
+  userId    Int
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("refresh_tokens")
+}
+
+// Company represents a bus operating company (e.g. "Volcano Express").
+// It is separate from the User model so that multiple OPERATOR-role users
+// can belong to the same company (e.g. multiple boarding staff).
+model Company {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  licenseNo String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  operators User[]
+  buses     Bus[]
+  drivers   Driver[]
+  schedules Schedule[]
+
+  @@map("companies")
+}
+
+model Route {
+  id          Int      @id @default(autoincrement())
+  origin      String
+  destination String
+  distanceKm  Float?
+  durationMin Int?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  schedules Schedule[]
+
+  @@unique([origin, destination])
+  @@map("routes")
+}
+
+model Bus {
+  id          Int       @id @default(autoincrement())
+  companyId   Int
+  plateNumber String    @unique
+  model       String?
+  capacity    Int
+  status      BusStatus @default(ACTIVE)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  company   Company    @relation(fields: [companyId], references: [id])
+  schedules Schedule[]
+
+  @@index([companyId])
+  @@map("buses")
+}
+
+model Driver {
+  id        Int      @id @default(autoincrement())
+  companyId Int
+  name      String
+  licenseNo String   @unique
+  phone     String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  company   Company    @relation(fields: [companyId], references: [id])
+  schedules Schedule[]
+
+  @@index([companyId])
+  @@map("drivers")
+}
+
+model Schedule {
+  id             Int            @id @default(autoincrement())
+  routeId        Int
+  busId          Int
+  driverId       Int
+  companyId      Int
+  departureTime  DateTime
+  arrivalTime    DateTime
+  price          Decimal        @db.Decimal(10, 2)
+  seatsTotal     Int
+  // seatsAvailable is a denormalized counter. It MUST be decremented/incremented
+  // atomically with booking writes inside a Prisma transaction to avoid drift.
+  seatsAvailable Int
+  status         ScheduleStatus @default(SCHEDULED)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  route    Route     @relation(fields: [routeId], references: [id])
+  bus      Bus       @relation(fields: [busId], references: [id])
+  driver   Driver    @relation(fields: [driverId], references: [id])
+  company  Company   @relation(fields: [companyId], references: [id])
+  bookings Booking[]
+
+  @@index([routeId])
+  @@index([companyId])
+  @@index([departureTime])
+  @@map("schedules")
+}
+
+model Booking {
+  id           Int           @id @default(autoincrement())
+  reference    String        @unique // human-readable booking reference, generated in app layer
+  userId       Int
+  scheduleId   Int
+  seatsBooked  Int           @default(1)
+  totalAmount  Decimal       @db.Decimal(10, 2)
+  status       BookingStatus @default(PENDING)
+  // boardedAt is set by the operator during boarding validation.
+  // QR / boardingToken is Phase 2 — operators look up bookings by reference for now.
+  boardedAt    DateTime?
+  boardedById  Int?
+  boardingNote String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  boardedBy User?    @relation("BoardingValidator", fields: [boardedById], references: [id], onDelete: SetNull)
+  schedule  Schedule @relation(fields: [scheduleId], references: [id])
+  payment   Payment?
+
+  @@index([userId])
+  @@index([scheduleId])
+  @@index([boardedById])
+  @@map("bookings")
+}
+
+model Payment {
+  id            Int           @id @default(autoincrement())
+  bookingId     Int           @unique
+  amount        Decimal       @db.Decimal(10, 2)
+  status        PaymentStatus @default(PENDING)
+  method        String? // e.g. "momo", "card", "simulated"
+  transactionId String?
+  paidAt        DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
+}
+
+model PlatformSetting {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  value     String   @db.Text
+  updatedAt DateTime @updatedAt
+
+  @@map("platform_settings")
+}
