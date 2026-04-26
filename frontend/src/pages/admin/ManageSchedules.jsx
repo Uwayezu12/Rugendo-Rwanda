@@ -419,25 +419,121 @@ function CancelConfirmModal({ open, schedule, onClose, onCancelled, t }) {
   );
 }
 
-function ScheduleActionsCell({ schedule, onEdit, onCancel, t }) {
+function EyeIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"
+         stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"
+         className="w-5 h-5">
+      <path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z"/>
+      <circle cx="10" cy="10" r="2.5"/>
+    </svg>
+  );
+}
+
+function ScheduleActionsCell({ schedule, onView, onEdit, onCancel, t }) {
   const isCancelled = schedule.status === 'CANCELLED';
 
   return (
-    <div className="flex w-full min-w-0 flex-wrap gap-2 whitespace-normal sm:min-w-[10rem]">
+    <div className="flex w-full min-w-0 flex-wrap gap-2 whitespace-normal sm:min-w-[9rem]">
       <button
-        className="btn-secondary w-full text-xs sm:w-auto"
+        className="p-1.5 rounded-lg text-gray-400 hover:text-brand-600 hover:bg-brand-50 dark:hover:bg-brand-950/30 dark:hover:text-brand-400 transition-colors"
+        onClick={() => onView(schedule)}
+        title={t('manageSchedulesViewDetail')}
+        aria-label={t('manageSchedulesViewDetail')}
+      >
+        <EyeIcon />
+      </button>
+      <button
+        className="btn-secondary text-xs px-3 py-1.5"
         onClick={() => onEdit(schedule)}
       >
         {t('edit')}
       </button>
       {!isCancelled && (
         <button
-          className="w-full rounded-lg bg-red-50 px-3 py-2 text-xs font-medium text-red-600 hover:bg-red-100 dark:bg-red-900/20 dark:text-red-400 dark:hover:bg-red-900/40 sm:w-auto"
+          className="rounded-lg bg-red-50 px-3 py-1.5 text-xs font-medium text-red-600 hover:bg-red-100 dark:bg-red-900/20 dark:text-red-400 dark:hover:bg-red-900/40"
           onClick={() => onCancel(schedule)}
         >
           {t('manageSchedulesCancelButton')}
         </button>
       )}
+    </div>
+  );
+}
+
+function ScheduleDetailModal({ schedule, onClose, t, locale }) {
+  if (!schedule) return null;
+
+  const statusMeta = getStatusMeta(schedule.status, t);
+  const route = schedule.route ? `${schedule.route.origin} → ${schedule.route.destination}` : '—';
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-start justify-center p-4 overflow-y-auto">
+      <div className="card w-full max-w-2xl my-8">
+        {/* Header */}
+        <div className="flex items-start justify-between gap-4 p-6 pb-4 border-b border-gray-100 dark:border-slate-700">
+          <div className="min-w-0">
+            <p className="text-base font-bold text-gray-900 dark:text-white truncate">{route}</p>
+            <div className="flex flex-wrap gap-2 mt-2">
+              <span className={`badge text-xs ${statusMeta.className}`}>{statusMeta.label}</span>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="shrink-0 p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-slate-700 dark:hover:text-slate-300 transition-colors"
+            aria-label={t('manageSchedulesDetailClose')}
+          >
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" className="w-5 h-5">
+              <path d="M5 5l10 10M15 5L5 15"/>
+            </svg>
+          </button>
+        </div>
+
+        {/* Body */}
+        <div className="p-6 overflow-y-auto max-h-[60vh]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="rounded-xl border border-gray-100 dark:border-slate-700 p-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-slate-500 mb-3">{t('manageSchedulesDetailTripSection')}</p>
+              <div className="space-y-2">
+                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailRoute')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{route}</p></div>
+                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailDeparture')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{formatDateTime(schedule.departureTime, locale)}</p></div>
+                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailArrival')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{formatDateTime(schedule.arrivalTime, locale)}</p></div>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-gray-100 dark:border-slate-700 p-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-slate-500 mb-3">{t('manageSchedulesDetailBusDriverSection')}</p>
+              <div className="space-y-2">
+                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailBus')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{schedule.bus ? `${schedule.bus.plateNumber}${schedule.bus.model ? ` — ${schedule.bus.model}` : ''}` : '—'}</p></div>
+                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailDriver')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{schedule.driver?.name || '—'}</p></div>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-gray-100 dark:border-slate-700 p-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-slate-500 mb-3">{t('manageSchedulesDetailPricingSection')}</p>
+              <div className="space-y-2">
+                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailPrice')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{formatPrice(schedule.price)}</p></div>
+                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailSeats')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{schedule.seatsAvailable}/{schedule.seatsTotal}</p></div>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-gray-100 dark:border-slate-700 p-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-slate-500 mb-3">{t('manageSchedulesDetailCompanySection')}</p>
+              <div className="space-y-2">
+                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailCompany')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{schedule.company?.name || '—'}</p></div>
+                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailStatus')}</p><p className="text-sm font-medium"><span className={`badge text-xs ${statusMeta.className}`}>{statusMeta.label}</span></p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="flex justify-end px-6 pb-6 pt-4 border-t border-gray-100 dark:border-slate-700">
+          <button className="btn-secondary" onClick={onClose}>
+            {t('manageSchedulesDetailClose')}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
@@ -462,6 +558,7 @@ export default function ManageSchedules() {
   const [editingSchedule, setEditingSchedule] = useState(null);
   const [cancelTarget, setCancelTarget] = useState(null);
   const [notice, setNotice] = useState(null);
+  const [selectedSchedule, setSelectedSchedule] = useState(null);
   const debounceRef = useRef(null);
 
   // Load reference data for the form dropdowns
@@ -558,18 +655,8 @@ export default function ManageSchedules() {
       ),
     },
     {
-      key: 'driver',
-      label: t('manageSchedulesColDriver'),
-      render: (_v, row) => <span>{row.driver?.name || '—'}</span>,
-    },
-    {
       key: 'departureTime',
       label: t('manageSchedulesColDeparture'),
-      render: (v) => <span className="whitespace-nowrap text-sm">{formatDateTime(v, locale)}</span>,
-    },
-    {
-      key: 'arrivalTime',
-      label: t('manageSchedulesColArrival'),
       render: (v) => <span className="whitespace-nowrap text-sm">{formatDateTime(v, locale)}</span>,
     },
     {
@@ -597,6 +684,7 @@ export default function ManageSchedules() {
       render: (_v, row) => (
         <ScheduleActionsCell
           schedule={row}
+          onView={(s) => setSelectedSchedule(s)}
           onEdit={(s) => { setEditingSchedule(s); setFormOpen(true); }}
           onCancel={(s) => setCancelTarget(s)}
           t={t}
@@ -707,6 +795,13 @@ export default function ManageSchedules() {
         onClose={() => setCancelTarget(null)}
         onCancelled={handleCancelled}
         t={t}
+      />
+
+      <ScheduleDetailModal
+        schedule={selectedSchedule}
+        onClose={() => setSelectedSchedule(null)}
+        t={t}
+        locale={locale}
       />
     </div>
   );
