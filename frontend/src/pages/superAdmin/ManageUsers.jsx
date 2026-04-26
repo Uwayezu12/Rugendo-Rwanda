@@ -25,10 +25,10 @@ function UserDetailModal({ user, onClose, t }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-3 sm:p-4 backdrop-blur-sm"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
-      <div className="relative w-full max-w-md rounded-2xl bg-white shadow-2xl dark:bg-slate-800">
+      <div className="relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl dark:bg-slate-800">
         <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4 dark:border-slate-700">
           <h2 className="text-base font-semibold text-gray-900 dark:text-white">{t('manageUsersViewTitle')}</h2>
           <button

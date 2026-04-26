@@ -105,7 +105,7 @@ export default function OperatorBookings() {
       {/* Bookings table */}
       {!loading && !error && bookings.length > 0 && (
         <div className="card overflow-x-auto p-0">
-          <table className="w-full text-sm">
+          <table className="w-full min-w-[700px] text-sm">
             <thead>
               <tr className="border-b border-gray-100 dark:border-slate-700 text-left">
                 <th className="px-4 py-3 text-xs uppercase tracking-wide text-gray-400 dark:text-slate-500 font-semibold">

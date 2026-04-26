@@ -90,8 +90,8 @@ function BookingDetailModal({ booking, onClose, t, locale }) {
   const route = s?.route ? `${s.route.origin} → ${s.route.destination}` : '—';
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-start justify-center p-4 overflow-y-auto">
-      <div className="card w-full max-w-2xl my-8">
+    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-start justify-center p-3 sm:p-4 overflow-y-auto">
+      <div className="card w-full max-w-2xl my-4 sm:my-8">
         {/* Header */}
         <div className="flex items-start justify-between gap-4 p-6 pb-4 border-b border-gray-100 dark:border-slate-700">
           <div className="min-w-0">

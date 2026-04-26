@@ -537,6 +537,26 @@ Format: `## N. Title` → `**Decision:**` → `**Why:**` → `**Date:**`
 
 ---
 
+## 55. Responsive Layout: Modal max-h Pattern and Table min-w Scroll Pattern
+
+**Decision:** All dashboard management modals now apply `max-h-[90vh] overflow-y-auto` on the inner card container, and responsive outer backdrop padding `p-3 sm:p-4`. All data tables wrapped in `overflow-x-auto` add `min-w-[600px]` (or appropriate breakpoint) on the `<table>` element so columns scroll horizontally rather than crushing on narrow screens.
+
+**Why:** Without a max-height guard, tall modals (schedule form, booking detail) overflowed the viewport on mobile and short laptop screens with no escape. Without a table min-width, `w-full` tables shrink all columns simultaneously on narrow screens, making data unreadable. These two patterns are applied consistently across all management pages.
+
+**Date:** 2026-04-26
+
+---
+
+## 56. Dashboard Topbar: Language Select max-w on XS Screens
+
+**Decision:** The language `<select>` in all four dashboard layout topbars now has `max-w-[5rem] sm:max-w-none` to prevent the dropdown from pushing topbar items off-screen on 320px phones. The `aria-label` is now driven through `t('selectLanguage')` instead of a hardcoded English string.
+
+**Why:** On 320px screens the branding block + language select + theme toggle previously competed for a narrow row. Capping the select at 5rem keeps the row intact at the smallest standard viewport. Translating the aria-label maintains accessibility across all 4 supported locales.
+
+**Date:** 2026-04-26
+
+---
+
 ## 54. Dashboard Chart Empty State: Role-Specific Messages
 
 **Decision:** The `TimeseriesLineChart` in both admin and super-admin dashboards now receives contextual `empty` messages from the caller: `'…'` while loading, `t('adminChartError')` on fetch failure, and `t('adminChartNoRecentData')` when data is returned but all 14-day values are zero. Two new translation keys (`adminChartNoRecentData`, `adminChartError`) added across all 4 languages.

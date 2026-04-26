@@ -78,7 +78,7 @@ export default function RoutesPage() {
             <p className="text-gray-400 text-center py-10">{t('routesNoMatch')}</p>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="w-full min-w-[520px] text-sm">
                 <thead>
                   <tr className="border-b border-[#e8e3ff] dark:border-[#2d1a5e] text-left text-gray-500 dark:text-slate-400">
                     <th className="pb-3 font-medium">{t('routesColRoute')}</th>

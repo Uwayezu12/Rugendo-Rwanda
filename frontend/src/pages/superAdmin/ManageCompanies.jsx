@@ -83,10 +83,10 @@ function CompanyViewModal({ company, onClose, t, locale }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-3 sm:p-4 backdrop-blur-sm"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
-      <div className="card w-full max-w-lg p-0 overflow-hidden">
+      <div className="card w-full max-w-lg max-h-[90vh] overflow-y-auto p-0">
         {/* Header */}
         <div className="flex items-start justify-between gap-4 border-b border-gray-100 px-6 py-5 dark:border-slate-700">
           <div className="min-w-0">
@@ -230,8 +230,8 @@ function CompanyFormModal({ open, company, onClose, onSaved, t }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
-      <div className="card w-full max-w-2xl p-6">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-3 sm:p-4 backdrop-blur-sm">
+      <div className="card w-full max-w-2xl max-h-[90vh] overflow-y-auto p-4 sm:p-6">
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
             <h2 className="text-xl font-bold text-gray-900 dark:text-white">

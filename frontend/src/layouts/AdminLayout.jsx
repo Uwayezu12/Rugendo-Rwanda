@@ -64,8 +64,8 @@ export default function AdminLayout() {
             <select
               value={language}
               onChange={(e) => changeLanguage(e.target.value)}
-              className="text-xs bg-transparent border border-gray-200 dark:border-slate-600 rounded-lg px-2 py-1.5 text-gray-600 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-brand-500 cursor-pointer"
-              aria-label="Select language"
+              className="max-w-[5rem] sm:max-w-none text-xs bg-transparent border border-gray-200 dark:border-slate-600 rounded-lg px-2 py-1.5 text-gray-600 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-brand-500 cursor-pointer"
+              aria-label={t('selectLanguage')}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
                 <option key={lang.code} value={lang.code}>{lang.label}</option>

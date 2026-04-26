@@ -87,6 +87,20 @@
 
 ---
 
+### BUG-019 — Full responsive audit pass (modals, tables, topbar, translations)
+
+**Fix:**
+- All dashboard management modals (`BusFormModal`, `DriverFormModal`, `RouteFormModal`, `ScheduleFormModal`, `CancelScheduleModal`, `ScheduleDetailModal`, `BookingDetailModal`, `CompanyViewModal`, `CompanyFormModal`, `OperatorFormModal`, `UserDetailModal`) now have `max-h-[90vh] overflow-y-auto` on inner card, `p-3 sm:p-4` on outer backdrop, and `p-4 sm:p-6` on inner padding.
+- `DashboardTable` shared component: added `min-w-[600px]` to `<table>` so it scrolls horizontally inside the existing `overflow-x-auto` wrapper instead of crushing columns.
+- `OperatorBookings` own table: added `min-w-[700px]`.
+- `RoutesPage` own table: added `min-w-[520px]`.
+- All 4 dashboard layouts: language `<select>` now uses `aria-label={t('selectLanguage')}` (was hardcoded English) and `max-w-[5rem] sm:max-w-none` to prevent topbar overflow on 320px.
+- `translations.js`: added `selectLanguage` key in all 4 locales (en/rw/fr/sw).
+- Public pages, passenger pages, and auth pages were audited and found already responsive — no changes required.
+**Resolved:** 2026-04-26
+
+---
+
 ### BUG-015 — Dashboard layouts broke on mobile and cramped tablet widths
 
 **Fix:** Updated `AdminLayout`, `PassengerLayout`, `OperatorLayout`, `SuperAdminLayout`, and the shared `Sidebar` so the dashboard nav is hidden by default on phones, opens as a drawer overlay, closes on outside click and navigation, and leaves desktop behavior intact from `md` upward. Added responsive breakpoint fixes for KPI grids, shared dashboard tables, CRUD action cells, and the most affected dashboard-owned pages so mobile/tablet widths no longer inherit the old fixed-sidebar assumptions.

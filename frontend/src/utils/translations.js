@@ -39,6 +39,7 @@ export const translations = {
     sidebarPanel: "panel",
     sidebarOpenMenu: "Open menu",
     sidebarCloseMenu: "Close menu",
+    selectLanguage: "Select language",
 
     // ── Common ──────────────────────────────────────────────────────────────
     home: "Home",
@@ -1431,6 +1432,7 @@ export const translations = {
     sidebarPanel: "urubuga",
     sidebarOpenMenu: "Fungura menu",
     sidebarCloseMenu: "Funga menu",
+    selectLanguage: "Hitamo ururimi",
 
     home: "Ahabanza",
     search: "Shakisha",
@@ -2821,6 +2823,7 @@ export const translations = {
     sidebarPanel: "panneau",
     sidebarOpenMenu: "Ouvrir le menu",
     sidebarCloseMenu: "Fermer le menu",
+    selectLanguage: "Choisir la langue",
 
     home: "Accueil",
     search: "Rechercher",
@@ -4246,6 +4249,7 @@ export const translations = {
     sidebarPanel: "bodi",
     sidebarOpenMenu: "Fungua menyu",
     sidebarCloseMenu: "Funga menyu",
+    selectLanguage: "Chagua lugha",
 
     home: "Nyumbani",
     search: "Tafuta",

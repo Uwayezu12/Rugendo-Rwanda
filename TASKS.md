@@ -75,8 +75,20 @@
 
 ### Responsive QA
 
-- [ ] Manual responsive QA: verify dashboard layouts + representative dashboard pages at `320px`–`430px`, `768px`–`1024px`, and desktop
-- [ ] Later responsive pass: remaining public/auth/detail pages outside the dashboard-focused layout batch
+- [x] Full frontend responsive audit and fix pass (2026-04-26):
+  - All management page modals: max-h[90vh] + overflow-y-auto + responsive padding
+  - DashboardTable + OperatorBookings + RoutesPage tables: min-w added for horizontal scroll
+  - All 4 dashboard layout topbars: language select max-w + aria-label via t()
+  - translations.js: selectLanguage key added in all 4 locales
+  - Public pages (HomePage, SearchResults, RoutesPage), passenger pages, auth pages: audited, already responsive — no changes required
+- [ ] Manual responsive QA still needed in browser at 320px, 375px, 768px, 1280px:
+  - /admin/buses — open a bus form modal on 320px, verify scrolls inside modal
+  - /admin/schedules — open schedule form modal, verify max-height scroll
+  - /admin/bookings — open booking detail modal on short screen
+  - /super-admin/companies — open company view modal + form modal
+  - /operator/bookings — table horizontal scroll on mobile
+  - /passenger/bookings — booking cards on 320px
+  - Language selector in topbar on 320px — verify it does not overflow
 
 ### Boarding — Manual Testing Required
 

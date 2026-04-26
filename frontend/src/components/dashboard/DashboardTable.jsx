@@ -29,7 +29,7 @@ export default function DashboardTable({ title, columns = [], rows = [], empty, 
         <div className="px-4 py-10 text-center text-sm text-gray-400 dark:text-slate-500 sm:px-5">{empty}</div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full min-w-[600px] text-sm">
             <thead>
               <tr className="border-b border-gray-100 dark:border-slate-800/60">
                 {columns.map(col => (

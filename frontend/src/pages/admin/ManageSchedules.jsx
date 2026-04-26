@@ -198,8 +198,8 @@ function ScheduleFormModal({ open, schedule, routes, buses, drivers, companies, 
   const lockedFields = isEdit && hasActiveBookings;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-      <div className="card w-full max-w-2xl p-6 my-4">
+    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+      <div className="card w-full max-w-2xl max-h-[90vh] overflow-y-auto p-4 sm:p-6 my-0">
         <div className="flex items-start justify-between gap-4 mb-6">
           <div>
             <h2 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -391,8 +391,8 @@ function CancelConfirmModal({ open, schedule, onClose, onCancelled, t }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="card w-full max-w-md p-6 space-y-4">
+    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+      <div className="card w-full max-w-md max-h-[90vh] overflow-y-auto p-4 sm:p-6 space-y-4">
         <h2 className="text-lg font-bold text-gray-900 dark:text-white">{t('manageSchedulesCancelTitle')}</h2>
         <p className="text-sm text-gray-600 dark:text-slate-300">
           {t('manageSchedulesCancelConfirm')}
@@ -468,8 +468,8 @@ function ScheduleDetailModal({ schedule, onClose, t, locale }) {
   const route = schedule.route ? `${schedule.route.origin} → ${schedule.route.destination}` : '—';
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-start justify-center p-4 overflow-y-auto">
-      <div className="card w-full max-w-2xl my-8">
+    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-start justify-center p-3 sm:p-4 overflow-y-auto">
+      <div className="card w-full max-w-2xl my-4 sm:my-8">
         {/* Header */}
         <div className="flex items-start justify-between gap-4 p-6 pb-4 border-b border-gray-100 dark:border-slate-700">
           <div className="min-w-0">
