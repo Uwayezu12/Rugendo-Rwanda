@@ -39,6 +39,7 @@
 - [x] /super-admin/users: removed inline email/phone/company from user list rows; added eye icon button + UserDetailModal with full user details (name, role, status, email, phone, company, join date)
 - [x] /super-admin/settings: widened from `max-w-2xl` to `max-w-4xl` for better page width utilization
 - [x] Profile pages: widened from `max-w-2xl` to `max-w-4xl` for better page width utilization
+- [x] `/admin/schedules` and `/admin/bookings`: simplified table columns, added eye-icon detail modals, moved schedule edit/cancel into a three-dots menu, and upgraded pagination to numbered controls
 - [ ] Review sidebar icons across all role dashboards — verify alignment, active state, hover state
 - [ ] Verify language selector + theme toggle in topbar work correctly on desktop and mobile
 - [ ] Verify companies table is clean (no inline amber resource text), eye icon visible in Actions

@@ -537,6 +537,16 @@ Format: `## N. Title` → `**Decision:**` → `**Why:**` → `**Date:**`
 
 ---
 
+## 56. Admin Tables Use Compact Rows With Detail Modals
+
+**Decision:** `/admin/schedules` and `/admin/bookings` keep only essential scan fields in their tables. Secondary operational details move into eye-icon detail modals, schedule edit/cancel actions move behind a three-dots row menu, and admin pagination uses numbered page buttons.
+
+**Why:** Dense operations tables need to stay scannable while still exposing complete records on demand. This keeps routine list review fast, makes details easier to inspect, and avoids crowding destructive schedule actions into the main row.
+
+**Date:** 2026-04-28
+
+---
+
 ## 55. Company Admin Role Is Company-Scoped
 
 **Decision:** The platform now includes `company_admin` / `COMPANY_ADMIN` as a company-scoped management role backed by `User.companyId`. Company admin APIs live under `/api/company-admin/*` and enforce the authenticated user's company scope server-side. Operators remain boarding/check-in only, public signup remains passenger-only, official RURA route/fare data remains platform-controlled, and company profile is read-only for this MVP.
