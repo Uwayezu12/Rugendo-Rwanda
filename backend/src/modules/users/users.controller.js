@@ -64,15 +64,19 @@ export async function updateUserRoleHandler(req, res) {
     }
 
     const { role, companyId } = req.body;
-    const VALID_ROLES = ['PASSENGER', 'ADMIN', 'SUPER_ADMIN', 'OPERATOR'];
+    const VALID_ROLES = ['PASSENGER', 'ADMIN', 'SUPER_ADMIN', 'COMPANY_ADMIN', 'OPERATOR'];
     if (!role || !VALID_ROLES.includes(role)) {
       return badRequest(res, `role must be one of: ${VALID_ROLES.join(', ')}`);
     }
-    if (role === 'OPERATOR' && !companyId) {
-      return badRequest(res, 'companyId is required when assigning the OPERATOR role');
+    if (['OPERATOR', 'COMPANY_ADMIN'].includes(role) && !companyId) {
+      return badRequest(res, 'companyId is required when assigning a company-scoped role');
     }
 
-    const updated = await usersService.changeUserRole(targetId, role, role === 'OPERATOR' ? Number(companyId) : null);
+    const updated = await usersService.changeUserRole(
+      targetId,
+      role,
+      ['OPERATOR', 'COMPANY_ADMIN'].includes(role) ? Number(companyId) : null,
+    );
     return success(res, updated, 'User role updated');
   } catch (err) {
     if (err.status === 404) return notFound(res, err.message);

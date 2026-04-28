@@ -19,6 +19,7 @@ enum Role {
   PASSENGER
   ADMIN
   SUPER_ADMIN
+  COMPANY_ADMIN
   OPERATOR
 }
 
@@ -62,7 +63,8 @@ model User {
   phone                  String?   @unique
   role                   Role      @default(PASSENGER)
   isActive               Boolean   @default(true)
-  // companyId is only set for OPERATOR-role users. Null for all other roles.
+  // companyId is set for company-scoped staff users (COMPANY_ADMIN and OPERATOR).
+  // Null for platform roles and passengers.
   companyId              Int?
   // Google OAuth identity. Null for users who registered with email/password.
   googleId               String?   @unique
@@ -97,15 +99,18 @@ model RefreshToken {
 }
 
 // Company represents a bus operating company (e.g. "Volcano Express").
-// It is separate from the User model so that multiple OPERATOR-role users
-// can belong to the same company (e.g. multiple boarding staff).
+// It is separate from the User model so multiple company-scoped staff users
+// can belong to the same company (company admins and boarding operators).
 model Company {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  licenseNo String?
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                 Int      @id @default(autoincrement())
+  name               String   @unique
+  licenseNo          String?
+  isActive           Boolean  @default(true)
+  // dataSource and isVerifiedOperator are set for companies sourced from official registries.
+  dataSource         String?  // e.g. "RURA"
+  isVerifiedOperator Boolean  @default(false)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
 
   operators User[]
   buses     Bus[]
@@ -116,14 +121,18 @@ model Company {
 }
 
 model Route {
-  id          Int      @id @default(autoincrement())
-  origin      String
-  destination String
-  distanceKm  Float?
-  durationMin Int?
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id                Int       @id @default(autoincrement())
+  origin            String
+  destination       String
+  distanceKm        Float?
+  durationMin       Int?
+  isActive          Boolean   @default(true)
+  // Official fare fields — populated only for RURA-sourced routes.
+  officialFareRwf   Decimal?  @db.Decimal(10, 2) // RURA-stated fare in RWF
+  fareSource        String?   // e.g. "RURA Intercity Public Transport Tariff 2026"
+  fareEffectiveFrom DateTime? // Date from which the tariff is effective
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 
   schedules Schedule[]
 

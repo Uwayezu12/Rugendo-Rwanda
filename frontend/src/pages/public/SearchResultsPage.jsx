@@ -46,7 +46,12 @@ function ScheduleCard({ schedule }) {
   return (
     <div className={`card flex flex-col sm:flex-row sm:items-center gap-4 ${isFull ? 'opacity-60' : ''}`}>
       <div className="sm:w-44 shrink-0">
-        <p className="font-semibold text-gray-900 dark:text-white">{schedule.company?.name}</p>
+        <p
+          className="text-sm font-semibold leading-tight truncate max-w-[180px] sm:max-w-[220px] text-gray-900 dark:text-white"
+          title={schedule.company?.name}
+        >
+          {schedule.company?.name}
+        </p>
         {schedule.bus?.model && (
           <span className="badge-brand text-xs">{schedule.bus.model}</span>
         )}

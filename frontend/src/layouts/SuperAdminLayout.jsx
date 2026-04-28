@@ -64,8 +64,8 @@ export default function SuperAdminLayout() {
             <select
               value={language}
               onChange={(e) => changeLanguage(e.target.value)}
-              className="max-w-[5rem] sm:max-w-none text-xs bg-transparent border border-gray-200 dark:border-slate-600 rounded-lg px-2 py-1.5 text-gray-600 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-brand-500 cursor-pointer"
-              aria-label={t('selectLanguage')}
+              className="text-xs bg-transparent border border-gray-200 dark:border-slate-600 rounded-lg px-2 py-1.5 text-gray-600 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-brand-500 cursor-pointer"
+              aria-label="Select language"
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
                 <option key={lang.code} value={lang.code}>{lang.label}</option>

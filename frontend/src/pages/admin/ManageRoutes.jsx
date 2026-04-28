@@ -181,8 +181,8 @@ function RouteFormModal({ open, route, onClose, onSaved, t }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
-      <div className="card w-full max-w-2xl max-h-[90vh] overflow-y-auto p-4 sm:p-6">
+    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+      <div className="card w-full max-w-2xl p-6">
         <div className="flex items-start justify-between gap-4 mb-6">
           <div>
             <h2 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -451,6 +451,25 @@ export default function ManageRoutes() {
           <p className="font-medium text-gray-900 dark:text-white">{value}</p>
         </div>
       ),
+    },
+    {
+      key: 'officialFareRwf',
+      label: 'Fare (RWF)',
+      render: (value, row) => {
+        if (!value) return <span className="text-gray-400 dark:text-slate-500">—</span>;
+        return (
+          <div className="min-w-0">
+            <p className="font-medium text-gray-900 dark:text-white">
+              {Number(value).toLocaleString()}
+            </p>
+            {row.fareSource && (
+              <p className="text-xs text-gray-400 dark:text-slate-500 truncate max-w-[10rem]" title={row.fareSource}>
+                {t('fareSourceLabel')}: {row.fareSource}
+              </p>
+            )}
+          </div>
+        );
+      },
     },
     {
       key: 'distanceKm',

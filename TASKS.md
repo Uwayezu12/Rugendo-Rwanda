@@ -16,6 +16,22 @@
 
 ## TODO
 
+### Company Admin - Manual Testing Required
+
+- [x] Add `COMPANY_ADMIN` role to Prisma role enum and frontend role normalization
+- [x] Add company-scoped `/api/company-admin/*` backend module
+- [x] Add company admin dashboard layout and MVP pages
+- [x] Add company admin translation keys in English, Kinyarwanda, French, and Kiswahili
+- [x] Seed one company admin user per seeded company
+- [x] Run Prisma migration for `COMPANY_ADMIN` role once MySQL is available
+- [x] Seed database and verify company admin demo credentials
+- [ ] Re-run `npx prisma generate` after releasing the local Windows Prisma DLL file lock
+- [ ] Login as `companyadmin.gicumbi@test.rw` and confirm redirect to `/company-admin`
+- [ ] Verify company admin sees only its company's bookings, schedules, buses, drivers, operators, and revenue
+- [ ] Verify company admin cannot access platform admin/super-admin pages
+- [ ] Verify operator remains boarding/check-in only
+- [ ] Verify public signup still creates `PASSENGER` only
+
 ### Dashboard / UX Polish — Manual Review Required
 
 - [x] Sidebar logout: added logout SVG icon, styled consistently with nav links (icon + label, red tone)
@@ -75,20 +91,8 @@
 
 ### Responsive QA
 
-- [x] Full frontend responsive audit and fix pass (2026-04-26):
-  - All management page modals: max-h[90vh] + overflow-y-auto + responsive padding
-  - DashboardTable + OperatorBookings + RoutesPage tables: min-w added for horizontal scroll
-  - All 4 dashboard layout topbars: language select max-w + aria-label via t()
-  - translations.js: selectLanguage key added in all 4 locales
-  - Public pages (HomePage, SearchResults, RoutesPage), passenger pages, auth pages: audited, already responsive — no changes required
-- [ ] Manual responsive QA still needed in browser at 320px, 375px, 768px, 1280px:
-  - /admin/buses — open a bus form modal on 320px, verify scrolls inside modal
-  - /admin/schedules — open schedule form modal, verify max-height scroll
-  - /admin/bookings — open booking detail modal on short screen
-  - /super-admin/companies — open company view modal + form modal
-  - /operator/bookings — table horizontal scroll on mobile
-  - /passenger/bookings — booking cards on 320px
-  - Language selector in topbar on 320px — verify it does not overflow
+- [ ] Manual responsive QA: verify dashboard layouts + representative dashboard pages at `320px`–`430px`, `768px`–`1024px`, and desktop
+- [ ] Later responsive pass: remaining public/auth/detail pages outside the dashboard-focused layout batch
 
 ### Boarding — Manual Testing Required
 

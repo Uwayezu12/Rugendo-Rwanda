@@ -92,13 +92,23 @@ export async function getSuperAdminStats() {
     .slice(0, 5)
     .map(([route, bookings]) => ({ route, bookings }));
 
+  const operatorCounts = await prisma.user.groupBy({
+    by: ['companyId'],
+    where: {
+      companyId: { in: companies.map(c => c.id) },
+      role: 'OPERATOR',
+    },
+    _count: { _all: true },
+  });
+  const operatorCountMap = Object.fromEntries(operatorCounts.map(row => [row.companyId, row._count._all]));
+
   const companyOverview = companies.map(c => ({
     id: c.id,
     name: c.name,
     isActive: c.isActive,
     buses: c._count.buses,
     drivers: c._count.drivers,
-    operators: c._count.operators,
+    operators: operatorCountMap[c.id] || 0,
     schedules: c._count.schedules,
   }));
 

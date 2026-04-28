@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext.jsx';
+import api from '../../services/api.js';
 
 function todayLocal() {
   const d = new Date();
@@ -8,6 +9,10 @@ function todayLocal() {
   const m = String(d.getMonth() + 1).padStart(2, '0');
   const day = String(d.getDate()).padStart(2, '0');
   return `${y}-${m}-${day}`;
+}
+
+function uniqueSorted(values) {
+  return [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b));
 }
 
 export default function SearchTripsPage() {
@@ -21,8 +26,79 @@ export default function SearchTripsPage() {
     date:       searchParams.get('date')       || todayLocal(),
     passengers: searchParams.get('passengers') || '1',
   });
+  const [routes, setRoutes] = useState([]);
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  useEffect(() => {
+    let ignore = false;
+
+    api.get('/routes?scope=public')
+      .then(({ data: res }) => {
+        if (!ignore) setRoutes(Array.isArray(res.data) ? res.data : []);
+      })
+      .catch(() => {
+        if (!ignore) setRoutes([]);
+      });
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
+  const fromOptions = useMemo(
+    () => uniqueSorted(routes.map((route) => route.origin)),
+    [routes],
+  );
+
+  const toOptions = useMemo(() => {
+    const matchingRoutes = form.from
+      ? routes.filter((route) => route.origin === form.from)
+      : routes;
+
+    return uniqueSorted(
+      matchingRoutes
+        .map((route) => route.destination)
+        .filter((destination) => destination !== form.from),
+    );
+  }, [form.from, routes]);
+
+  useEffect(() => {
+    if (routes.length > 0 && form.to && !toOptions.includes(form.to)) {
+      setForm((current) => ({ ...current, to: '' }));
+    }
+  }, [form.to, routes.length, toOptions]);
+
+  const visibleFromOptions = useMemo(
+    () => (form.from && !fromOptions.includes(form.from) ? [form.from, ...fromOptions] : fromOptions),
+    [form.from, fromOptions],
+  );
+
+  const visibleToOptions = useMemo(
+    () => (form.to && !toOptions.includes(form.to) ? [form.to, ...toOptions] : toOptions),
+    [form.to, toOptions],
+  );
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setForm((current) => {
+      if (name === 'from') {
+        const nextToOptions = uniqueSorted(
+          routes
+            .filter((route) => !value || route.origin === value)
+            .map((route) => route.destination)
+            .filter((destination) => destination !== value),
+        );
+
+        return {
+          ...current,
+          from: value,
+          to: nextToOptions.includes(current.to) ? current.to : '',
+        };
+      }
+
+      return { ...current, [name]: value };
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,11 +109,11 @@ export default function SearchTripsPage() {
 
   return (
     <div>
-      <section className="bg-hero-gradient text-white py-20">
+      <section className="bg-gradient-to-br from-[#fbfaff] via-[#f8f7ff] to-[#fff5fb] text-gray-900 dark:bg-hero-gradient dark:text-white py-20">
         <div className="container-page text-center">
           <span className="badge-accent mb-4">{t('searchTripsBadge')}</span>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">{t('searchTripsTitle')}</h1>
-          <p className="text-slate-300 text-lg max-w-xl mx-auto">{t('searchTripsSubtitle')}</p>
+          <p className="text-gray-600 dark:text-slate-300 text-lg max-w-xl mx-auto">{t('searchTripsSubtitle')}</p>
         </div>
       </section>
 
@@ -52,26 +128,38 @@ export default function SearchTripsPage() {
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
                 <label className="label">{t('from')}</label>
-                <input
+                <select
                   name="from"
                   value={form.from}
                   onChange={handleChange}
-                  placeholder={t('searchTripsFromPlaceholder')}
                   required
                   className="input"
-                />
+                >
+                  <option value="">{t('searchTripsFromPlaceholder')}</option>
+                  {visibleFromOptions.map((origin) => (
+                    <option key={origin} value={origin}>
+                      {origin}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <div>
                 <label className="label">{t('to')}</label>
-                <input
+                <select
                   name="to"
                   value={form.to}
                   onChange={handleChange}
-                  placeholder={t('searchTripsToPlaceholder')}
                   required
                   className="input"
-                />
+                >
+                  <option value="">{t('searchTripsToPlaceholder')}</option>
+                  {visibleToOptions.map((destination) => (
+                    <option key={destination} value={destination}>
+                      {destination}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <div>
@@ -120,12 +208,12 @@ export default function SearchTripsPage() {
             </p>
             <div className="flex flex-wrap gap-2">
               {[
-                { from: 'Kigali', to: 'Musanze'  },
-                { from: 'Kigali', to: 'Butare'   },
-                { from: 'Kigali', to: 'Gisenyi'  },
-                { from: 'Kigali', to: 'Cyangugu' },
-                { from: 'Kigali', to: 'Kibungo'  },
-                { from: 'Butare',  to: 'Musanze' },
+                { from: 'NYABUGOGO', to: 'MUSANZE'   },
+                { from: 'NYABUGOGO', to: 'NYAGATARE' },
+                { from: 'NYABUGOGO', to: 'GICUMBI'   },
+                { from: 'NYABUGOGO', to: 'GATUNA'    },
+                { from: 'MUSANZE',   to: 'RUBAVU'    },
+                { from: 'GICUMBI',   to: 'MUSANZE'   },
               ].map((r) => (
                 <button
                   key={`${r.from}-${r.to}`}

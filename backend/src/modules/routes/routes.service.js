@@ -7,6 +7,9 @@ const publicRouteSelect = {
   destination: true,
   distanceKm: true,
   durationMin: true,
+  officialFareRwf: true,
+  fareSource: true,
+  fareEffectiveFrom: true,
 };
 
 const adminRouteSelect = {
@@ -17,6 +20,9 @@ const adminRouteSelect = {
   durationMin: true,
   isActive: true,
   createdAt: true,
+  officialFareRwf: true,
+  fareSource: true,
+  fareEffectiveFrom: true,
   _count: {
     select: {
       schedules: true,

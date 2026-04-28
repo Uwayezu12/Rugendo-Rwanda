@@ -8,6 +8,7 @@ import PassengerLayout from '../layouts/PassengerLayout.jsx';
 import AdminLayout from '../layouts/AdminLayout.jsx';
 import SuperAdminLayout from '../layouts/SuperAdminLayout.jsx';
 import OperatorLayout from '../layouts/OperatorLayout.jsx';
+import CompanyAdminLayout from '../layouts/CompanyAdminLayout.jsx';
 
 // Public pages
 import HomePage from '../pages/public/HomePage.jsx';
@@ -57,6 +58,16 @@ import OperatorDashboard from '../pages/operator/OperatorDashboard.jsx';
 import BoardingValidation from '../pages/operator/BoardingValidation.jsx';
 import OperatorBookings from '../pages/operator/OperatorBookings.jsx';
 
+// Company-admin pages
+import CompanyAdminDashboard from '../pages/companyAdmin/CompanyAdminDashboard.jsx';
+import CompanyAdminBookings from '../pages/companyAdmin/CompanyAdminBookings.jsx';
+import CompanyAdminSchedules from '../pages/companyAdmin/CompanyAdminSchedules.jsx';
+import CompanyAdminBuses from '../pages/companyAdmin/CompanyAdminBuses.jsx';
+import CompanyAdminDrivers from '../pages/companyAdmin/CompanyAdminDrivers.jsx';
+import CompanyAdminOperators from '../pages/companyAdmin/CompanyAdminOperators.jsx';
+import CompanyAdminRevenue from '../pages/companyAdmin/CompanyAdminRevenue.jsx';
+import CompanyAdminProfile from '../pages/companyAdmin/CompanyAdminProfile.jsx';
+
 // Route guards
 import ProtectedRoute from '../components/common/ProtectedRoute.jsx';
 import { useAuth } from '../contexts/AuthContext.jsx';
@@ -65,6 +76,7 @@ const ROLE_PROFILE_PATHS = {
   passenger: '/passenger/profile',
   admin: '/admin/profile',
   super_admin: '/super-admin/profile',
+  company_admin: '/company-admin/profile',
   operator: '/operator/profile',
 };
 
@@ -155,6 +167,20 @@ export default function AppRouter() {
       </Route>
 
       {/* ── Fallback ──────────────────────────────────────────── */}
+      {/* Company Admin routes */}
+      <Route element={<ProtectedRoute allowedRoles={['company_admin']} />}>
+        <Route element={<CompanyAdminLayout />}>
+          <Route path="/company-admin"             element={<CompanyAdminDashboard />} />
+          <Route path="/company-admin/bookings"    element={<CompanyAdminBookings />} />
+          <Route path="/company-admin/schedules"   element={<CompanyAdminSchedules />} />
+          <Route path="/company-admin/buses"       element={<CompanyAdminBuses />} />
+          <Route path="/company-admin/drivers"     element={<CompanyAdminDrivers />} />
+          <Route path="/company-admin/operators"   element={<CompanyAdminOperators />} />
+          <Route path="/company-admin/revenue"     element={<CompanyAdminRevenue />} />
+          <Route path="/company-admin/profile"     element={<CompanyAdminProfile />} />
+        </Route>
+      </Route>
+
       <Route path="*" element={<NotFoundPage />} />
 
     </Routes>

@@ -2,7 +2,8 @@ import prisma from '../../lib/prisma.js';
 
 const safeSelect = {
   id: true, name: true, email: true, phone: true,
-  role: true, isActive: true, createdAt: true,
+  role: true, companyId: true, company: { select: { id: true, name: true } },
+  isActive: true, createdAt: true,
 };
 
 export async function getUserById(id) {
@@ -82,7 +83,7 @@ export async function listUsers({ page, limit, search, role }) {
       { phone: { contains: search } },
     ];
   }
-  const VALID_ROLES = ['PASSENGER', 'ADMIN', 'SUPER_ADMIN', 'OPERATOR'];
+  const VALID_ROLES = ['PASSENGER', 'ADMIN', 'SUPER_ADMIN', 'COMPANY_ADMIN', 'OPERATOR'];
   if (role && VALID_ROLES.includes(role)) {
     where.role = role;
   }
@@ -108,9 +109,17 @@ export async function changeUserRole(id, role, companyId) {
     err.status = 404;
     throw err;
   }
+  if (['OPERATOR', 'COMPANY_ADMIN'].includes(role)) {
+    const company = await prisma.company.findUnique({ where: { id: companyId }, select: { id: true } });
+    if (!company) {
+      const err = new Error('Company not found');
+      err.status = 404;
+      throw err;
+    }
+  }
   return prisma.user.update({
     where: { id },
-    data: { role, companyId: role === 'OPERATOR' ? companyId : null },
+    data: { role, companyId: ['OPERATOR', 'COMPANY_ADMIN'].includes(role) ? companyId : null },
     select: adminSelect,
   });
 }

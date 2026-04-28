@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext.jsx';
 import { useLanguage } from '../../contexts/LanguageContext.jsx';
+import api from '../../services/api.js';
 
+// Fares from RURA Intercity Public Transport Tariff 2026 (effective 2026-04-06).
 const FEATURED_ROUTES = [
-  { from: 'Kigali', to: 'Butare',    distance: '136 km', duration: '2h 30min', price: 'RWF 3,500' },
-  { from: 'Kigali', to: 'Musanze',   distance: '111 km', duration: '2h',       price: 'RWF 3,000' },
-  { from: 'Kigali', to: 'Gisenyi',   distance: '157 km', duration: '2h 45min', price: 'RWF 4,000' },
-  { from: 'Kigali', to: 'Cyangugu',  distance: '218 km', duration: '3h 30min', price: 'RWF 5,500' },
-  { from: 'Butare',  to: 'Musanze',  distance: '195 km', duration: '3h 15min', price: 'RWF 5,000' },
-  { from: 'Kigali', to: 'Kibungo',   distance: '114 km', duration: '2h',       price: 'RWF 3,200' },
+  { from: 'NYABUGOGO', to: 'MUSANZE',   distance: '92 km',  duration: '2h',        price: 'RWF 3,821'  },
+  { from: 'NYABUGOGO', to: 'HUYE',      distance: '122 km', duration: '2h 30min',  price: 'RWF 5,068'  },
+  { from: 'NYABUGOGO', to: 'MUHANGA',   distance: '56 km',  duration: '1h 15min',  price: 'RWF 2,328'  },
+  { from: 'NYABUGOGO', to: 'NYAGATARE', distance: '129 km', duration: '3h 30min',  price: 'RWF 5,346'  },
+  { from: 'NYABUGOGO', to: 'GICUMBI',   distance: '55 km',  duration: '1h 30min',  price: 'RWF 2,297'  },
+  { from: 'NYABUGOGO', to: 'RUSIZI',    distance: '275 km', duration: '6h',        price: 'RWF 11,445' },
+  { from: 'MUSANZE',   to: 'RUBAVU',    distance: '62 km',  duration: '1h 15min',  price: 'RWF 2,573'  },
+  { from: 'NYABUGOGO', to: 'RWAMAGANA', distance: '51 km',  duration: '1h',        price: 'RWF 2,121'  },
 ];
 
 function todayLocal() {
@@ -20,12 +24,77 @@ function todayLocal() {
   return `${y}-${m}-${day}`;
 }
 
+function uniqueSorted(values) {
+  return [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b));
+}
+
 function SearchWidget({ compact = false }) {
   const navigate = useNavigate();
   const { t } = useLanguage();
   const [form, setForm] = useState({ from: '', to: '', date: todayLocal(), passengers: '1' });
+  const [routes, setRoutes] = useState([]);
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  useEffect(() => {
+    let ignore = false;
+
+    api.get('/routes?scope=public')
+      .then(({ data: res }) => {
+        if (!ignore) setRoutes(Array.isArray(res.data) ? res.data : []);
+      })
+      .catch(() => {
+        if (!ignore) setRoutes([]);
+      });
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
+  const fromOptions = useMemo(
+    () => uniqueSorted(routes.map((route) => route.origin)),
+    [routes],
+  );
+
+  const toOptions = useMemo(() => {
+    const matchingRoutes = form.from
+      ? routes.filter((route) => route.origin === form.from)
+      : routes;
+
+    return uniqueSorted(
+      matchingRoutes
+        .map((route) => route.destination)
+        .filter((destination) => destination !== form.from),
+    );
+  }, [form.from, routes]);
+
+  useEffect(() => {
+    if (routes.length > 0 && form.to && !toOptions.includes(form.to)) {
+      setForm((current) => ({ ...current, to: '' }));
+    }
+  }, [form.to, routes.length, toOptions]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setForm((current) => {
+      if (name === 'from') {
+        const nextToOptions = uniqueSorted(
+          routes
+            .filter((route) => !value || route.origin === value)
+            .map((route) => route.destination)
+            .filter((destination) => destination !== value),
+        );
+
+        return {
+          ...current,
+          from: value,
+          to: nextToOptions.includes(current.to) ? current.to : '',
+        };
+      }
+
+      return { ...current, [name]: value };
+    });
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -43,25 +112,37 @@ function SearchWidget({ compact = false }) {
       <div className={`grid gap-3 ${compact ? 'grid-cols-2 md:grid-cols-4' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'}`}>
         <div>
           <label className="label">{t('from')}</label>
-          <input
+          <select
             name="from"
             value={form.from}
             onChange={handleChange}
-            placeholder={t('homeDepartureCity')}
             required
             className={inputClass}
-          />
+          >
+            <option value="">{t('homeDepartureCity')}</option>
+            {fromOptions.map((origin) => (
+              <option key={origin} value={origin}>
+                {origin}
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <label className="label">{t('to')}</label>
-          <input
+          <select
             name="to"
             value={form.to}
             onChange={handleChange}
-            placeholder={t('homeDestination')}
             required
             className={inputClass}
-          />
+          >
+            <option value="">{t('homeDestination')}</option>
+            {toOptions.map((destination) => (
+              <option key={destination} value={destination}>
+                {destination}
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <label className="label">{t('date')}</label>
@@ -163,7 +244,7 @@ export default function HomePage() {
     <div className="overflow-x-hidden">
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative bg-hero-gradient text-white">
+      <section className="relative bg-gradient-to-br from-[#fbfaff] via-[#f8f7ff] to-[#fff5fb] text-gray-900 dark:bg-hero-gradient dark:text-white">
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
           <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-brand-600 opacity-20 blur-3xl" />
           <div className="absolute top-1/2 -right-32 w-80 h-80 rounded-full bg-accent-500 opacity-15 blur-3xl" />
@@ -183,7 +264,7 @@ export default function HomePage() {
                 </span>{' '}
                 {t('homeHeroTitleEnd')}
               </h1>
-              <p className="text-lg sm:text-xl text-slate-300 max-w-xl mb-10">
+              <p className="text-lg sm:text-xl text-gray-600 dark:text-slate-300 max-w-xl mb-10">
                 {t('homeHeroSubtitle')}
               </p>
 
@@ -201,7 +282,7 @@ export default function HomePage() {
                   <span
                     key={chip}
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium
-                               bg-white/10 text-white border border-white/20 backdrop-blur-sm"
+                               bg-brand-50 text-gray-700 border border-brand-100 dark:bg-white/10 dark:text-white dark:border-white/20 backdrop-blur-sm"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-accent-400 inline-block" />
                     {chip}

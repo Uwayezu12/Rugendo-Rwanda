@@ -68,6 +68,7 @@ These are explicitly out of scope. Do not implement, scaffold, or stub them:
 
 Also:
 - Do not flatten the folder structure. The current module separation is intentional.
+- Keep `company_admin` scoped to its assigned `companyId`; operators remain boarding-only.
 - Do not mix CommonJS (`require`) with ES modules (`import`). Backend is ES modules only.
 - Do not introduce new global state libraries (Redux, Zustand, Jotai, etc.) without agreement.
 - Do not install new dependencies without flagging them.

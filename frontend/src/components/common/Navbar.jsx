@@ -12,17 +12,19 @@ const NAV_LINK_KEYS = [
 ];
 
 const ROLE_DASHBOARD = {
-  passenger:  '/passenger',
-  admin:      '/admin',
-  super_admin:'/super-admin',
-  operator:   '/operator',
+  passenger:     '/passenger',
+  admin:         '/admin',
+  super_admin:   '/super-admin',
+  operator:      '/operator',
+  company_admin: '/company-admin',
 };
 
 const ROLE_PROFILE = {
-  passenger:  '/passenger/profile',
-  admin:      '/admin/profile',
-  super_admin:'/super-admin/profile',
-  operator:   '/operator/profile',
+  passenger:     '/passenger/profile',
+  admin:         '/admin/profile',
+  super_admin:   '/super-admin/profile',
+  operator:      '/operator/profile',
+  company_admin: '/company-admin/profile',
 };
 
 function getInitials(name) {

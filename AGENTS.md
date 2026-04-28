@@ -53,12 +53,12 @@ Treat this as a **real, production-bound booking platform**, not a visual protot
 | `passenger` | Authenticated. Booking and trip management only. |
 | `admin` | Full operational access: routes, schedules, buses, drivers, bookings, payments. |
 | `super_admin` | All admin permissions + platform settings. |
+| `company_admin` | Company-scoped operations access for one bus company only. |
 | `operator` | Boarding validation only. |
-
 - `super_admin` is a superset of `admin`. Implement permission checks accordingly.
+- `company_admin` must be scoped by `User.companyId`; never expose another company's data.
 - There is no separate "boarding agent" role. `operator` covers it.
 - Never invent new roles without explicit agreement.
-
 ---
 
 ## Frontend Architecture Rules

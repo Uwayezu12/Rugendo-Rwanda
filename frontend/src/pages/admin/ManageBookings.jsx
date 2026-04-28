@@ -60,20 +60,11 @@ function StatusBadge({ status, metaFn, t }) {
 
 // ── Detail modal ──────────────────────────────────────────────────────────────
 
-function SectionCard({ title, children }) {
+function DetailRow({ label, value }) {
   return (
-    <div className="rounded-xl border border-gray-100 dark:border-slate-700 p-4">
-      <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-slate-500 mb-3">{title}</p>
-      <div className="space-y-2">{children}</div>
-    </div>
-  );
-}
-
-function DetailField({ label, value }) {
-  return (
-    <div>
-      <p className="text-xs text-gray-500 dark:text-slate-400">{label}</p>
-      <p className="text-sm font-medium text-gray-900 dark:text-white break-all">{value ?? '—'}</p>
+    <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4 py-2 border-b border-gray-100 dark:border-slate-700 last:border-0">
+      <span className="text-xs font-medium text-gray-500 dark:text-slate-400 sm:w-44 shrink-0">{label}</span>
+      <span className="text-sm text-gray-900 dark:text-white break-all">{value ?? '—'}</span>
     </div>
   );
 }
@@ -85,72 +76,60 @@ function BookingDetailModal({ booking, onClose, t, locale }) {
   const pay = booking.payment;
   const u   = booking.user;
 
-  const bMeta = bookingStatusMeta(booking.status, t);
-  const pMeta = pay ? paymentStatusMeta(pay.status, t) : null;
-  const route = s?.route ? `${s.route.origin} → ${s.route.destination}` : '—';
+  const bMeta  = bookingStatusMeta(booking.status, t);
+  const pMeta  = pay ? paymentStatusMeta(pay.status, t) : null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-start justify-center p-3 sm:p-4 overflow-y-auto">
-      <div className="card w-full max-w-2xl my-4 sm:my-8">
-        {/* Header */}
-        <div className="flex items-start justify-between gap-4 p-6 pb-4 border-b border-gray-100 dark:border-slate-700">
-          <div className="min-w-0">
-            <p className="font-mono text-sm font-semibold text-brand-600 dark:text-brand-400">{booking.reference}</p>
-            <p className="mt-0.5 text-base font-bold text-gray-900 dark:text-white truncate">{route}</p>
-            <div className="flex flex-wrap gap-2 mt-2">
-              <span className={`badge text-xs ${bMeta.className}`}>{bMeta.label}</span>
-              {pMeta && <span className={`badge text-xs ${pMeta.className}`}>{pMeta.label}</span>}
-            </div>
-          </div>
+    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+      <div className="card w-full max-w-lg p-6 my-4 space-y-1">
+        <div className="flex items-start justify-between gap-4 mb-4">
+          <h2 className="text-lg font-bold text-gray-900 dark:text-white">{t('manageBookingsDetailTitle')}</h2>
           <button
             onClick={onClose}
-            className="shrink-0 p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-slate-700 dark:hover:text-slate-300 transition-colors"
+            className="text-gray-400 hover:text-gray-600 dark:hover:text-slate-300 text-xl leading-none"
             aria-label={t('manageBookingsDetailClose')}
           >
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" className="w-5 h-5">
-              <path d="M5 5l10 10M15 5L5 15"/>
-            </svg>
+            ×
           </button>
         </div>
 
-        {/* Body */}
-        <div className="p-6 overflow-y-auto max-h-[60vh]">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <SectionCard title={t('manageBookingsDetailPassengerSection')}>
-              <DetailField label={t('manageBookingsDetailPassenger')} value={u?.name} />
-              <DetailField label={t('manageBookingsDetailEmail')} value={u?.email || t('manageBookingsNotAvailable')} />
-              <DetailField label={t('manageBookingsDetailPhone')} value={u?.phone || t('manageBookingsNotAvailable')} />
-            </SectionCard>
-
-            <SectionCard title={t('manageBookingsDetailTripSection')}>
-              <DetailField label={t('manageBookingsDetailRoute')} value={route} />
-              <DetailField label={t('manageBookingsDetailCompany')} value={s?.company?.name || t('manageBookingsNotAvailable')} />
-              <DetailField label={t('manageBookingsDetailBus')} value={s?.bus ? `${s.bus.plateNumber}${s.bus.model ? ` — ${s.bus.model}` : ''}` : '—'} />
-              <DetailField label={t('manageBookingsDetailDriver')} value={s?.driver?.name || t('manageBookingsNotAvailable')} />
-              <DetailField label={t('manageBookingsDetailDeparture')} value={formatDateTime(s?.departureTime, locale)} />
-              <DetailField label={t('manageBookingsDetailArrival')} value={formatDateTime(s?.arrivalTime, locale)} />
-            </SectionCard>
-
-            <SectionCard title={t('manageBookingsDetailBookingSection')}>
-              <DetailField label={t('manageBookingsDetailReference')} value={booking.reference} />
-              <DetailField label={t('manageBookingsDetailSeats')} value={booking.seatsBooked} />
-              <DetailField label={t('manageBookingsDetailAmount')} value={formatPrice(booking.totalAmount)} />
-              <DetailField label={t('manageBookingsDetailStatus')} value={<span className={`badge text-xs ${bMeta.className}`}>{bMeta.label}</span>} />
-              <DetailField label={t('manageBookingsDetailCreated')} value={formatDateTime(booking.createdAt, locale)} />
-              <DetailField label={t('manageBookingsDetailBoardedAt')} value={booking.boardedAt ? formatDateTime(booking.boardedAt, locale) : t('manageBookingsNotAvailable')} />
-            </SectionCard>
-
-            <SectionCard title={t('manageBookingsDetailPaymentSection')}>
-              <DetailField label={t('manageBookingsDetailPaymentStatus')} value={pMeta ? <span className={`badge text-xs ${pMeta.className}`}>{pMeta.label}</span> : t('manageBookingsNotAvailable')} />
-              <DetailField label={t('manageBookingsDetailPaymentMethod')} value={pay?.method || t('manageBookingsNotAvailable')} />
-              <DetailField label={t('manageBookingsDetailPaidAt')} value={pay?.paidAt ? formatDateTime(pay.paidAt, locale) : t('manageBookingsNotAvailable')} />
-            </SectionCard>
-          </div>
+        <div className="space-y-0">
+          <DetailRow label={t('manageBookingsDetailReference')} value={booking.reference} />
+          <DetailRow label={t('manageBookingsDetailPassenger')} value={u?.name} />
+          <DetailRow label={t('manageBookingsDetailEmail')}     value={u?.email || t('manageBookingsNotAvailable')} />
+          <DetailRow label={t('manageBookingsDetailPhone')}     value={u?.phone || t('manageBookingsNotAvailable')} />
+          <DetailRow
+            label={t('manageBookingsDetailRoute')}
+            value={s?.route ? `${s.route.origin} → ${s.route.destination}` : '—'}
+          />
+          <DetailRow label={t('manageBookingsDetailCompany')}  value={s?.company?.name} />
+          <DetailRow
+            label={t('manageBookingsDetailBus')}
+            value={s?.bus ? `${s.bus.plateNumber}${s.bus.model ? ` — ${s.bus.model}` : ''}` : '—'}
+          />
+          <DetailRow label={t('manageBookingsDetailDriver')}    value={s?.driver?.name || t('manageBookingsNotAvailable')} />
+          <DetailRow label={t('manageBookingsDetailDeparture')} value={formatDateTime(s?.departureTime, locale)} />
+          <DetailRow label={t('manageBookingsDetailArrival')}   value={formatDateTime(s?.arrivalTime, locale)} />
+          <DetailRow label={t('manageBookingsDetailSeats')}     value={booking.seatsBooked} />
+          <DetailRow label={t('manageBookingsDetailAmount')}    value={formatPrice(booking.totalAmount)} />
+          <DetailRow
+            label={t('manageBookingsDetailStatus')}
+            value={<span className={`badge text-xs ${bMeta.className}`}>{bMeta.label}</span>}
+          />
+          <DetailRow
+            label={t('manageBookingsDetailPaymentStatus')}
+            value={pMeta
+              ? <span className={`badge text-xs ${pMeta.className}`}>{pMeta.label}</span>
+              : t('manageBookingsNotAvailable')}
+          />
+          <DetailRow label={t('manageBookingsDetailPaymentMethod')} value={pay?.method || t('manageBookingsNotAvailable')} />
+          <DetailRow label={t('manageBookingsDetailPaidAt')}   value={pay?.paidAt ? formatDateTime(pay.paidAt, locale) : t('manageBookingsNotAvailable')} />
+          <DetailRow label={t('manageBookingsDetailCreated')}  value={formatDateTime(booking.createdAt, locale)} />
+          <DetailRow label={t('manageBookingsDetailBoardedAt')} value={booking.boardedAt ? formatDateTime(booking.boardedAt, locale) : t('manageBookingsNotAvailable')} />
         </div>
 
-        {/* Footer */}
-        <div className="flex justify-end px-6 pb-6 pt-4 border-t border-gray-100 dark:border-slate-700">
-          <button className="btn-secondary" onClick={onClose}>
+        <div className="pt-4">
+          <button className="btn-secondary w-full" onClick={onClose}>
             {t('manageBookingsDetailClose')}
           </button>
         </div>
@@ -261,21 +240,19 @@ export default function ManageBookings() {
         : <span className="text-xs text-gray-400">—</span>,
     },
     {
+      key: 'createdAt',
+      label: t('manageBookingsColCreated'),
+      render: (v) => <span className="text-xs text-gray-500 dark:text-slate-400 whitespace-nowrap">{formatDate(v, locale)}</span>,
+    },
+    {
       key: 'actions',
       label: '',
       render: (_v, row) => (
         <button
-          className="p-1.5 rounded-lg text-gray-400 hover:text-brand-600 hover:bg-brand-50 dark:hover:bg-brand-950/30 dark:hover:text-brand-400 transition-colors"
+          className="btn-secondary w-full px-2 py-1 text-xs sm:w-auto"
           onClick={() => setSelectedBooking(row)}
-          title={t('manageBookingsViewDetail')}
-          aria-label={t('manageBookingsViewBookingDetails')}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"
-               stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"
-               className="w-5 h-5">
-            <path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z"/>
-            <circle cx="10" cy="10" r="2.5"/>
-          </svg>
+          {t('manageBookingsViewDetail')}
         </button>
       ),
     },

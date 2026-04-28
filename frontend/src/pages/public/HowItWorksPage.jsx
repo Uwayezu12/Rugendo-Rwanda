@@ -24,11 +24,11 @@ export default function HowItWorksPage() {
 
   return (
     <div>
-      <section className="bg-hero-gradient text-white py-20">
+      <section className="bg-gradient-to-br from-[#fbfaff] via-[#f8f7ff] to-[#fff5fb] text-gray-900 dark:bg-hero-gradient dark:text-white py-20">
         <div className="container-page text-center">
           <span className="badge-accent mb-4">{t('howBadge')}</span>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">{t('howTitle')}</h1>
-          <p className="text-slate-300 text-lg max-w-xl mx-auto">{t('howSubtitle')}</p>
+          <p className="text-gray-600 dark:text-slate-300 text-lg max-w-xl mx-auto">{t('howSubtitle')}</p>
         </div>
       </section>
 
