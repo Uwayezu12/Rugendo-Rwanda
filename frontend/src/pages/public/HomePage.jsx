@@ -107,7 +107,7 @@ function SearchWidget({ compact = false }) {
   return (
     <form
       onSubmit={handleSearch}
-      className={`bg-white dark:bg-[#1a1035] rounded-2xl shadow-brand border border-[#e8e3ff] dark:border-[#2d1a5e] ${compact ? 'p-4' : 'p-6'}`}
+      className={`bg-white dark:bg-[#112040] rounded-2xl shadow-brand border border-[#dbeafe] dark:border-[#1e3a5f] ${compact ? 'p-4' : 'p-6'}`}
     >
       <div className={`grid gap-3 ${compact ? 'grid-cols-2 md:grid-cols-4' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'}`}>
         <div>
@@ -185,7 +185,7 @@ function RouteCard({ from, to, distance, duration, price }) {
     >
       <div className="flex items-center gap-2 mb-3">
         <span className="text-base font-semibold text-gray-900 dark:text-white">{from}</span>
-        <span className="text-accent-500">→</span>
+        <span className="text-brand-500 dark:text-brand-400">→</span>
         <span className="text-base font-semibold text-gray-900 dark:text-white">{to}</span>
       </div>
       <div className="flex gap-4 text-sm text-gray-500 dark:text-slate-400 mb-4">
@@ -244,21 +244,21 @@ export default function HomePage() {
     <div className="overflow-x-hidden">
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative bg-gradient-to-br from-[#fbfaff] via-[#f8f7ff] to-[#fff5fb] text-gray-900 dark:bg-hero-gradient dark:text-white">
+      <section className="relative bg-gradient-to-br from-[#f0f7ff] via-[#eff6ff] to-[#f0fdf4] text-gray-900 dark:bg-hero-gradient dark:text-white">
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
           <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-brand-600 opacity-20 blur-3xl" />
-          <div className="absolute top-1/2 -right-32 w-80 h-80 rounded-full bg-accent-500 opacity-15 blur-3xl" />
+          <div className="absolute top-1/2 -right-32 w-80 h-80 rounded-full bg-brand-400 opacity-10 blur-3xl" />
         </div>
 
         <div className="container-page relative py-24 md:py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="badge-accent mb-4 inline-flex">{t('homeBadgePlatform')}</span>
+              <span className="badge-brand mb-4 inline-flex">{t('homeBadgePlatform')}</span>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6">
                 {t('homeHeroTitle')}{' '}
                 <span
                   className="bg-clip-text text-transparent"
-                  style={{ backgroundImage: 'linear-gradient(90deg, #9b72ff 0%, #fa26ae 100%)' }}
+                  style={{ backgroundImage: 'linear-gradient(90deg, #60a5fa 0%, #2563eb 100%)' }}
                 >
                   {t('homeHeroHighlight')}
                 </span>{' '}
@@ -284,7 +284,7 @@ export default function HomePage() {
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium
                                bg-brand-50 text-gray-700 border border-brand-100 dark:bg-white/10 dark:text-white dark:border-white/20 backdrop-blur-sm"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent-400 inline-block" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-400 inline-block" />
                     {chip}
                   </span>
                 ))}
@@ -294,16 +294,16 @@ export default function HomePage() {
             <div className="relative flex justify-center lg:justify-end">
               <div
                 className="absolute inset-0 rounded-3xl blur-3xl opacity-30 pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse at 60% 40%, #6e26ff 0%, #fa26ae 60%, transparent 100%)' }}
+                style={{ background: 'radial-gradient(ellipse at 60% 40%, #2563eb 0%, #1d4ed8 60%, transparent 100%)' }}
                 aria-hidden
               />
               <div className="relative p-1.5 rounded-3xl"
-                   style={{ background: 'linear-gradient(135deg, rgba(110,38,255,0.5) 0%, rgba(250,38,174,0.5) 100%)' }}>
+                   style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.5) 0%, rgba(29,78,216,0.5) 100%)' }}>
                 <div
                   className="relative rounded-[1.25rem] overflow-hidden"
                   style={{
                     background: 'linear-gradient(145deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%)',
-                    boxShadow: '0 8px 40px 0 rgba(110,38,255,0.45), 0 2px 12px 0 rgba(250,38,174,0.25)',
+                    boxShadow: '0 8px 40px 0 rgba(37,99,235,0.45), 0 2px 12px 0 rgba(29,78,216,0.25)',
                     backdropFilter: 'blur(4px)',
                   }}
                 >
@@ -316,7 +316,7 @@ export default function HomePage() {
                   />
                   <div
                     className="absolute bottom-0 inset-x-0 h-16 pointer-events-none"
-                    style={{ background: 'linear-gradient(to top, rgba(26,8,69,0.5) 0%, transparent 100%)' }}
+                    style={{ background: 'linear-gradient(to top, rgba(7,21,36,0.5) 0%, transparent 100%)' }}
                     aria-hidden
                   />
                 </div>
@@ -329,11 +329,11 @@ export default function HomePage() {
           <SearchWidget />
         </div>
 
-        <div className="h-12 bg-gradient-to-b from-transparent to-white dark:to-[#0e0a1f]" />
+        <div className="h-12 bg-gradient-to-b from-transparent to-white dark:to-[#071524]" />
       </section>
 
       {/* ── STATS STRIP ──────────────────────────────────────────── */}
-      <section className="section-muted border-y border-[#e8e3ff] dark:border-[#2d1a5e]">
+      <section className="section-muted border-y border-[#dbeafe] dark:border-[#1e3a5f]">
         <div className="container-page">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {STATS.map((s) => (
@@ -385,7 +385,7 @@ export default function HomePage() {
         <div className="container-page">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
-              <span className="badge-accent mb-3">{t('homeRoutesBadge')}</span>
+              <span className="badge-brand mb-3">{t('homeRoutesBadge')}</span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
                 {t('homeRoutesTitle')}
               </h2>
@@ -461,7 +461,7 @@ export default function HomePage() {
         <div className="container-page">
           <div
             className="rounded-3xl px-8 py-14 text-white text-center relative overflow-hidden"
-            style={{ background: 'linear-gradient(135deg, #6e26ff 0%, #fa26ae 100%)' }}
+            style={{ background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)' }}
           >
             <div className="absolute inset-0 pointer-events-none" aria-hidden>
               <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-white opacity-5 blur-3xl" />

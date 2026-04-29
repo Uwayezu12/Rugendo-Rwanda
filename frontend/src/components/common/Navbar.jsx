@@ -73,7 +73,7 @@ export default function Navbar() {
   const profilePath   = user ? (ROLE_PROFILE[user.role]   || '/profile') : '/profile';
 
   return (
-    <header className="bg-white dark:bg-[#0e0a1f] border-b border-[#e8e3ff] dark:border-[#2d1a5e] sticky top-0 z-40">
+    <header className="bg-white dark:bg-[#071524] border-b border-[#dbeafe] dark:border-[#1e3a5f] sticky top-0 z-40">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
         {/* Logo */}
@@ -81,7 +81,7 @@ export default function Navbar() {
           <img src="/logo.png" alt="Rugendo Rwanda" className="h-8 w-auto object-contain" />
           <span
             className="text-xl font-extrabold bg-clip-text text-transparent"
-            style={{ backgroundImage: 'linear-gradient(135deg, #6e26ff 0%, #fa26ae 100%)' }}
+            style={{ backgroundImage: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)' }}
           >
             Rugendo Rwanda
           </span>
@@ -102,7 +102,7 @@ export default function Navbar() {
           <select
             value={language}
             onChange={(e) => changeLanguage(e.target.value)}
-            className="hidden sm:block text-xs bg-transparent border border-[#e8e3ff] dark:border-[#2d1a5e] rounded-lg px-2 py-1.5 text-gray-600 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-brand-500"
+            className="hidden sm:block text-xs bg-transparent border border-[#dbeafe] dark:border-[#1e3a5f] rounded-lg px-2 py-1.5 text-gray-600 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-brand-500"
           >
             {SUPPORTED_LANGUAGES.map((lang) => (
               <option key={lang.code} value={lang.code}>{lang.label}</option>
@@ -112,7 +112,7 @@ export default function Navbar() {
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-xl bg-[#f8f7ff] dark:bg-[#1a1035] text-gray-600 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-brand-950 transition-colors"
+            className="p-2 rounded-xl bg-[#f0f7ff] dark:bg-[#112040] text-gray-600 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-brand-950 transition-colors"
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? '☀️' : '🌙'}
@@ -123,7 +123,7 @@ export default function Navbar() {
             <div className="hidden sm:block relative" ref={avatarRef}>
               <button
                 onClick={() => setAvatarOpen((prev) => !prev)}
-                className="flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-br from-[#6e26ff] to-[#fa26ae] text-white text-sm font-bold focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+                className="flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] text-white text-sm font-bold focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
                 aria-label="User menu"
                 aria-expanded={avatarOpen}
               >
@@ -131,22 +131,22 @@ export default function Navbar() {
               </button>
 
               {avatarOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-[#1a1035] border border-[#e8e3ff] dark:border-[#2d1a5e] rounded-xl shadow-lg py-1 z-50">
-                  <div className="px-4 py-2 border-b border-[#e8e3ff] dark:border-[#2d1a5e]">
+                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-[#112040] border border-[#dbeafe] dark:border-[#1e3a5f] rounded-xl shadow-lg py-1 z-50">
+                  <div className="px-4 py-2 border-b border-[#dbeafe] dark:border-[#1e3a5f]">
                     <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">{user.name}</p>
                     <p className="text-xs text-gray-500 dark:text-slate-400 capitalize">{user.role.replace('_', ' ')}</p>
                   </div>
                   <Link
                     to={profilePath}
                     onClick={() => setAvatarOpen(false)}
-                    className="block px-4 py-2 text-sm text-gray-700 dark:text-slate-200 hover:bg-[#f8f7ff] dark:hover:bg-[#2d1a5e] transition-colors"
+                    className="block px-4 py-2 text-sm text-gray-700 dark:text-slate-200 hover:bg-[#f0f7ff] dark:hover:bg-[#1e3a5f] transition-colors"
                   >
                     {t('profile')}
                   </Link>
                   <Link
                     to={dashboardPath}
                     onClick={() => setAvatarOpen(false)}
-                    className="block px-4 py-2 text-sm text-gray-700 dark:text-slate-200 hover:bg-[#f8f7ff] dark:hover:bg-[#2d1a5e] transition-colors"
+                    className="block px-4 py-2 text-sm text-gray-700 dark:text-slate-200 hover:bg-[#f0f7ff] dark:hover:bg-[#1e3a5f] transition-colors"
                   >
                     {t('navDashboard')}
                   </Link>
@@ -169,7 +169,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 rounded-xl bg-[#f8f7ff] dark:bg-[#1a1035] text-gray-600 dark:text-slate-300"
+            className="md:hidden p-2 rounded-xl bg-[#f0f7ff] dark:bg-[#112040] text-gray-600 dark:text-slate-300"
             aria-label="Toggle menu"
           >
             {menuOpen ? '✕' : '☰'}
@@ -179,13 +179,13 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white dark:bg-[#0e0a1f] border-t border-[#e8e3ff] dark:border-[#2d1a5e] px-4 pb-4 pt-2 space-y-1">
+        <div className="md:hidden bg-white dark:bg-[#071524] border-t border-[#dbeafe] dark:border-[#1e3a5f] px-4 pb-4 pt-2 space-y-1">
           {/* Mobile language selector */}
           <div className="pb-2">
             <select
               value={language}
               onChange={(e) => changeLanguage(e.target.value)}
-              className="text-xs bg-transparent border border-[#e8e3ff] dark:border-[#2d1a5e] rounded-lg px-2 py-1.5 text-gray-600 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-brand-500"
+              className="text-xs bg-transparent border border-[#dbeafe] dark:border-[#1e3a5f] rounded-lg px-2 py-1.5 text-gray-600 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-brand-500"
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
                 <option key={lang.code} value={lang.code}>{lang.label}</option>
@@ -203,14 +203,14 @@ export default function Navbar() {
                 `block px-3 py-2 rounded-xl text-sm font-medium transition-colors ${
                   isActive
                     ? 'bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400'
-                    : 'text-gray-600 dark:text-slate-300 hover:bg-[#f8f7ff] dark:hover:bg-[#1a1035]'
+                    : 'text-gray-600 dark:text-slate-300 hover:bg-[#f0f7ff] dark:hover:bg-[#112040]'
                 }`
               }
             >
               {t(l.key)}
             </NavLink>
           ))}
-          <div className="pt-2 border-t border-[#e8e3ff] dark:border-[#2d1a5e] flex flex-col gap-2">
+          <div className="pt-2 border-t border-[#dbeafe] dark:border-[#1e3a5f] flex flex-col gap-2">
             {user ? (
               <>
                 <div className="px-3 py-2 text-sm text-gray-700 dark:text-slate-200 font-semibold">{user.name}</div>

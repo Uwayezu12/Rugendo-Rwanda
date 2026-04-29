@@ -115,6 +115,17 @@ Provide a reliable, role-aware intercity bus booking system that:
 
 ---
 
+## Visual Identity
+
+Rugendo Rwanda is moving toward a premium Rwanda-inspired visual identity:
+- **Primary:** Royal/Cobalt Blue (`#2563EB`) — dominant across all UI surfaces.
+- **Supporting:** Forest Green (`#16A34A`) — secondary CTAs, success states, supporting accents.
+- **Accent:** Warm Gold (`#D97706`) — sparing use for highlights, premium badges, and key CTAs.
+
+The previous purple/magenta palette is being replaced. The design must remain clean, professional, and beautiful — not a raw flag-color application. Full implementation details are in `BRAND_REFRESH_PLAN.md`.
+
+---
+
 ## Phase 2 Features (Intentionally Excluded Now)
 
 These are confirmed out of scope for MVP. Do not implement them:

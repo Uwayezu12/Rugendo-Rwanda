@@ -557,6 +557,33 @@ Format: `## N. Title` → `**Decision:**` → `**Why:**` → `**Date:**`
 
 ---
 
+## 57. Brand Refresh: Royal Blue as Primary, Green as Support, Gold as Accent
+
+**Decision:** Rugendo Rwanda's frontend is moving from a purple/magenta brand palette to a premium Rwanda-inspired visual identity. Approved palette:
+- Primary: Royal/Cobalt Blue `#2563EB`
+- Supporting: Forest Green `#16A34A`
+- Accent: Warm Gold `#D97706`
+- Dark background: `#071524`, dark surface: `#112040`, dark border: `#1E3A5F`
+- Light muted surface: `#F0F7FF`, light border: `#DBEAFE`
+
+Blue dominates. Green supports. Gold is sparing. Raw flag-color tones are avoided. The design remains premium, clean, and professional.
+
+**Why:** The previous purple/magenta palette had no meaningful connection to the platform's Rwanda context. A premium blue/green/gold palette reads as modern and trustworthy while referencing Rwanda's visual culture without being literal or garish. Gold accents convey premium quality for a paid booking service.
+
+**Date:** 2026-04-29
+
+---
+
+## 58. Brand Refresh Scope: Frontend Styling Only, No Backend or Business Logic
+
+**Decision:** The brand refresh touches only frontend styling files (Tailwind config, CSS variables, design tokens, layout shells, public pages, auth pages, dashboard shells). It does not touch backend files, auth logic, booking/payment logic, seed data, translations (unless new text is added), or any business logic.
+
+**Why:** Brand styling and business logic are entirely separate concerns. Mixing them in the same implementation batch increases risk and makes rollback harder.
+
+**Date:** 2026-04-29
+
+---
+
 ## 54. Dashboard Chart Empty State: Role-Specific Messages
 
 **Decision:** The `TimeseriesLineChart` in both admin and super-admin dashboards now receives contextual `empty` messages from the caller: `'…'` while loading, `t('adminChartError')` on fetch failure, and `t('adminChartNoRecentData')` when data is returned but all 14-day values are zero. Two new translation keys (`adminChartNoRecentData`, `adminChartError`) added across all 4 languages.

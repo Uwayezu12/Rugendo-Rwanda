@@ -120,6 +120,17 @@ Always update:
 
 ---
 
+## Brand Refresh
+
+A frontend brand refresh is planned but **not yet implemented**.
+
+Before making any frontend styling changes for brand purposes, read `BRAND_REFRESH_PLAN.md` first.
+It contains the approved palette, the full list of files to inspect, implementation rules, verification pages, and the build checklist.
+
+**Resume trigger:** If the user says "continue the Rugendo Rwanda brand refresh" or "let us continue son", read `BRAND_REFRESH_PLAN.md` immediately, then start in Plan mode.
+
+---
+
 ## Commit Policy
 
 Do not run `git commit` or `git push` unless the user explicitly asks for it in the current session.

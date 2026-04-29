@@ -106,6 +106,19 @@ Treat this as a **real, production-bound booking platform**, not a visual protot
 
 ---
 
+## Frontend Brand Work
+
+Before making any frontend styling changes for brand purposes:
+
+1. Read `BRAND_REFRESH_PLAN.md` first. It contains the approved palette, implementation scope, file list, rules, and verification checklist.
+2. Start in Plan mode. Confirm intended files before touching anything.
+3. Do not blindly global-replace colors. Use targeted replacement only.
+4. Do not change semantic status colors (error red, warning yellow, success green) — those are not brand colors.
+5. Do not touch backend files, business logic, auth, booking, or payment code.
+6. Do not commit until visual verification is complete.
+
+---
+
 ## Workflow Rules
 
 1. **Inspect before changing.** Read the relevant files before modifying architecture or adding new modules. The scaffold may already have the structure you're about to create.

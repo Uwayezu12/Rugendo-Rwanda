@@ -63,22 +63,22 @@ export default function AuthLayout() {
       : t('authPanelSubtitle');
 
   return (
-    <div className="min-h-screen flex bg-white dark:bg-[#0e0a1f]">
+    <div className="min-h-screen flex bg-white dark:bg-[#071524]">
       {/* Left brand panel — hidden on small screens */}
       <div
         className="hidden lg:flex lg:w-1/2 flex-col justify-between p-12 text-white relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #1a0845 0%, #2d1080 50%, #1a0845 100%)' }}
+        style={{ background: 'linear-gradient(135deg, #071524 0%, #112040 50%, #071524 100%)' }}
       >
         {/* Decorative orbs */}
         <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-brand-600 opacity-20 blur-3xl" aria-hidden />
-        <div className="absolute bottom-10 -left-20 w-64 h-64 rounded-full bg-accent-500 opacity-15 blur-3xl" aria-hidden />
+        <div className="absolute bottom-10 -left-20 w-64 h-64 rounded-full bg-brand-400 opacity-10 blur-3xl" aria-hidden />
 
         <div className="relative">
           <Link to="/" className="flex items-center gap-2">
             <img src="/logo.png" alt="Rugendo Rwanda" className="h-8 w-auto object-contain brightness-0 invert" />
             <span
               className="text-xl font-extrabold bg-clip-text text-transparent"
-              style={{ backgroundImage: 'linear-gradient(90deg, #9b72ff 0%, #fa26ae 100%)' }}
+              style={{ backgroundImage: 'linear-gradient(90deg, #60a5fa 0%, #2563eb 100%)' }}
             >
               Rugendo Rwanda
             </span>
@@ -147,7 +147,7 @@ export default function AuthLayout() {
             <img src="/logo.png" alt="Rugendo Rwanda" className="h-8 w-auto object-contain" />
             <span
               className="text-2xl font-extrabold bg-clip-text text-transparent"
-              style={{ backgroundImage: 'linear-gradient(135deg, #6e26ff 0%, #fa26ae 100%)' }}
+              style={{ backgroundImage: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)' }}
             >
               Rugendo Rwanda
             </span>

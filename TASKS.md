@@ -16,6 +16,15 @@
 
 ## TODO
 
+### Brand Refresh — Frontend Visual Identity
+
+- [ ] Continue Rugendo Rwanda brand refresh using `BRAND_REFRESH_PLAN.md` (saved plan, not yet implemented)
+  - Read `BRAND_REFRESH_PLAN.md` first
+  - Start in Plan mode, confirm intended files, then implement
+  - Trigger phrase: "continue the Rugendo Rwanda brand refresh" or "let us continue son"
+
+---
+
 ### Company Admin - Manual Testing Required
 
 - [x] Add `COMPANY_ADMIN` role to Prisma role enum and frontend role normalization
