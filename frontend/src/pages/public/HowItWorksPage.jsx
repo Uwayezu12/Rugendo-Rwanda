@@ -24,7 +24,7 @@ export default function HowItWorksPage() {
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-[#fbfaff] via-[#f8f7ff] to-[#fff5fb] text-gray-900 dark:bg-hero-gradient dark:text-white py-20">
+      <section className="bg-gradient-to-br from-[#f0f7ff] via-[#eff6ff] to-[#f0fdf4] text-gray-900 dark:bg-hero-gradient dark:text-white py-20">
         <div className="container-page text-center">
           <span className="badge-accent mb-4">{t('howBadge')}</span>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">{t('howTitle')}</h1>
@@ -49,7 +49,7 @@ export default function HowItWorksPage() {
                   <p className="text-sm text-gray-400 dark:text-slate-500">{s.detail}</p>
                 </div>
                 {i < STEPS.length - 1 && (
-                  <div className="hidden md:block text-2xl text-brand-300 shrink-0">↓</div>
+                  <div className="hidden md:block text-2xl text-accent-400 shrink-0">↓</div>
                 )}
               </div>
             ))}
@@ -76,7 +76,7 @@ export default function HowItWorksPage() {
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">{t('howCtaTitle')}</h2>
           <p className="text-gray-500 dark:text-slate-400 mb-6">{t('howCtaSubtitle')}</p>
           <div className="flex gap-4 justify-center">
-            <Link to="/register" className="btn-gradient">{t('howCtaCreate')}</Link>
+            <Link to="/register" className="btn-green">{t('howCtaCreate')}</Link>
             <Link to="/search" className="btn-secondary">{t('howCtaSearch')}</Link>
           </div>
         </div>

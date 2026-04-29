@@ -34,7 +34,7 @@ export default function Pagination({ page, totalPages, onPage }) {
       aria-label={t('paginationLabel')}
     >
       <button
-        className="btn-secondary text-sm py-1.5 px-4 disabled:cursor-not-allowed disabled:opacity-40"
+        className="inline-flex items-center justify-center text-sm font-semibold px-4 py-1.5 rounded-xl border border-amber-400 bg-amber-50 text-amber-800 hover:bg-amber-100 hover:border-amber-500 transition-colors disabled:cursor-not-allowed disabled:opacity-40 dark:bg-amber-900/20 dark:border-amber-700 dark:text-amber-300 dark:hover:bg-amber-900/40"
         onClick={() => goToPage(safePage - 1)}
         disabled={safePage <= 1}
       >
@@ -46,7 +46,7 @@ export default function Pagination({ page, totalPages, onPage }) {
           <>
             <button
               type="button"
-              className="flex h-9 min-w-9 items-center justify-center rounded-lg border border-gray-200 px-3 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+              className="flex h-9 min-w-9 items-center justify-center rounded-lg border border-amber-200 px-3 text-sm font-medium text-amber-700 transition-colors hover:bg-amber-50 hover:border-amber-400 dark:border-amber-800 dark:text-amber-400 dark:hover:bg-amber-900/30"
               onClick={() => goToPage(1)}
               aria-label={t('paginationGoToPage', { page: 1 })}
             >
@@ -66,8 +66,8 @@ export default function Pagination({ page, totalPages, onPage }) {
               type="button"
               className={`flex h-9 min-w-9 items-center justify-center rounded-lg border px-3 text-sm font-semibold transition-colors ${
                 current
-                  ? 'border-brand-600 bg-brand-600 text-white shadow-sm dark:border-brand-500 dark:bg-brand-500'
-                  : 'border-gray-200 text-gray-600 hover:bg-gray-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800'
+                  ? 'border-amber-500 bg-amber-400 text-white shadow-sm dark:border-amber-500 dark:bg-amber-500'
+                  : 'border-amber-200 text-amber-700 hover:bg-amber-50 hover:border-amber-400 dark:border-amber-800 dark:text-amber-400 dark:hover:bg-amber-900/30'
               }`}
               onClick={() => goToPage(item)}
               aria-current={current ? 'page' : undefined}
@@ -85,7 +85,7 @@ export default function Pagination({ page, totalPages, onPage }) {
             )}
             <button
               type="button"
-              className="flex h-9 min-w-9 items-center justify-center rounded-lg border border-gray-200 px-3 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+              className="flex h-9 min-w-9 items-center justify-center rounded-lg border border-amber-200 px-3 text-sm font-medium text-amber-700 transition-colors hover:bg-amber-50 hover:border-amber-400 dark:border-amber-800 dark:text-amber-400 dark:hover:bg-amber-900/30"
               onClick={() => goToPage(totalPages)}
               aria-label={t('paginationGoToPage', { page: totalPages })}
             >
@@ -96,7 +96,7 @@ export default function Pagination({ page, totalPages, onPage }) {
       </div>
 
       <button
-        className="btn-secondary text-sm py-1.5 px-4 disabled:cursor-not-allowed disabled:opacity-40"
+        className="inline-flex items-center justify-center text-sm font-semibold px-4 py-1.5 rounded-xl border border-amber-400 bg-amber-50 text-amber-800 hover:bg-amber-100 hover:border-amber-500 transition-colors disabled:cursor-not-allowed disabled:opacity-40 dark:bg-amber-900/20 dark:border-amber-700 dark:text-amber-300 dark:hover:bg-amber-900/40"
         onClick={() => goToPage(safePage + 1)}
         disabled={safePage >= totalPages}
       >

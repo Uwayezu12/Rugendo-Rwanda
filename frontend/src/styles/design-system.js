@@ -193,6 +193,7 @@ export const guidance = {
   buttons: {
     primaryAction:   'btn-primary',
     heroCTA:         'btn-gradient',
+    positiveAction:  'btn-green',
     secondaryAction: 'btn-secondary',
     ghostAction:     'btn-ghost',
   },

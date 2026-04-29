@@ -112,7 +112,7 @@ export default function RoutesPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-[#e8e3ff] dark:border-[#2d1a5e] text-left text-gray-500 dark:text-slate-400">
+                  <tr className="border-b border-[#dbeafe] dark:border-[#1e3a5f] text-left text-gray-500 dark:text-slate-400">
                     <th className="pb-3 font-medium">{t('routesColRoute')}</th>
                     <th className="pb-3 font-medium">{t('routesColDistance')}</th>
                     <th className="pb-3 font-medium">{t('routesColDuration')}</th>
@@ -121,9 +121,9 @@ export default function RoutesPage() {
                     <th className="pb-3"></th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#e8e3ff] dark:divide-[#2d1a5e]">
+                <tbody className="divide-y divide-[#dbeafe] dark:divide-[#1e3a5f]">
                   {pagedFiltered.map((r) => (
-                    <tr key={`${r.from}-${r.to}`} className="hover:bg-[#f8f7ff] dark:hover:bg-[#130d2e] transition-colors">
+                    <tr key={`${r.from}-${r.to}`} className="hover:bg-[#f0f7ff] dark:hover:bg-[#0d1f3c] transition-colors">
                       <td className="py-3 font-medium text-gray-900 dark:text-white">
                         {r.from} <span className="text-accent-500">→</span> {r.to}
                         {r.popular && <span className="badge-accent ml-2">{t('routesPopularBadge')}</span>}
@@ -173,7 +173,7 @@ function RouteCard({ route: r, onBook, t }) {
       </div>
       <div className="flex items-center justify-between">
         <span className="text-brand-600 dark:text-brand-400 font-bold">{t('routesFromPrice')} {r.minPrice.toLocaleString()}</span>
-        <button onClick={() => onBook(r.from, r.to)} className="btn-primary text-xs px-4 py-2">
+        <button onClick={() => onBook(r.from, r.to)} className="btn-green text-xs px-4 py-2">
           {t('routesBookNow')}
         </button>
       </div>

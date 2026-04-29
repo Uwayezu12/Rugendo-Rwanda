@@ -176,7 +176,7 @@ export default function PassengerDashboard() {
             <p className="text-lg font-semibold text-gray-800 dark:text-white">{t('passengerEmptyState')}</p>
             <p className="text-sm text-gray-500 dark:text-slate-400 mt-1 max-w-xs mx-auto">{t('passengerEmptyHint')}</p>
           </div>
-          <Link to="/search" className="btn-gradient mt-2">{t('passengerActionSearchNow')}</Link>
+          <Link to="/search" className="btn-green mt-2">{t('passengerActionSearchNow')}</Link>
         </div>
       ) : (
         <>
@@ -186,14 +186,14 @@ export default function PassengerDashboard() {
               <DashboardChart
                 title={t('passengerBookingsByStatus')}
                 data={chartData}
-                colors={['#10b981', '#f59e0b', '#6e26ff', '#ef4444']}
+                colors={['#10b981', '#f59e0b', '#2563eb', '#ef4444']}
                 height={200}
                 empty={t('passengerEmptyState')}
               />
             </div>
             <div className="card p-5 flex flex-col gap-3">
               <h3 className="text-sm font-semibold text-gray-700 dark:text-slate-200">{t('passengerQuickActions')}</h3>
-              <Link to="/search" className="btn-primary w-full text-center">{t('passengerActionBookTrip')}</Link>
+              <Link to="/search" className="btn-green w-full text-center">{t('passengerActionBookTrip')}</Link>
               <Link to="/passenger/bookings" className="btn-secondary w-full text-center">{t('passengerActionMyBookings')}</Link>
             </div>
           </div>

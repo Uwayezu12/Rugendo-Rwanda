@@ -70,7 +70,7 @@ export default function CompanyAdminDashboard() {
           )}
           <p className="text-gray-500 dark:text-slate-400 mt-0.5">{t('companyAdminDashboardSubtitle')}</p>
         </div>
-        <Link to="/company-admin/schedules" className="btn-primary text-sm">{t('companyAdminCreateSchedule')}</Link>
+        <Link to="/company-admin/schedules" className="btn-green text-sm">{t('companyAdminCreateSchedule')}</Link>
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
@@ -91,14 +91,14 @@ export default function CompanyAdminDashboard() {
           <DashboardChart
             title={t('companyAdminChartBookingsByStatus')}
             data={bookingStatusData}
-            colors={['#f59e0b', '#10b981', '#ef4444', '#6e26ff']}
+            colors={['#f59e0b', '#10b981', '#ef4444', '#2563eb']}
             height={220}
             empty={t('companyAdminNoChartData')}
           />
           <DashboardChart
             title={t('companyAdminChartScheduleOverview')}
             data={scheduleOverviewData}
-            colors={['#6e26ff', '#10b981']}
+            colors={['#2563eb', '#10b981']}
             height={220}
             empty={t('companyAdminNoChartData')}
           />

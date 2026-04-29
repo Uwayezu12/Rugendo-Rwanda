@@ -109,7 +109,7 @@ export default function SearchTripsPage() {
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-[#fbfaff] via-[#f8f7ff] to-[#fff5fb] text-gray-900 dark:bg-hero-gradient dark:text-white py-20">
+      <section className="bg-gradient-to-br from-[#f0f7ff] via-[#eff6ff] to-[#f0fdf4] text-gray-900 dark:bg-hero-gradient dark:text-white py-20">
         <div className="container-page text-center">
           <span className="badge-accent mb-4">{t('searchTripsBadge')}</span>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">{t('searchTripsTitle')}</h1>
@@ -121,7 +121,7 @@ export default function SearchTripsPage() {
         <div className="container-page max-w-3xl">
           <form
             onSubmit={handleSubmit}
-            className="bg-white dark:bg-[#1a1035] rounded-2xl shadow-brand border border-[#e8e3ff] dark:border-[#2d1a5e] p-8"
+            className="bg-white dark:bg-[#112040] rounded-2xl shadow-brand border border-[#dbeafe] dark:border-[#1e3a5f] p-8"
           >
             <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">{t('searchTripsWhereGoing')}</h2>
 
@@ -196,7 +196,7 @@ export default function SearchTripsPage() {
               <Link to="/routes" className="btn-secondary text-center">
                 {t('searchTripsBrowseRoutes')}
               </Link>
-              <button type="submit" className="btn-gradient px-10">
+              <button type="submit" className="btn-green px-10">
                 {t('searchTripsSearchBtn')}
               </button>
             </div>
@@ -219,8 +219,8 @@ export default function SearchTripsPage() {
                   key={`${r.from}-${r.to}`}
                   type="button"
                   onClick={() => setForm((f) => ({ ...f, from: r.from, to: r.to }))}
-                  className="text-xs px-3 py-1.5 rounded-lg border border-[#e8e3ff] dark:border-[#2d1a5e]
-                             bg-[#f8f7ff] dark:bg-[#130d2e] text-gray-600 dark:text-slate-300
+                  className="text-xs px-3 py-1.5 rounded-lg border border-[#dbeafe] dark:border-[#1e3a5f]
+                             bg-[#f0f7ff] dark:bg-[#0d1f3c] text-gray-600 dark:text-slate-300
                              hover:bg-brand-50 dark:hover:bg-brand-950 hover:border-brand-400 transition-colors"
                 >
                   {r.from} → {r.to}

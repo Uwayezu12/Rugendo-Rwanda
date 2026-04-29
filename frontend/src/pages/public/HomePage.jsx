@@ -166,7 +166,7 @@ function SearchWidget({ compact = false }) {
         </div>
       </div>
       <div className="mt-4 flex justify-end">
-        <button type="submit" className="btn-gradient px-8">
+        <button type="submit" className="btn-green px-8">
           {t('searchTripsSearchBtn')}
         </button>
       </div>
@@ -185,7 +185,7 @@ function RouteCard({ from, to, distance, duration, price }) {
     >
       <div className="flex items-center gap-2 mb-3">
         <span className="text-base font-semibold text-gray-900 dark:text-white">{from}</span>
-        <span className="text-brand-500 dark:text-brand-400">→</span>
+        <span className="text-accent-500">→</span>
         <span className="text-base font-semibold text-gray-900 dark:text-white">{to}</span>
       </div>
       <div className="flex gap-4 text-sm text-gray-500 dark:text-slate-400 mb-4">
@@ -269,7 +269,7 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-wrap gap-3">
-                <Link to={bookTripPath} className="btn-gradient text-base px-7 py-3">
+                <Link to={bookTripPath} className="btn-green text-base px-7 py-3">
                   {t('homeBookTrip')}
                 </Link>
                 <Link to="/how-it-works" className="btn-secondary text-base px-7 py-3">
@@ -284,7 +284,7 @@ export default function HomePage() {
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium
                                bg-brand-50 text-gray-700 border border-brand-100 dark:bg-white/10 dark:text-white dark:border-white/20 backdrop-blur-sm"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-400 inline-block" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent-400 inline-block" />
                     {chip}
                   </span>
                 ))}
