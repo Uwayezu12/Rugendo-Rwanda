@@ -3,14 +3,14 @@ import prisma from '../../lib/prisma.js';
 // ── Shared selects ────────────────────────────────────────────────────────────
 
 const SCHEDULE_INCLUDE = {
-  route:   { select: { id: true, origin: true, destination: true, distanceKm: true, durationMin: true } },
-  company: { select: { id: true, name: true } },
+  route:   { select: { id: true, origin: true, destination: true, distanceKm: true, durationMin: true, officialFareRwf: true, fareSource: true, fareEffectiveFrom: true } },
+  company: { select: { id: true, name: true, dataSource: true, isVerifiedOperator: true } },
   bus:     { select: { id: true, plateNumber: true, model: true, capacity: true } },
 };
 
 const ADMIN_SCHEDULE_INCLUDE = {
-  route:   { select: { id: true, origin: true, destination: true, distanceKm: true, durationMin: true } },
-  company: { select: { id: true, name: true } },
+  route:   { select: { id: true, origin: true, destination: true, distanceKm: true, durationMin: true, officialFareRwf: true, fareSource: true, fareEffectiveFrom: true } },
+  company: { select: { id: true, name: true, dataSource: true, isVerifiedOperator: true } },
   bus:     { select: { id: true, plateNumber: true, model: true, capacity: true } },
   driver:  { select: { id: true, name: true, licenseNo: true } },
   _count:  { select: { bookings: true } },
@@ -44,9 +44,27 @@ async function countActiveBookings(scheduleId) {
 
 // ── Public functions (passenger-facing) ───────────────────────────────────────
 
+// Common city-name aliases → official terminal names stored in DB
+const LOCATION_ALIASES = {
+  kigali:   'NYABUGOGO',
+  gisenyi:  'RUBAVU',
+  butare:   'HUYE',
+  cyangugu: 'RUSIZI',
+  kibungo:  'NGOMA',
+};
+
+function normalizeLocationInput(raw) {
+  const trimmed = raw.trim();
+  const alias = LOCATION_ALIASES[trimmed.toLowerCase()];
+  return alias ?? trimmed.toUpperCase();
+}
+
 export async function searchSchedules({ from, to, date, seats }) {
   const startOfDay = new Date(`${date}T00:00:00.000Z`);
   const endOfDay   = new Date(`${date}T23:59:59.999Z`);
+
+  const fromNorm = normalizeLocationInput(from);
+  const toNorm   = normalizeLocationInput(to);
 
   return prisma.schedule.findMany({
     where: {
@@ -57,8 +75,8 @@ export async function searchSchedules({ from, to, date, seats }) {
         isActive: true,
       },
       route: {
-        origin:      { contains: from },
-        destination: { contains: to },
+        origin:      { contains: fromNorm },
+        destination: { contains: toNorm },
         isActive:    true,
       },
     },

@@ -8,6 +8,7 @@ import PassengerLayout from '../layouts/PassengerLayout.jsx';
 import AdminLayout from '../layouts/AdminLayout.jsx';
 import SuperAdminLayout from '../layouts/SuperAdminLayout.jsx';
 import OperatorLayout from '../layouts/OperatorLayout.jsx';
+import CompanyAdminLayout from '../layouts/CompanyAdminLayout.jsx';
 
 // Public pages
 import HomePage from '../pages/public/HomePage.jsx';
@@ -57,6 +58,19 @@ import OperatorDashboard from '../pages/operator/OperatorDashboard.jsx';
 import BoardingValidation from '../pages/operator/BoardingValidation.jsx';
 import OperatorBookings from '../pages/operator/OperatorBookings.jsx';
 
+// Notifications page (shared across all roles)
+import NotificationsPage from '../pages/notifications/NotificationsPage.jsx';
+
+// Company-admin pages
+import CompanyAdminDashboard from '../pages/companyAdmin/CompanyAdminDashboard.jsx';
+import CompanyAdminBookings from '../pages/companyAdmin/CompanyAdminBookings.jsx';
+import CompanyAdminSchedules from '../pages/companyAdmin/CompanyAdminSchedules.jsx';
+import CompanyAdminBuses from '../pages/companyAdmin/CompanyAdminBuses.jsx';
+import CompanyAdminDrivers from '../pages/companyAdmin/CompanyAdminDrivers.jsx';
+import CompanyAdminOperators from '../pages/companyAdmin/CompanyAdminOperators.jsx';
+import CompanyAdminRevenue from '../pages/companyAdmin/CompanyAdminRevenue.jsx';
+import CompanyAdminProfile from '../pages/companyAdmin/CompanyAdminProfile.jsx';
+
 // Route guards
 import ProtectedRoute from '../components/common/ProtectedRoute.jsx';
 import { useAuth } from '../contexts/AuthContext.jsx';
@@ -65,6 +79,7 @@ const ROLE_PROFILE_PATHS = {
   passenger: '/passenger/profile',
   admin: '/admin/profile',
   super_admin: '/super-admin/profile',
+  company_admin: '/company-admin/profile',
   operator: '/operator/profile',
 };
 
@@ -115,6 +130,7 @@ export default function AppRouter() {
           <Route path="/passenger/payment"        element={<PaymentPage />} />
           <Route path="/passenger/booking-confirm" element={<BookingConfirmationPage />} />
           <Route path="/passenger/bookings"       element={<MyBookingsPage />} />
+          <Route path="/passenger/notifications"  element={<NotificationsPage />} />
           <Route path="/passenger/profile"        element={<ProfilePage />} />
         </Route>
       </Route>
@@ -127,7 +143,8 @@ export default function AppRouter() {
           <Route path="/admin/buses"         element={<ManageBuses />} />
           <Route path="/admin/drivers"       element={<ManageDrivers />} />
           <Route path="/admin/routes"        element={<ManageRoutes />} />
-          <Route path="/admin/bookings"      element={<ManageBookings />} />
+          <Route path="/admin/bookings"       element={<ManageBookings />} />
+          <Route path="/admin/notifications" element={<NotificationsPage />} />
           <Route path="/admin/profile"       element={<ProfilePage />} />
         </Route>
       </Route>
@@ -139,8 +156,9 @@ export default function AppRouter() {
           <Route path="/super-admin/companies"   element={<ManageCompanies />} />
           <Route path="/super-admin/operators"   element={<ManageOperators />} />
           <Route path="/super-admin/users"       element={<ManageUsers />} />
-          <Route path="/super-admin/settings"    element={<PlatformSettings />} />
-          <Route path="/super-admin/profile"     element={<ProfilePage />} />
+          <Route path="/super-admin/settings"       element={<PlatformSettings />} />
+          <Route path="/super-admin/notifications" element={<NotificationsPage />} />
+          <Route path="/super-admin/profile"       element={<ProfilePage />} />
         </Route>
       </Route>
 
@@ -149,12 +167,28 @@ export default function AppRouter() {
         <Route element={<OperatorLayout />}>
           <Route path="/operator"           element={<OperatorDashboard />} />
           <Route path="/operator/boarding"  element={<BoardingValidation />} />
-          <Route path="/operator/bookings"  element={<OperatorBookings />} />
-          <Route path="/operator/profile"   element={<ProfilePage />} />
+          <Route path="/operator/bookings"       element={<OperatorBookings />} />
+          <Route path="/operator/notifications"  element={<NotificationsPage />} />
+          <Route path="/operator/profile"        element={<ProfilePage />} />
         </Route>
       </Route>
 
       {/* ── Fallback ──────────────────────────────────────────── */}
+      {/* Company Admin routes */}
+      <Route element={<ProtectedRoute allowedRoles={['company_admin']} />}>
+        <Route element={<CompanyAdminLayout />}>
+          <Route path="/company-admin"             element={<CompanyAdminDashboard />} />
+          <Route path="/company-admin/bookings"    element={<CompanyAdminBookings />} />
+          <Route path="/company-admin/schedules"   element={<CompanyAdminSchedules />} />
+          <Route path="/company-admin/buses"       element={<CompanyAdminBuses />} />
+          <Route path="/company-admin/drivers"     element={<CompanyAdminDrivers />} />
+          <Route path="/company-admin/operators"   element={<CompanyAdminOperators />} />
+          <Route path="/company-admin/revenue"        element={<CompanyAdminRevenue />} />
+          <Route path="/company-admin/notifications" element={<NotificationsPage />} />
+          <Route path="/company-admin/profile"       element={<CompanyAdminProfile />} />
+        </Route>
+      </Route>
+
       <Route path="*" element={<NotFoundPage />} />
 
     </Routes>

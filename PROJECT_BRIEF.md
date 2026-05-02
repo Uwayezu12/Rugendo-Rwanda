@@ -55,12 +55,16 @@ Provide a reliable, role-aware intercity bus booking system that:
 | `passenger` | Registered user. Can book, pay, and manage their own trips. |
 | `admin` | Operations staff. Manages routes, schedules, buses, drivers, bookings, payments. |
 | `super_admin` | All admin permissions plus platform-wide settings and appearance controls. |
+| `company_admin` | Company-scoped operations manager. Manages only one company's bookings, schedules, buses, drivers, operators, and revenue. |
 | `operator` | Handles boarding validation at departure. No separate boarding-agent role exists. |
 
 ### Role Rules
 - `super_admin` is a superset of `admin` — everything admin can do, plus platform settings.
+- `company_admin` is scoped by `User.companyId` and must never see or manage another company's data.
 - `operator` is scoped strictly to boarding validation. They do not manage routes or bookings.
 - There is no separate "boarding agent" role; `operator` covers that responsibility.
+- Official RURA routes and fares remain platform-controlled; company admins create schedules using those official records.
+- Public signup creates passenger accounts only.
 
 ---
 
@@ -86,6 +90,7 @@ Provide a reliable, role-aware intercity bus booking system that:
 ### Admin & Operations
 - Admin login and dashboard
 - Super-admin login and dashboard
+- Company-admin login and company-scoped dashboard
 - Operator login and dashboard
 - User management
 - Operator / company management
@@ -107,6 +112,17 @@ Provide a reliable, role-aware intercity bus booking system that:
 - Responsive design (mobile-first)
 - Empty states for all list views
 - Proper loading / error / success handling throughout
+
+---
+
+## Visual Identity
+
+Rugendo Rwanda is moving toward a premium Rwanda-inspired visual identity:
+- **Primary:** Royal/Cobalt Blue (`#2563EB`) — dominant across all UI surfaces.
+- **Supporting:** Forest Green (`#16A34A`) — secondary CTAs, success states, supporting accents.
+- **Accent:** Warm Gold (`#D97706`) — sparing use for highlights, premium badges, and key CTAs.
+
+The previous purple/magenta palette is being replaced. The design must remain clean, professional, and beautiful — not a raw flag-color application. Full implementation details are in `BRAND_REFRESH_PLAN.md`.
 
 ---
 

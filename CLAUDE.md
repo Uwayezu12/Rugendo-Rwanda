@@ -68,6 +68,7 @@ These are explicitly out of scope. Do not implement, scaffold, or stub them:
 
 Also:
 - Do not flatten the folder structure. The current module separation is intentional.
+- Keep `company_admin` scoped to its assigned `companyId`; operators remain boarding-only.
 - Do not mix CommonJS (`require`) with ES modules (`import`). Backend is ES modules only.
 - Do not introduce new global state libraries (Redux, Zustand, Jotai, etc.) without agreement.
 - Do not install new dependencies without flagging them.
@@ -116,6 +117,17 @@ Always update:
 - `TASKS.md` — mark completed items, add any discovered sub-tasks.
 - `DECISIONS.md` — log any new architectural decisions made during implementation.
 - `BUGS.md` — log any confirmed bugs found; move fixed bugs to RESOLVED.
+
+---
+
+## Brand Refresh
+
+A frontend brand refresh is planned but **not yet implemented**.
+
+Before making any frontend styling changes for brand purposes, read `BRAND_REFRESH_PLAN.md` first.
+It contains the approved palette, the full list of files to inspect, implementation rules, verification pages, and the build checklist.
+
+**Resume trigger:** If the user says "continue the Rugendo Rwanda brand refresh" or "let us continue son", read `BRAND_REFRESH_PLAN.md` immediately, then start in Plan mode.
 
 ---
 

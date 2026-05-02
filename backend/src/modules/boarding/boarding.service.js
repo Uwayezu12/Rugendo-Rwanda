@@ -1,4 +1,5 @@
 import prisma from '../../lib/prisma.js';
+import { createNotification } from '../notifications/notifications.service.js';
 
 const BOARDING_BOOKING_INCLUDE = {
   user: {
@@ -132,6 +133,16 @@ export async function validateBoarding(actor, { reference, boardingNote }) {
   const updatedBooking = await prisma.booking.findUnique({
     where:   { id: booking.id },
     include: BOARDING_BOOKING_INCLUDE,
+  });
+
+  await createNotification({
+    userId: updatedBooking.userId,
+    title: 'Boarding Validated',
+    message: 'Your boarding has been confirmed. Have a safe trip!',
+    type: 'BOARDING',
+    priority: 'NORMAL',
+    actionUrl: '/passenger/bookings',
+    metadata: { bookingId: updatedBooking.id, scheduleId: updatedBooking.scheduleId },
   });
 
   return updatedBooking;

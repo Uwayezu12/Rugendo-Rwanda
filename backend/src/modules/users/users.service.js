@@ -1,8 +1,10 @@
 import prisma from '../../lib/prisma.js';
+import { createNotification } from '../notifications/notifications.service.js';
 
 const safeSelect = {
   id: true, name: true, email: true, phone: true,
-  role: true, isActive: true, createdAt: true,
+  role: true, companyId: true, company: { select: { id: true, name: true } },
+  isActive: true, createdAt: true,
 };
 
 export async function getUserById(id) {
@@ -62,7 +64,18 @@ export async function updateUser(id, { name, email, phone }) {
   if (email !== undefined) data.email = cleanEmail;
   if (phone !== undefined) data.phone = cleanPhone;
 
-  return prisma.user.update({ where: { id }, data, select: safeSelect });
+  const updated = await prisma.user.update({ where: { id }, data, select: safeSelect });
+
+  await createNotification({
+    userId: id,
+    title: 'Profile Updated',
+    message: 'Your profile information has been updated.',
+    type: 'ACCOUNT',
+    priority: 'LOW',
+    actionUrl: '/',
+  });
+
+  return updated;
 }
 
 // ── Super-admin: user management ─────────────────────────────────────────────
@@ -82,7 +95,7 @@ export async function listUsers({ page, limit, search, role }) {
       { phone: { contains: search } },
     ];
   }
-  const VALID_ROLES = ['PASSENGER', 'ADMIN', 'SUPER_ADMIN', 'OPERATOR'];
+  const VALID_ROLES = ['PASSENGER', 'ADMIN', 'SUPER_ADMIN', 'COMPANY_ADMIN', 'OPERATOR'];
   if (role && VALID_ROLES.includes(role)) {
     where.role = role;
   }
@@ -108,9 +121,17 @@ export async function changeUserRole(id, role, companyId) {
     err.status = 404;
     throw err;
   }
+  if (['OPERATOR', 'COMPANY_ADMIN'].includes(role)) {
+    const company = await prisma.company.findUnique({ where: { id: companyId }, select: { id: true } });
+    if (!company) {
+      const err = new Error('Company not found');
+      err.status = 404;
+      throw err;
+    }
+  }
   return prisma.user.update({
     where: { id },
-    data: { role, companyId: role === 'OPERATOR' ? companyId : null },
+    data: { role, companyId: ['OPERATOR', 'COMPANY_ADMIN'].includes(role) ? companyId : null },
     select: adminSelect,
   });
 }

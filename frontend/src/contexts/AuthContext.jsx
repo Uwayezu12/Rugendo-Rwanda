@@ -3,13 +3,14 @@ import { authService } from '../services/authService.js';
 
 const AuthContext = createContext(null);
 
-// DB role enum (PASSENGER, ADMIN, SUPER_ADMIN, OPERATOR) → frontend convention
+// DB role enum values mapped to the frontend role convention.
 function normalizeRole(role) {
   const map = {
-    PASSENGER:   'passenger',
-    ADMIN:       'admin',
-    SUPER_ADMIN: 'super_admin',
-    OPERATOR:    'operator',
+    PASSENGER:     'passenger',
+    ADMIN:         'admin',
+    SUPER_ADMIN:   'super_admin',
+    COMPANY_ADMIN: 'company_admin',
+    OPERATOR:      'operator',
   };
   return map[role] || role?.toLowerCase() || 'passenger';
 }

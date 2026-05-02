@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Sidebar from '../components/common/Sidebar.jsx';
+import NotificationBell from '../components/common/NotificationBell.jsx';
 import { useLanguage } from '../contexts/LanguageContext.jsx';
 import { useTheme } from '../contexts/ThemeContext.jsx';
 
@@ -59,13 +60,14 @@ export default function SuperAdminLayout() {
             <p className="text-xs text-gray-500 dark:text-slate-400">{t('navDashboard')}</p>
           </div>
 
-          {/* Right: language + theme (always visible) */}
+          {/* Right: notifications + language + theme (always visible) */}
           <div className="ml-auto flex items-center gap-2">
+            <NotificationBell />
             <select
               value={language}
               onChange={(e) => changeLanguage(e.target.value)}
-              className="max-w-[5rem] sm:max-w-none text-xs bg-transparent border border-gray-200 dark:border-slate-600 rounded-lg px-2 py-1.5 text-gray-600 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-brand-500 cursor-pointer"
-              aria-label={t('selectLanguage')}
+              className="text-xs bg-transparent border border-gray-200 dark:border-slate-600 rounded-lg px-2 py-1.5 text-gray-600 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-brand-500 cursor-pointer"
+              aria-label="Select language"
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
                 <option key={lang.code} value={lang.code}>{lang.label}</option>

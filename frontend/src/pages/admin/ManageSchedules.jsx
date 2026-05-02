@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLanguage } from '../../contexts/LanguageContext.jsx';
 import api from '../../services/api.js';
 import DashboardTable from '../../components/dashboard/DashboardTable.jsx';
+import Pagination from '../../components/common/Pagination.jsx';
 
 const LOCALE_BY_LANGUAGE = {
   en: 'en-RW',
@@ -68,6 +69,41 @@ function StatusBadge({ status, t }) {
   const meta = getStatusMeta(status, t);
   return <span className={`badge text-xs ${meta.className}`}>{meta.label}</span>;
 }
+
+const EyeIcon = () => (
+  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-4 w-4">
+    <path d="M1 10s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z" />
+    <circle cx="10" cy="10" r="2.5" />
+  </svg>
+);
+
+const MoreVerticalIcon = () => (
+  <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="h-5 w-5">
+    <circle cx="10" cy="4" r="1.5" />
+    <circle cx="10" cy="10" r="1.5" />
+    <circle cx="10" cy="16" r="1.5" />
+  </svg>
+);
+
+const EditIcon = () => (
+  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-4 w-4">
+    <path d="M11.5 4.5 15.5 8.5" />
+    <path d="M4 16l3.5-.8L16 6.7A2.1 2.1 0 0 0 13.3 4L4.8 12.5 4 16z" />
+  </svg>
+);
+
+const XCircleIcon = () => (
+  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-4 w-4">
+    <circle cx="10" cy="10" r="7" />
+    <path d="m7.5 7.5 5 5M12.5 7.5l-5 5" />
+  </svg>
+);
+
+const CloseIcon = () => (
+  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true" className="h-4 w-4">
+    <path d="M5 5l10 10M15 5 5 15" />
+  </svg>
+);
 
 function NoticeBanner({ notice }) {
   if (!notice?.message) return null;
@@ -198,8 +234,8 @@ function ScheduleFormModal({ open, schedule, routes, buses, drivers, companies, 
   const lockedFields = isEdit && hasActiveBookings;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
-      <div className="card w-full max-w-2xl max-h-[90vh] overflow-y-auto p-4 sm:p-6 my-0">
+    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+      <div className="card w-full max-w-2xl p-6 my-4">
         <div className="flex items-start justify-between gap-4 mb-6">
           <div>
             <h2 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -391,8 +427,8 @@ function CancelConfirmModal({ open, schedule, onClose, onCancelled, t }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
-      <div className="card w-full max-w-md max-h-[90vh] overflow-y-auto p-4 sm:p-6 space-y-4">
+    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+      <div className="card w-full max-w-md p-6 space-y-4">
         <h2 className="text-lg font-bold text-gray-900 dark:text-white">{t('manageSchedulesCancelTitle')}</h2>
         <p className="text-sm text-gray-600 dark:text-slate-300">
           {t('manageSchedulesCancelConfirm')}
@@ -419,120 +455,184 @@ function CancelConfirmModal({ open, schedule, onClose, onCancelled, t }) {
   );
 }
 
-function EyeIcon() {
+function DetailItem({ label, value, highlight = false }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"
-         stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"
-         className="w-5 h-5">
-      <path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z"/>
-      <circle cx="10" cy="10" r="2.5"/>
-    </svg>
+    <div className="rounded-xl border border-gray-100 bg-white px-4 py-3 dark:border-slate-700 dark:bg-slate-800/70">
+      <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-slate-500">{label}</p>
+      <div className={`mt-1 text-sm ${highlight ? 'font-semibold text-gray-900 dark:text-white' : 'text-gray-700 dark:text-slate-300'}`}>
+        {value ?? '—'}
+      </div>
+    </div>
   );
 }
 
-function ScheduleActionsCell({ schedule, onView, onEdit, onCancel, t }) {
-  const isCancelled = schedule.status === 'CANCELLED';
-
+function DetailSection({ title, children }) {
   return (
-    <div className="flex w-full min-w-0 flex-wrap gap-2 whitespace-normal sm:min-w-[9rem]">
-      <button
-        className="p-1.5 rounded-lg text-gray-400 hover:text-brand-600 hover:bg-brand-50 dark:hover:bg-brand-950/30 dark:hover:text-brand-400 transition-colors"
-        onClick={() => onView(schedule)}
-        title={t('manageSchedulesViewDetail')}
-        aria-label={t('manageSchedulesViewDetail')}
-      >
-        <EyeIcon />
-      </button>
-      <button
-        className="btn-secondary text-xs px-3 py-1.5"
-        onClick={() => onEdit(schedule)}
-      >
-        {t('edit')}
-      </button>
-      {!isCancelled && (
-        <button
-          className="rounded-lg bg-red-50 px-3 py-1.5 text-xs font-medium text-red-600 hover:bg-red-100 dark:bg-red-900/20 dark:text-red-400 dark:hover:bg-red-900/40"
-          onClick={() => onCancel(schedule)}
-        >
-          {t('manageSchedulesCancelButton')}
-        </button>
-      )}
-    </div>
+    <section className="space-y-3">
+      <h3 className="text-sm font-semibold text-gray-900 dark:text-white">{title}</h3>
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {children}
+      </div>
+    </section>
   );
 }
 
 function ScheduleDetailModal({ schedule, onClose, t, locale }) {
   if (!schedule) return null;
 
-  const statusMeta = getStatusMeta(schedule.status, t);
-  const route = schedule.route ? `${schedule.route.origin} → ${schedule.route.destination}` : '—';
+  const routeLabel = schedule.route
+    ? `${schedule.route.origin} → ${schedule.route.destination}`
+    : '—';
+  const busLabel = schedule.bus
+    ? `${schedule.bus.plateNumber}${schedule.bus.model ? ` — ${schedule.bus.model}` : ''}`
+    : '—';
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-start justify-center p-3 sm:p-4 overflow-y-auto">
-      <div className="card w-full max-w-2xl my-4 sm:my-8">
-        {/* Header */}
-        <div className="flex items-start justify-between gap-4 p-6 pb-4 border-b border-gray-100 dark:border-slate-700">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+    >
+      <div className="card flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden p-0 shadow-2xl">
+        <div className="flex items-start justify-between gap-4 border-b border-gray-100 px-5 py-5 dark:border-slate-700 sm:px-6">
           <div className="min-w-0">
-            <p className="text-base font-bold text-gray-900 dark:text-white truncate">{route}</p>
-            <div className="flex flex-wrap gap-2 mt-2">
-              <span className={`badge text-xs ${statusMeta.className}`}>{statusMeta.label}</span>
+            <div className="mb-2 flex flex-wrap items-center gap-2">
+              <h2 className="truncate text-xl font-bold text-gray-900 dark:text-white">{t('manageSchedulesDetailTitle')}</h2>
+              <StatusBadge status={schedule.status} t={t} />
             </div>
+            <p className="text-sm font-medium text-brand-600 dark:text-brand-400">{routeLabel}</p>
           </div>
           <button
+            type="button"
             onClick={onClose}
-            className="shrink-0 p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-slate-700 dark:hover:text-slate-300 transition-colors"
-            aria-label={t('manageSchedulesDetailClose')}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-slate-700 dark:hover:text-slate-200"
+            aria-label={t('manageBookingsDetailClose')}
           >
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" className="w-5 h-5">
-              <path d="M5 5l10 10M15 5L5 15"/>
-            </svg>
+            <CloseIcon />
           </button>
         </div>
 
-        {/* Body */}
-        <div className="p-6 overflow-y-auto max-h-[60vh]">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="rounded-xl border border-gray-100 dark:border-slate-700 p-4">
-              <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-slate-500 mb-3">{t('manageSchedulesDetailTripSection')}</p>
-              <div className="space-y-2">
-                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailRoute')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{route}</p></div>
-                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailDeparture')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{formatDateTime(schedule.departureTime, locale)}</p></div>
-                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailArrival')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{formatDateTime(schedule.arrivalTime, locale)}</p></div>
-              </div>
+        <div className="flex-1 overflow-y-auto px-5 py-5 sm:px-6">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="rounded-xl bg-brand-50 px-4 py-4 dark:bg-brand-900/20">
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-700 dark:text-brand-300">{t('manageSchedulesDetailDeparture')}</p>
+              <p className="mt-1 text-sm font-semibold text-gray-900 dark:text-white">{formatDateTime(schedule.departureTime, locale)}</p>
             </div>
+            <div className="rounded-xl bg-gray-50 px-4 py-4 dark:bg-slate-800/70">
+              <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailSeats')}</p>
+              <p className="mt-1 text-sm font-semibold text-gray-900 dark:text-white">{schedule.seatsAvailable}/{schedule.seatsTotal}</p>
+            </div>
+            <div className="rounded-xl bg-gray-50 px-4 py-4 dark:bg-slate-800/70">
+              <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailPrice')}</p>
+              <p className="mt-1 text-sm font-semibold text-gray-900 dark:text-white">{formatPrice(schedule.price)}</p>
+            </div>
+          </div>
 
-            <div className="rounded-xl border border-gray-100 dark:border-slate-700 p-4">
-              <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-slate-500 mb-3">{t('manageSchedulesDetailBusDriverSection')}</p>
-              <div className="space-y-2">
-                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailBus')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{schedule.bus ? `${schedule.bus.plateNumber}${schedule.bus.model ? ` — ${schedule.bus.model}` : ''}` : '—'}</p></div>
-                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailDriver')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{schedule.driver?.name || '—'}</p></div>
-              </div>
-            </div>
+          <div className="mt-6 space-y-6">
+            <DetailSection title={t('manageSchedulesSectionTripSummary')}>
+              <DetailItem label={t('manageSchedulesDetailRoute')} value={routeLabel} highlight />
+              <DetailItem label={t('manageSchedulesDetailCompany')} value={schedule.company?.name || t('manageBookingsNotAvailable')} />
+              <DetailItem label={t('manageSchedulesDetailStatus')} value={<StatusBadge status={schedule.status} t={t} />} />
+              <DetailItem label={t('manageSchedulesDetailBookings')} value={schedule._count?.bookings ?? 0} />
+            </DetailSection>
 
-            <div className="rounded-xl border border-gray-100 dark:border-slate-700 p-4">
-              <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-slate-500 mb-3">{t('manageSchedulesDetailPricingSection')}</p>
-              <div className="space-y-2">
-                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailPrice')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{formatPrice(schedule.price)}</p></div>
-                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailSeats')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{schedule.seatsAvailable}/{schedule.seatsTotal}</p></div>
-              </div>
-            </div>
+            <DetailSection title={t('manageSchedulesSectionVehicleDriver')}>
+              <DetailItem label={t('manageSchedulesDetailBus')} value={busLabel} highlight />
+              <DetailItem label={t('manageSchedulesDetailDriver')} value={schedule.driver?.name || t('manageBookingsNotAvailable')} />
+            </DetailSection>
 
-            <div className="rounded-xl border border-gray-100 dark:border-slate-700 p-4">
-              <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-slate-500 mb-3">{t('manageSchedulesDetailCompanySection')}</p>
-              <div className="space-y-2">
-                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailCompany')}</p><p className="text-sm font-medium text-gray-900 dark:text-white">{schedule.company?.name || '—'}</p></div>
-                <div><p className="text-xs text-gray-500 dark:text-slate-400">{t('manageSchedulesDetailStatus')}</p><p className="text-sm font-medium"><span className={`badge text-xs ${statusMeta.className}`}>{statusMeta.label}</span></p></div>
-              </div>
-            </div>
+            <DetailSection title={t('manageSchedulesSectionSeatPricing')}>
+              <DetailItem label={t('manageSchedulesDetailSeatsAvailable')} value={schedule.seatsAvailable} />
+              <DetailItem label={t('manageSchedulesDetailSeatsTotal')} value={schedule.seatsTotal} />
+              <DetailItem label={t('manageSchedulesDetailPrice')} value={formatPrice(schedule.price)} highlight />
+            </DetailSection>
+
+            <DetailSection title={t('manageSchedulesSectionTiming')}>
+              <DetailItem label={t('manageSchedulesDetailDeparture')} value={formatDateTime(schedule.departureTime, locale)} />
+              <DetailItem label={t('manageSchedulesDetailArrival')} value={formatDateTime(schedule.arrivalTime, locale)} />
+            </DetailSection>
+
+            <DetailSection title={t('manageSchedulesSectionMetadata')}>
+              <DetailItem label={t('manageBookingsDetailCreated')} value={formatDateTime(schedule.createdAt, locale)} />
+              <DetailItem label={t('manageSchedulesDetailUpdated')} value={formatDateTime(schedule.updatedAt, locale)} />
+            </DetailSection>
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="flex justify-end px-6 pb-6 pt-4 border-t border-gray-100 dark:border-slate-700">
-          <button className="btn-secondary" onClick={onClose}>
-            {t('manageSchedulesDetailClose')}
+        <div className="flex justify-end border-t border-gray-100 px-5 py-4 dark:border-slate-700 sm:px-6">
+          <button type="button" className="btn-secondary text-sm" onClick={onClose}>
+            {t('manageBookingsDetailClose')}
           </button>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function ScheduleActionsCell({ schedule, onView, onEdit, onCancel, t }) {
+  const isCancelled = schedule.status === 'CANCELLED';
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const handlePointerDown = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handlePointerDown);
+    return () => document.removeEventListener('mousedown', handlePointerDown);
+  }, [menuOpen]);
+
+  return (
+    <div className="flex items-center gap-1.5">
+      <button
+        type="button"
+        className="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 transition-colors hover:bg-gray-100 hover:text-brand-600 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-brand-400"
+        onClick={() => onView(schedule)}
+        aria-label={t('manageBookingsViewDetail')}
+        title={t('manageBookingsViewDetail')}
+      >
+        <EyeIcon />
+      </button>
+
+      <div className="relative" ref={menuRef}>
+        <button
+          type="button"
+          className="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-200"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={t('moreActions')}
+          title={t('moreActions')}
+          aria-haspopup="menu"
+          aria-expanded={menuOpen}
+        >
+          <MoreVerticalIcon />
+        </button>
+
+        {menuOpen && (
+          <div className="absolute right-0 z-40 mt-2 w-44 overflow-hidden rounded-xl border border-gray-100 bg-white py-1 shadow-xl dark:border-slate-700 dark:bg-slate-800" role="menu">
+            <button
+              type="button"
+              className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm text-gray-700 transition-colors hover:bg-gray-50 dark:text-slate-200 dark:hover:bg-slate-700/70"
+              onClick={() => { setMenuOpen(false); onEdit(schedule); }}
+              role="menuitem"
+            >
+              <EditIcon />
+              {t('edit')}
+            </button>
+            {!isCancelled && (
+              <button
+                type="button"
+                className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm text-red-600 transition-colors hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
+                onClick={() => { setMenuOpen(false); onCancel(schedule); }}
+                role="menuitem"
+              >
+                <XCircleIcon />
+                {t('cancel')}
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -556,9 +656,9 @@ export default function ManageSchedules() {
   const [totalPages, setTotalPages] = useState(1);
   const [formOpen, setFormOpen] = useState(false);
   const [editingSchedule, setEditingSchedule] = useState(null);
+  const [viewingSchedule, setViewingSchedule] = useState(null);
   const [cancelTarget, setCancelTarget] = useState(null);
   const [notice, setNotice] = useState(null);
-  const [selectedSchedule, setSelectedSchedule] = useState(null);
   const debounceRef = useRef(null);
 
   // Load reference data for the form dropdowns
@@ -660,9 +760,9 @@ export default function ManageSchedules() {
       render: (v) => <span className="whitespace-nowrap text-sm">{formatDateTime(v, locale)}</span>,
     },
     {
-      key: 'price',
-      label: t('manageSchedulesColPrice'),
-      render: (v) => <span className="whitespace-nowrap">{formatPrice(v)}</span>,
+      key: 'arrivalTime',
+      label: t('manageSchedulesColArrival'),
+      render: (v) => <span className="whitespace-nowrap text-sm">{formatDateTime(v, locale)}</span>,
     },
     {
       key: 'seats',
@@ -684,7 +784,7 @@ export default function ManageSchedules() {
       render: (_v, row) => (
         <ScheduleActionsCell
           schedule={row}
-          onView={(s) => setSelectedSchedule(s)}
+          onView={setViewingSchedule}
           onEdit={(s) => { setEditingSchedule(s); setFormOpen(true); }}
           onCancel={(s) => setCancelTarget(s)}
           t={t}
@@ -763,19 +863,7 @@ export default function ManageSchedules() {
         </p>
       )}
 
-      {totalPages > 1 && (
-        <div className="flex flex-col gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-          <button className="btn-secondary text-sm" disabled={page <= 1} onClick={() => setPage((p) => p - 1)}>
-            {t('manageUsersPrev')}
-          </button>
-          <span className="text-sm text-gray-500 dark:text-slate-400">
-            {t('manageUsersPageOf').replace('{page}', page).replace('{total}', totalPages)}
-          </span>
-          <button className="btn-secondary text-sm" disabled={page >= totalPages} onClick={() => setPage((p) => p + 1)}>
-            {t('manageUsersNext')}
-          </button>
-        </div>
-      )}
+      <Pagination page={page} totalPages={totalPages} onPage={setPage} />
 
       <ScheduleFormModal
         open={formOpen}
@@ -798,8 +886,8 @@ export default function ManageSchedules() {
       />
 
       <ScheduleDetailModal
-        schedule={selectedSchedule}
-        onClose={() => setSelectedSchedule(null)}
+        schedule={viewingSchedule}
+        onClose={() => setViewingSchedule(null)}
         t={t}
         locale={locale}
       />

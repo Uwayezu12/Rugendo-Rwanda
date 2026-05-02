@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client';
 import prisma from '../../lib/prisma.js';
+import { createNotification } from '../notifications/notifications.service.js';
 
 const companySelect = {
   id: true,
@@ -61,10 +62,34 @@ async function getActiveScheduleCountMap(companyIds) {
   return Object.fromEntries(rows.map((row) => [row.companyId, row._count._all]));
 }
 
+async function getOperatorCountMap(companyIds) {
+  if (!companyIds.length) return {};
+
+  const rows = await prisma.user.groupBy({
+    by: ['companyId'],
+    where: {
+      companyId: { in: companyIds },
+      role: 'OPERATOR',
+    },
+    _count: {
+      _all: true,
+    },
+  });
+
+  return Object.fromEntries(rows.map((row) => [row.companyId, row._count._all]));
+}
+
 async function withScheduleMetrics(company) {
-  const counts = await getActiveScheduleCountMap([company.id]);
+  const [counts, operatorCounts] = await Promise.all([
+    getActiveScheduleCountMap([company.id]),
+    getOperatorCountMap([company.id]),
+  ]);
   return {
     ...company,
+    _count: {
+      ...company._count,
+      operators: operatorCounts[company.id] || 0,
+    },
     activeScheduleCount: counts[company.id] || 0,
   };
 }
@@ -121,11 +146,19 @@ export async function listCompanies({ page, limit, search, status }) {
       }),
     ]);
 
-    const activeScheduleCounts = await getActiveScheduleCountMap(companies.map((company) => company.id));
+    const companyIds = companies.map((company) => company.id);
+    const [activeScheduleCounts, operatorCounts] = await Promise.all([
+      getActiveScheduleCountMap(companyIds),
+      getOperatorCountMap(companyIds),
+    ]);
 
     return {
       companies: companies.map((company) => ({
         ...company,
+        _count: {
+          ...company._count,
+          operators: operatorCounts[company.id] || 0,
+        },
         activeScheduleCount: activeScheduleCounts[company.id] || 0,
       })),
       total,
@@ -204,6 +237,25 @@ export async function updateCompanyStatus(id, isActive) {
       data: { isActive },
       select: companySelect,
     });
+
+    const companyAdmins = await prisma.user.findMany({
+      where: { companyId: id, role: 'COMPANY_ADMIN' },
+      select: { id: true },
+    });
+    const statusText = isActive ? 'activated' : 'deactivated';
+    await Promise.all(
+      companyAdmins.map((admin) =>
+        createNotification({
+          userId: admin.id,
+          title: 'Company Status Changed',
+          message: `Your company ${updated.name} has been ${statusText}.`,
+          type: 'COMPANY',
+          priority: 'URGENT',
+          actionUrl: '/company-admin',
+          metadata: { companyId: id },
+        })
+      )
+    );
 
     return withScheduleMetrics(updated);
   } catch (err) {

@@ -1,5 +1,6 @@
 import prisma from '../../lib/prisma.js';
 import { randomBytes } from 'crypto';
+import { createNotification } from '../notifications/notifications.service.js';
 
 /**
  * Simulates a payment for a PENDING booking.
@@ -73,6 +74,15 @@ export async function payBooking(userId, { bookingId, method }) {
   // Simulated failure path
   if (method === 'fail') {
     const payment = await upsertPayment(prisma, 'FAILED');
+    await createNotification({
+      userId: booking.userId,
+      title: 'Payment Failed',
+      message: `Payment for booking ${booking.reference} failed. Please try again.`,
+      type: 'PAYMENT',
+      priority: 'HIGH',
+      actionUrl: '/passenger/bookings',
+      metadata: { bookingId: booking.id, paymentId: payment.id, amount: booking.totalAmount },
+    });
     return { booking, payment };
   }
 
@@ -118,5 +128,81 @@ export async function payBooking(userId, { bookingId, method }) {
     return [bk, pmt];
   });
 
+  await createNotification({
+    userId: updatedBooking.userId,
+    title: 'Payment Successful',
+    message: `Payment for booking ${updatedBooking.reference} confirmed. Your seat is reserved.`,
+    type: 'PAYMENT',
+    priority: 'HIGH',
+    actionUrl: '/passenger/bookings',
+    metadata: { bookingId: updatedBooking.id, paymentId: payment.id, amount: payment.amount },
+  });
+
+  // Notify company-side staff of confirmed booking — fire and forget
+  notifyCompanySideOnConfirmed({ updatedBooking, originalSchedule: booking.schedule }).catch(() => {});
+
   return { booking: updatedBooking, payment };
+}
+
+/**
+ * Notifies COMPANY_ADMIN and OPERATOR users when a booking is confirmed after payment.
+ * Uses actual remaining seats (post-decrement) derived from the pre-transaction schedule value.
+ * Silently fails — never throws.
+ */
+async function notifyCompanySideOnConfirmed({ updatedBooking, originalSchedule }) {
+  try {
+    const companyId = updatedBooking.schedule?.company?.id ?? originalSchedule?.companyId;
+    if (!companyId) return;
+
+    // seatsAvailable in originalSchedule is the pre-decrement value (loaded before transaction).
+    // The transaction already decremented atomically, so this subtraction gives the real new value.
+    const remainingSeats = originalSchedule.seatsAvailable - updatedBooking.seatsBooked;
+    const route = updatedBooking.schedule?.route;
+    const routeStr = route ? `${route.origin} → ${route.destination}` : '';
+
+    const [passenger, staffUsers] = await Promise.all([
+      prisma.user.findUnique({ where: { id: updatedBooking.userId }, select: { name: true } }),
+      prisma.user.findMany({
+        where: { companyId, role: { in: ['COMPANY_ADMIN', 'OPERATOR'] }, isActive: true },
+        select: { id: true, role: true },
+      }),
+    ]);
+
+    if (!staffUsers.length) return;
+
+    const seen = new Set();
+    for (const staff of staffUsers) {
+      if (seen.has(staff.id)) continue;
+      seen.add(staff.id);
+
+      const isAdmin = staff.role === 'COMPANY_ADMIN';
+      const messageParts = [
+        passenger?.name ? `Passenger: ${passenger.name}.` : '',
+        `Ref: ${updatedBooking.reference}.`,
+        routeStr ? `Route: ${routeStr}.` : '',
+        `Seats booked: ${updatedBooking.seatsBooked}.`,
+        `Remaining seats: ${remainingSeats}.`,
+      ].filter(Boolean);
+
+      await createNotification({
+        userId: staff.id,
+        title: 'Booking Confirmed',
+        message: messageParts.join(' '),
+        type: 'BOOKING',
+        priority: 'HIGH',
+        actionUrl: isAdmin ? '/company-admin/bookings' : '/operator/bookings',
+        metadata: {
+          bookingId: updatedBooking.id,
+          bookingReference: updatedBooking.reference,
+          scheduleId: updatedBooking.scheduleId,
+          passengerUserId: updatedBooking.userId,
+          seatsBooked: updatedBooking.seatsBooked,
+          remainingSeats,
+          companyId,
+        },
+      });
+    }
+  } catch (err) {
+    console.error('[notifyCompanySideConfirmed] failed:', err.message);
+  }
 }

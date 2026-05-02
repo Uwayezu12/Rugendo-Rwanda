@@ -37,7 +37,7 @@ Format: `## N. Title` → `**Decision:**` → `**Why:**` → `**Date:**`
 
 ---
 
-## 4. Role Model: Five Roles
+## 4. Role Model: Five Roles [SUPERSEDED by #55]
 
 **Decision:** The platform has exactly five roles: `guest`, `passenger`, `admin`, `super_admin`, `operator`. There is no separate "boarding agent" role.
 
@@ -317,6 +317,36 @@ Format: `## N. Title` → `**Decision:**` → `**Why:**` → `**Date:**`
 
 ---
 
+## 32. In-App Notifications: Database-Backed Only (MVP)
+
+**Decision:** The first version of notifications is database-backed (MySQL via Prisma) with a REST polling model. No WebSockets, email, SMS, or push notifications in this phase.
+
+**Why:** WebSockets add infrastructure complexity (connection management, reconnection, scaling). A simple DB + polling approach is reliable, easy to reason about, and sufficient for MVP usage patterns. WebSockets can be layered on later if real-time delivery becomes a hard requirement.
+
+**Date:** 2026-05-02
+
+---
+
+## 33. Notification Ownership Enforced in Service Layer (Not Route Middleware)
+
+**Decision:** Notification endpoints have no role restriction at the route level. All authenticated users share the same endpoints. Ownership (userId match) is enforced inside the service functions `markAsRead` and `archiveNotification`.
+
+**Why:** All five roles share the same notification model and actions. A role guard at the route level would require duplicating routes per role with no benefit. Service-layer ownership enforcement is consistent with how bookings and boarding already work.
+
+**Date:** 2026-05-02
+
+---
+
+## 34. Notification Creation Failures Are Silent
+
+**Decision:** `createNotification()` wraps its Prisma call in try/catch and returns `null` on failure. It never re-throws to the caller.
+
+**Why:** Notifications are supplementary to the core business action (booking, payment, boarding, etc.). A notification write failure must never roll back or block the primary action. Callers must not wrap `createNotification` in their own transaction.
+
+**Date:** 2026-05-02
+
+---
+
 ## 33. Boarding Lookup: Token/Reference Only [SUPERSEDED by #34]
 
 **Decision:** `GET /api/boarding/lookup` accepts only a booking reference (`RW-XXXXXXXX` format). Phone and email lookup were removed. The query is validated against the reference regex before the service is called. The endpoint returns an array of 0 or 1 booking.
@@ -537,23 +567,62 @@ Format: `## N. Title` → `**Decision:**` → `**Why:**` → `**Date:**`
 
 ---
 
-## 55. Responsive Layout: Modal max-h Pattern and Table min-w Scroll Pattern
+## 56. Admin Tables Use Compact Rows With Detail Modals
 
-**Decision:** All dashboard management modals now apply `max-h-[90vh] overflow-y-auto` on the inner card container, and responsive outer backdrop padding `p-3 sm:p-4`. All data tables wrapped in `overflow-x-auto` add `min-w-[600px]` (or appropriate breakpoint) on the `<table>` element so columns scroll horizontally rather than crushing on narrow screens.
+**Decision:** `/admin/schedules` and `/admin/bookings` keep only essential scan fields in their tables. Secondary operational details move into eye-icon detail modals, schedule edit/cancel actions move behind a three-dots row menu, and admin pagination uses numbered page buttons.
 
-**Why:** Without a max-height guard, tall modals (schedule form, booking detail) overflowed the viewport on mobile and short laptop screens with no escape. Without a table min-width, `w-full` tables shrink all columns simultaneously on narrow screens, making data unreadable. These two patterns are applied consistently across all management pages.
+**Why:** Dense operations tables need to stay scannable while still exposing complete records on demand. This keeps routine list review fast, makes details easier to inspect, and avoids crowding destructive schedule actions into the main row.
 
-**Date:** 2026-04-26
+**Date:** 2026-04-28
 
 ---
 
-## 56. Dashboard Topbar: Language Select max-w on XS Screens
+## 55. Company Admin Role Is Company-Scoped
 
-**Decision:** The language `<select>` in all four dashboard layout topbars now has `max-w-[5rem] sm:max-w-none` to prevent the dropdown from pushing topbar items off-screen on 320px phones. The `aria-label` is now driven through `t('selectLanguage')` instead of a hardcoded English string.
+**Decision:** The platform now includes `company_admin` / `COMPANY_ADMIN` as a company-scoped management role backed by `User.companyId`. Company admin APIs live under `/api/company-admin/*` and enforce the authenticated user's company scope server-side. Operators remain boarding/check-in only, public signup remains passenger-only, official RURA route/fare data remains platform-controlled, and company profile is read-only for this MVP.
 
-**Why:** On 320px screens the branding block + language select + theme toggle previously competed for a narrow row. Capping the select at 5rem keeps the row intact at the smallest standard viewport. Translating the aria-label maintains accessibility across all 4 supported locales.
+**Why:** Bus companies need internal operations access without giving boarding operators broad management powers or exposing other companies' data. A dedicated scoped role preserves tenant boundaries while keeping platform admin and super-admin workflows separate.
 
-**Date:** 2026-04-26
+**Date:** 2026-04-28
+
+---
+
+## 57. Brand Refresh: Royal Blue as Primary, Green as Support, Gold as Accent
+
+**Decision:** Rugendo Rwanda's frontend is moving from a purple/magenta brand palette to a premium Rwanda-inspired visual identity. Approved palette:
+- Primary: Royal/Cobalt Blue `#2563EB`
+- Supporting: Forest Green `#16A34A`
+- Accent: Warm Gold `#D97706`
+- Dark background: `#071524`, dark surface: `#112040`, dark border: `#1E3A5F`
+- Light muted surface: `#F0F7FF`, light border: `#DBEAFE`
+
+Blue dominates. Green supports. Gold is sparing. Raw flag-color tones are avoided. The design remains premium, clean, and professional.
+
+**Why:** The previous purple/magenta palette had no meaningful connection to the platform's Rwanda context. A premium blue/green/gold palette reads as modern and trustworthy while referencing Rwanda's visual culture without being literal or garish. Gold accents convey premium quality for a paid booking service.
+
+**Date:** 2026-04-29
+
+---
+
+## 59. Company-Side Booking Notifications: Two Events, Two Distinct Messages
+
+**Decision:** Company-side staff (COMPANY_ADMIN + OPERATOR) receive two separate booking notifications:
+1. **"New Pending Booking"** (BOOKING / HIGH) — fired immediately when a passenger creates a booking. Uses wording "seats requested" and "projected remaining if paid" because `seatsAvailable` is NOT decremented at booking creation; seats are only held after payment.
+2. **"Booking Confirmed"** (BOOKING / HIGH) — fired after the payment transaction succeeds and `seatsAvailable` is atomically decremented. Uses "remaining seats" which reflects the true post-decrement count, calculated as `originalSchedule.seatsAvailable - seatsBooked`.
+
+**Why:** Using the word "remaining seats" on a PENDING booking would be misleading — the seat is not actually reserved until payment. Sending only one notification (on payment) would mean staff miss the heads-up about booking intent. Two events give staff actionable information at each stage.
+
+**Date:** 2026-05-02
+
+---
+
+## 58. Brand Refresh Scope: Frontend Styling Only, No Backend or Business Logic
+
+**Decision:** The brand refresh touches only frontend styling files (Tailwind config, CSS variables, design tokens, layout shells, public pages, auth pages, dashboard shells). It does not touch backend files, auth logic, booking/payment logic, seed data, translations (unless new text is added), or any business logic.
+
+**Why:** Brand styling and business logic are entirely separate concerns. Mixing them in the same implementation batch increases risk and makes rollback harder.
+
+**Date:** 2026-04-29
 
 ---
 

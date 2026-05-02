@@ -176,12 +176,12 @@ function SearchMode({ searchParams, navigate, t, locale }) {
   }
 
   const popularRoutes = [
-    { from: 'Kigali', to: 'Musanze'  },
-    { from: 'Kigali', to: 'Butare'   },
-    { from: 'Kigali', to: 'Gisenyi'  },
-    { from: 'Kigali', to: 'Cyangugu' },
-    { from: 'Kigali', to: 'Kibungo'  },
-    { from: 'Butare',  to: 'Musanze' },
+    { from: 'NYABUGOGO', to: 'MUSANZE'   },
+    { from: 'NYABUGOGO', to: 'NYAGATARE' },
+    { from: 'NYABUGOGO', to: 'GICUMBI'   },
+    { from: 'NYABUGOGO', to: 'GATUNA'    },
+    { from: 'MUSANZE',   to: 'RUBAVU'    },
+    { from: 'GICUMBI',   to: 'MUSANZE'   },
   ];
 
   return (

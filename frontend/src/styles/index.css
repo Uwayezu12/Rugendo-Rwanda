@@ -5,24 +5,24 @@
 @layer base {
   :root {
     --color-bg:      #ffffff;
-    --color-bg-muted:#f8f7ff;
+    --color-bg-muted:#f0f7ff;
     --color-surface: #ffffff;
     --color-text:    #111827;
     --color-muted:   #6b7280;
-    --color-border:  #e8e3ff;
-    --color-brand:   #6e26ff;
-    --color-accent:  #fa26ae;
+    --color-border:  #dbeafe;
+    --color-brand:   #2563eb;
+    --color-accent:  #d97706;
   }
 
   .dark {
-    --color-bg:      #0e0a1f;
-    --color-bg-muted:#130d2e;
-    --color-surface: #1a1035;
+    --color-bg:      #071524;
+    --color-bg-muted:#0d1f3c;
+    --color-surface: #112040;
     --color-text:    #f1f5f9;
     --color-muted:   #94a3b8;
-    --color-border:  #2d1a5e;
-    --color-brand:   #9b72ff;
-    --color-accent:  #ff65c1;
+    --color-border:  #1e3a5f;
+    --color-brand:   #60a5fa;
+    --color-accent:  #fbbf24;
   }
 
   body {
@@ -81,10 +81,19 @@
            transition-all duration-200;
   }
 
+  .btn-green {
+    @apply inline-flex items-center justify-center
+           bg-green-600 hover:bg-green-700 active:bg-green-800
+           text-white font-semibold px-5 py-2.5 rounded-xl
+           transition-all duration-200
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2
+           disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+
   /* ── Cards ────────────────────────────────────── */
   .card {
-    @apply bg-white dark:bg-[#1a1035] rounded-2xl shadow-card
-           border border-[#e8e3ff] dark:border-[#2d1a5e] p-6;
+    @apply bg-white dark:bg-[#112040] rounded-2xl shadow-card
+           border border-[#dbeafe] dark:border-[#1e3a5f] p-6;
   }
 
   .card-hover {
@@ -99,8 +108,8 @@
 
   /* ── Form inputs ──────────────────────────────── */
   .input {
-    @apply w-full rounded-xl border border-[#e8e3ff] dark:border-[#2d1a5e]
-           bg-white dark:bg-[#1a1035]
+    @apply w-full rounded-xl border border-[#dbeafe] dark:border-[#1e3a5f]
+           bg-white dark:bg-[#112040]
            text-gray-900 dark:text-slate-100
            placeholder:text-gray-400 dark:placeholder:text-slate-500
            px-4 py-2.5 text-sm
@@ -118,7 +127,7 @@
   }
 
   .section-muted {
-    @apply py-16 px-4 bg-[#f8f7ff] dark:bg-[#130d2e];
+    @apply py-16 px-4 bg-[#f0f7ff] dark:bg-[#0d1f3c];
   }
 
   .container-page {
@@ -135,7 +144,7 @@
   }
 
   .badge-accent {
-    @apply badge bg-accent-100 dark:bg-accent-900 text-accent-700 dark:text-accent-300;
+    @apply badge bg-accent-100 dark:bg-accent-900 text-accent-600 dark:text-accent-400;
   }
 
   .badge-success {

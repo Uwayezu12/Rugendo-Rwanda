@@ -1,6 +1,7 @@
 import crypto from 'crypto';
 import { OAuth2Client } from 'google-auth-library';
 import prisma from '../../lib/prisma.js';
+import { createNotification } from '../notifications/notifications.service.js';
 import { hashPassword, comparePassword } from '../../utils/bcrypt.utils.js';
 import { signAccessToken, signRefreshToken, verifyRefreshToken } from '../../utils/jwt.utils.js';
 import { env } from '../../config/env.js';
@@ -30,7 +31,15 @@ async function persistRefreshToken(userId, token) {
 }
 
 function safeUser(user) {
-  return { id: user.id, name: user.name, email: user.email, phone: user.phone, role: user.role };
+  return {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    phone: user.phone,
+    role: user.role,
+    companyId: user.companyId,
+    company: user.company,
+  };
 }
 
 // ─── Register ────────────────────────────────────────────────────────────────
@@ -71,8 +80,8 @@ export async function login({ identifier, password }) {
   // Determine lookup field from the identifier value
   const isPhone = isRwandaPhone(identifier);
   const user = isPhone
-    ? await prisma.user.findUnique({ where: { phone: identifier } })
-    : await prisma.user.findUnique({ where: { email: identifier } });
+    ? await prisma.user.findUnique({ where: { phone: identifier }, include: { company: { select: { id: true, name: true } } } })
+    : await prisma.user.findUnique({ where: { email: identifier }, include: { company: { select: { id: true, name: true } } } });
 
   if (!user || !user.isActive) {
     const err = new Error('Invalid credentials');
@@ -192,6 +201,15 @@ export async function resetPassword({ token, password }) {
       passwordResetExpiresAt: null,
     },
   });
+
+  await createNotification({
+    userId: user.id,
+    title: 'Password Changed',
+    message: 'Your password was successfully reset.',
+    type: 'SECURITY',
+    priority: 'HIGH',
+    actionUrl: '/',
+  });
 }
 
 // ─── Google auth ─────────────────────────────────────────────────────────────
@@ -219,7 +237,10 @@ export async function googleAuth({ credential }) {
   }
 
   // 1. Check for an existing account linked to this Google ID
-  let user = await prisma.user.findUnique({ where: { googleId } });
+  let user = await prisma.user.findUnique({
+    where: { googleId },
+    include: { company: { select: { id: true, name: true } } },
+  });
 
   if (!user) {
     // 2. Check for an existing account with the same email (link safely)
@@ -235,11 +256,13 @@ export async function googleAuth({ credential }) {
       user = await prisma.user.update({
         where: { id: byEmail.id },
         data:  { googleId },
+        include: { company: { select: { id: true, name: true } } },
       });
     } else {
       // 3. Create a brand-new account from Google (no password hash)
       user = await prisma.user.create({
         data: { name, email, googleId, passwordHash: null },
+        include: { company: { select: { id: true, name: true } } },
       });
     }
   } else if (!user.isActive) {
@@ -260,7 +283,17 @@ export async function googleAuth({ credential }) {
 export async function getMe(userId) {
   const user = await prisma.user.findUnique({
     where:  { id: userId },
-    select: { id: true, name: true, email: true, phone: true, role: true, isActive: true, createdAt: true },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      phone: true,
+      role: true,
+      companyId: true,
+      company: { select: { id: true, name: true } },
+      isActive: true,
+      createdAt: true,
+    },
   });
 
   if (!user || !user.isActive) {

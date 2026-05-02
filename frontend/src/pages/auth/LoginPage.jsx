@@ -18,10 +18,11 @@ function EyeIcon({ open }) {
 }
 
 const ROLE_ROUTES = {
-  passenger:  '/',
-  admin:      '/admin',
-  super_admin:'/super-admin',
-  operator:   '/operator',
+  passenger:     '/',
+  admin:         '/admin',
+  super_admin:   '/super-admin',
+  company_admin: '/company-admin',
+  operator:      '/operator',
 };
 
 export default function LoginPage() {

@@ -16,6 +16,64 @@
 
 ## TODO
 
+### In-App Notifications — Batch 4: Improvements ✅ COMPLETE
+
+- [x] Notify COMPANY_ADMIN and OPERATOR when a passenger booking is created (`bookings.service.js` → `notifyCompanySideOnBooking`) — title "New Pending Booking", uses projected remaining seats (seats not yet decremented)
+- [x] Notify COMPANY_ADMIN and OPERATOR when payment succeeds and booking is confirmed (`payments.service.js` → `notifyCompanySideOnConfirmed`) — title "Booking Confirmed", uses actual remaining seats post-decrement
+- [x] Fix notification polling — now polls full list every 60s (not just unread count) so new notifications appear without reload
+- [x] Fix `archiveNotification` stale closure bug in context — count now reads from functional updater
+- [x] Add server-side count sync after `markAsRead`, `markAllRead`, `archiveNotification`
+- [x] Add `NotificationBell` to public `Navbar.jsx` for logged-in users (desktop + mobile)
+- [x] Fix `viewAllPath` in `NotificationBell` — uses user role on public pages so "View all" goes to correct role notifications page
+
+### In-App Notifications — Batch 2: Triggers ✅ COMPLETE
+
+- [x] Add `createNotification()` trigger to `bookings.service.js` → `createBooking()`
+- [x] Add `createNotification()` triggers to `payments.service.js` → `payBooking()` (success + failure paths)
+- [x] Add `createNotification()` trigger to `bookings.service.js` → `cancelBooking()`
+- [x] Add `createNotification()` trigger to `boarding.service.js` → `validateBoarding()`
+- [x] Add `createNotification()` trigger to `auth.service.js` → `resetPassword()`
+- [x] Add `createNotification()` trigger to `users.service.js` → `updateUser()`
+- [x] Add `createNotification()` trigger to `companies.service.js` → `updateCompanyStatus()`
+- [x] Add `createNotification()` trigger to `settings.service.js` → `upsertSetting()`
+- [~] Schedule triggers skipped — `cancelSchedule()` and `updateSchedule()` both block when active bookings exist (409 guard), making passenger fan-out unreachable under current business rules
+
+### In-App Notifications — Batch 3: Frontend ✅ COMPLETE
+
+- [x] Create `frontend/src/services/notificationService.js`
+- [x] Create `frontend/src/contexts/NotificationContext.jsx` (60s poll for unread count)
+- [x] Wrap `NotificationContext` in `main.jsx` provider tree (inside AuthProvider)
+- [x] Create `frontend/src/components/common/NotificationBell.jsx`
+- [x] Add `NotificationBell` to all 5 dashboard layouts
+- [x] Create `frontend/src/pages/notifications/NotificationsPage.jsx`
+- [x] Add notification routes to `router.jsx` for all 5 roles
+- [x] Add notification translation keys (all 4 languages) to `translations.js`
+
+### Brand Refresh — Frontend Visual Identity
+
+- [ ] Continue Rugendo Rwanda brand refresh using `BRAND_REFRESH_PLAN.md` (saved plan, not yet implemented)
+  - Read `BRAND_REFRESH_PLAN.md` first
+  - Start in Plan mode, confirm intended files, then implement
+  - Trigger phrase: "continue the Rugendo Rwanda brand refresh" or "let us continue son"
+
+---
+
+### Company Admin - Manual Testing Required
+
+- [x] Add `COMPANY_ADMIN` role to Prisma role enum and frontend role normalization
+- [x] Add company-scoped `/api/company-admin/*` backend module
+- [x] Add company admin dashboard layout and MVP pages
+- [x] Add company admin translation keys in English, Kinyarwanda, French, and Kiswahili
+- [x] Seed one company admin user per seeded company
+- [x] Run Prisma migration for `COMPANY_ADMIN` role once MySQL is available
+- [x] Seed database and verify company admin demo credentials
+- [ ] Re-run `npx prisma generate` after releasing the local Windows Prisma DLL file lock
+- [ ] Login as `companyadmin.gicumbi@test.rw` and confirm redirect to `/company-admin`
+- [ ] Verify company admin sees only its company's bookings, schedules, buses, drivers, operators, and revenue
+- [ ] Verify company admin cannot access platform admin/super-admin pages
+- [ ] Verify operator remains boarding/check-in only
+- [ ] Verify public signup still creates `PASSENGER` only
+
 ### Dashboard / UX Polish — Manual Review Required
 
 - [x] Sidebar logout: added logout SVG icon, styled consistently with nav links (icon + label, red tone)
@@ -23,6 +81,7 @@
 - [x] /super-admin/users: removed inline email/phone/company from user list rows; added eye icon button + UserDetailModal with full user details (name, role, status, email, phone, company, join date)
 - [x] /super-admin/settings: widened from `max-w-2xl` to `max-w-4xl` for better page width utilization
 - [x] Profile pages: widened from `max-w-2xl` to `max-w-4xl` for better page width utilization
+- [x] `/admin/schedules` and `/admin/bookings`: simplified table columns, added eye-icon detail modals, moved schedule edit/cancel into a three-dots menu, and upgraded pagination to numbered controls
 - [ ] Review sidebar icons across all role dashboards — verify alignment, active state, hover state
 - [ ] Verify language selector + theme toggle in topbar work correctly on desktop and mobile
 - [ ] Verify companies table is clean (no inline amber resource text), eye icon visible in Actions
@@ -75,20 +134,8 @@
 
 ### Responsive QA
 
-- [x] Full frontend responsive audit and fix pass (2026-04-26):
-  - All management page modals: max-h[90vh] + overflow-y-auto + responsive padding
-  - DashboardTable + OperatorBookings + RoutesPage tables: min-w added for horizontal scroll
-  - All 4 dashboard layout topbars: language select max-w + aria-label via t()
-  - translations.js: selectLanguage key added in all 4 locales
-  - Public pages (HomePage, SearchResults, RoutesPage), passenger pages, auth pages: audited, already responsive — no changes required
-- [ ] Manual responsive QA still needed in browser at 320px, 375px, 768px, 1280px:
-  - /admin/buses — open a bus form modal on 320px, verify scrolls inside modal
-  - /admin/schedules — open schedule form modal, verify max-height scroll
-  - /admin/bookings — open booking detail modal on short screen
-  - /super-admin/companies — open company view modal + form modal
-  - /operator/bookings — table horizontal scroll on mobile
-  - /passenger/bookings — booking cards on 320px
-  - Language selector in topbar on 320px — verify it does not overflow
+- [ ] Manual responsive QA: verify dashboard layouts + representative dashboard pages at `320px`–`430px`, `768px`–`1024px`, and desktop
+- [ ] Later responsive pass: remaining public/auth/detail pages outside the dashboard-focused layout batch
 
 ### Boarding — Manual Testing Required
 
@@ -191,6 +238,20 @@
 ---
 
 ## COMPLETED
+
+### In-App Notifications — Batch 1: Backend Foundation (2026-05-02)
+
+- [x] Add `NotificationType`, `NotificationPriority`, `NotificationStatus` enums to Prisma schema
+- [x] Add `Notification` model to Prisma schema with userId FK (cascade delete), indexes on `(userId, status)` and `(userId, createdAt)`
+- [x] Add `notifications Notification[]` relation to `User` model
+- [x] Create `backend/src/modules/notifications/notifications.service.js` — `createNotification`, `getMyNotifications`, `getUnreadCount`, `markAsRead`, `markAllRead`, `archiveNotification`
+- [x] Create `backend/src/modules/notifications/notifications.validator.js` — list query params + id param validators
+- [x] Create `backend/src/modules/notifications/notifications.controller.js` — 5 handlers using existing apiResponse helpers
+- [x] Create `backend/src/modules/notifications/notifications.routes.js` — all routes auth-protected, no role restriction
+- [x] Register `/api/notifications` in `backend/src/app.js`
+- [x] Log decisions #32, #33, #34 in DECISIONS.md
+- [ ] Run `npx prisma migrate dev --name add_notifications` (pending — user must run locally)
+- [ ] Manual API test all 5 endpoints (pending migration)
 
 ### Demo Data
 

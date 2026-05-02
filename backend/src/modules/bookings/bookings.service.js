@@ -1,5 +1,6 @@
 import prisma from '../../lib/prisma.js';
 import { generateBookingRef } from '../../utils/bookingRef.utils.js';
+import { createNotification } from '../notifications/notifications.service.js';
 
 const BOOKING_INCLUDE = {
   schedule: {
@@ -83,7 +84,80 @@ export async function createBooking(userId, { scheduleId, seats }) {
     include: BOOKING_INCLUDE,
   });
 
+  await createNotification({
+    userId: booking.userId,
+    title: 'Booking Created',
+    message: `Your booking ${booking.reference} has been created and is waiting for payment.`,
+    type: 'BOOKING',
+    priority: 'NORMAL',
+    actionUrl: '/passenger/bookings',
+    metadata: { bookingId: booking.id, bookingReference: booking.reference, scheduleId: booking.scheduleId },
+  });
+
+  // Notify company-side staff — fire and forget, must not break booking creation
+  notifyCompanySideOnBooking({ booking, schedule, seatsBooked: seats }).catch(() => {});
+
   return booking;
+}
+
+/**
+ * Notifies COMPANY_ADMIN and OPERATOR users of the schedule's company when a booking is created.
+ * Silently fails — never throws.
+ */
+async function notifyCompanySideOnBooking({ booking, schedule, seatsBooked }) {
+  try {
+    const companyId = schedule.companyId;
+    // Seats are only decremented on payment confirmation, not at booking creation.
+    // Show projected remaining so staff can anticipate seat pressure.
+    const projectedRemainingSeats = schedule.seatsAvailable - seatsBooked;
+    const route = booking.schedule?.route;
+    const routeStr = route ? `${route.origin} → ${route.destination}` : '';
+
+    const [passenger, staffUsers] = await Promise.all([
+      prisma.user.findUnique({ where: { id: booking.userId }, select: { name: true } }),
+      prisma.user.findMany({
+        where: { companyId, role: { in: ['COMPANY_ADMIN', 'OPERATOR'] }, isActive: true },
+        select: { id: true, role: true },
+      }),
+    ]);
+
+    if (!staffUsers.length) return;
+
+    const seen = new Set();
+    for (const staff of staffUsers) {
+      if (seen.has(staff.id)) continue;
+      seen.add(staff.id);
+
+      const isAdmin = staff.role === 'COMPANY_ADMIN';
+      const messageParts = [
+        passenger?.name ? `Passenger: ${passenger.name}.` : '',
+        `Ref: ${booking.reference}.`,
+        routeStr ? `Route: ${routeStr}.` : '',
+        `Seats requested: ${seatsBooked}.`,
+        `Projected remaining if paid: ${projectedRemainingSeats}.`,
+      ].filter(Boolean);
+
+      await createNotification({
+        userId: staff.id,
+        title: 'New Pending Booking',
+        message: messageParts.join(' '),
+        type: 'BOOKING',
+        priority: 'HIGH',
+        actionUrl: isAdmin ? '/company-admin/bookings' : '/operator/bookings',
+        metadata: {
+          bookingId: booking.id,
+          bookingReference: booking.reference,
+          scheduleId: booking.scheduleId,
+          passengerUserId: booking.userId,
+          seatsBooked,
+          projectedRemainingSeats,
+          companyId,
+        },
+      });
+    }
+  } catch (err) {
+    console.error('[notifyCompanySide] failed:', err.message);
+  }
 }
 
 /**
@@ -141,6 +215,16 @@ export async function cancelBooking(id, userId) {
     where:   { id },
     data:    { status: 'CANCELLED' },
     include: BOOKING_INCLUDE,
+  });
+
+  await createNotification({
+    userId: updated.userId,
+    title: 'Booking Cancelled',
+    message: `Your booking ${updated.reference} has been cancelled.`,
+    type: 'BOOKING',
+    priority: 'NORMAL',
+    actionUrl: '/passenger/bookings',
+    metadata: { bookingId: updated.id, bookingReference: updated.reference },
   });
 
   return updated;

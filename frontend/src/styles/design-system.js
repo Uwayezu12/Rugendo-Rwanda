@@ -11,53 +11,69 @@
 
 // ── Brand colors ──────────────────────────────────────────────────────────────
 export const colors = {
+  // Primary — Royal/Cobalt Blue
   brand: {
-    50:  '#f3f0ff',
-    100: '#e9e3ff',
-    200: '#d3c7ff',
-    300: '#b89eff',
-    400: '#9b72ff',
-    500: '#7e48ff',
-    600: '#6e26ff',   // PRIMARY — use for main CTAs, links, active states
-    700: '#5a1ae0',
-    800: '#4a15b8',
-    900: '#3a1190',
-    950: '#25097a',
+    50:  '#eff6ff',
+    100: '#dbeafe',
+    200: '#bfdbfe',
+    300: '#93c5fd',
+    400: '#60a5fa',
+    500: '#3b82f6',
+    600: '#2563eb',   // PRIMARY — use for main CTAs, links, active states
+    700: '#1d4ed8',
+    800: '#1e40af',
+    900: '#1e3a8a',
+    950: '#172554',
   },
+  // Supporting — Forest Green
+  green: {
+    50:  '#f0fdf4',
+    100: '#dcfce7',
+    200: '#bbf7d0',
+    300: '#86efac',
+    400: '#4ade80',
+    500: '#22c55e',
+    600: '#16a34a',   // PRIMARY GREEN — success, secondary CTAs, supporting accents
+    700: '#15803d',
+    800: '#166534',
+    900: '#14532d',
+    950: '#052e16',
+  },
+  // Accent — Warm Gold (use sparingly)
   accent: {
-    50:  '#fff0f9',
-    100: '#ffe3f4',
-    200: '#ffc7ea',
-    300: '#ff9ed8',
-    400: '#ff65c1',
-    500: '#fa26ae',   // SECONDARY — use for highlights, badges, gradient endpoints
-    600: '#e0188a',
-    700: '#bc0f6e',
-    800: '#9a0d58',
-    900: '#7a0d47',
+    50:  '#fffbeb',
+    100: '#fef3c7',
+    200: '#fde68a',
+    300: '#fcd34d',
+    400: '#fbbf24',
+    500: '#d97706',   // PRIMARY GOLD — highlights, badges, premium accents only
+    600: '#b45309',
+    700: '#92400e',
+    800: '#78350f',
+    900: '#451a03',
   },
 };
 
 // ── Semantic color roles ───────────────────────────────────────────────────────
 export const semantic = {
   success: {
-    bg:   '#ecfdf5',
-    text: '#065f46',
+    bg:    '#ecfdf5',
+    text:  '#065f46',
     border:'#6ee7b7',
   },
   warning: {
-    bg:   '#fffbeb',
-    text: '#92400e',
+    bg:    '#fffbeb',
+    text:  '#92400e',
     border:'#fcd34d',
   },
   error: {
-    bg:   '#fef2f2',
-    text: '#991b1b',
+    bg:    '#fef2f2',
+    text:  '#991b1b',
     border:'#fca5a5',
   },
   info: {
-    bg:   '#eff6ff',
-    text: '#1e40af',
+    bg:    '#eff6ff',
+    text:  '#1e40af',
     border:'#93c5fd',
   },
 };
@@ -65,24 +81,24 @@ export const semantic = {
 // ── Surface / background tokens ───────────────────────────────────────────────
 export const surfaces = {
   light: {
-    pageBackground:    '#ffffff',
-    mutedBackground:   '#f8f7ff',   // Slightly purple-tinted off-white for alternating sections
-    cardBackground:    '#ffffff',
-    cardBorder:        '#e8e3ff',
-    inputBackground:   '#ffffff',
-    inputBorder:       '#e8e3ff',
-    navBackground:     '#ffffff',
-    footerBackground:  '#0e0a1f',
+    pageBackground:   '#ffffff',
+    mutedBackground:  '#f0f7ff',   // Ice-blue tinted off-white for alternating sections
+    cardBackground:   '#ffffff',
+    cardBorder:       '#dbeafe',
+    inputBackground:  '#ffffff',
+    inputBorder:      '#dbeafe',
+    navBackground:    '#ffffff',
+    footerBackground: '#071524',
   },
   dark: {
-    pageBackground:    '#0e0a1f',   // Deep near-black with purple tint
-    mutedBackground:   '#130d2e',   // Slightly lighter for alternating sections
-    cardBackground:    '#1a1035',   // Card surfaces in dark mode
-    cardBorder:        '#2d1a5e',
-    inputBackground:   '#1a1035',
-    inputBorder:       '#2d1a5e',
-    navBackground:     '#0e0a1f',
-    footerBackground:  '#080516',
+    pageBackground:   '#071524',   // Deep navy
+    mutedBackground:  '#0d1f3c',   // Slightly lighter navy for alternating sections
+    cardBackground:   '#112040',   // Card surfaces in dark mode
+    cardBorder:       '#1e3a5f',
+    inputBackground:  '#112040',
+    inputBorder:      '#1e3a5f',
+    navBackground:    '#071524',
+    footerBackground: '#040e1a',
   },
 };
 
@@ -112,11 +128,11 @@ export const typography = {
 
 // ── Gradients ─────────────────────────────────────────────────────────────────
 export const gradients = {
-  brand:     'linear-gradient(135deg, #6e26ff 0%, #fa26ae 100%)',
-  brandSoft: 'linear-gradient(135deg, rgba(110,38,255,0.13) 0%, rgba(250,38,174,0.13) 100%)',
-  hero:      'linear-gradient(135deg, #1a0845 0%, #2d1080 50%, #1a0845 100%)',
-  heroText:  'linear-gradient(90deg, #9b72ff 0%, #fa26ae 100%)',
-  card:      'linear-gradient(135deg, #1a1035 0%, #2d1080 100%)',
+  brand:     'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+  brandSoft: 'linear-gradient(135deg, rgba(37,99,235,0.13) 0%, rgba(29,78,216,0.06) 100%)',
+  hero:      'linear-gradient(135deg, #071524 0%, #112040 50%, #071524 100%)',
+  heroText:  'linear-gradient(90deg, #60a5fa 0%, #2563eb 100%)',
+  card:      'linear-gradient(135deg, #112040 0%, #1e3a5f 100%)',
 };
 
 // ── Spacing / layout ──────────────────────────────────────────────────────────
@@ -128,9 +144,9 @@ export const spacing = {
 
 // ── Shadows ───────────────────────────────────────────────────────────────────
 export const shadows = {
-  brand:  '0 4px 24px 0 rgba(110, 38, 255, 0.25)',
-  accent: '0 4px 24px 0 rgba(250, 38, 174, 0.25)',
-  card:   '0 2px 12px 0 rgba(110, 38, 255, 0.08)',
+  brand:  '0 4px 24px 0 rgba(37, 99, 235, 0.25)',
+  accent: '0 4px 24px 0 rgba(217, 119, 6, 0.25)',
+  card:   '0 2px 12px 0 rgba(37, 99, 235, 0.08)',
   sm:     '0 1px 4px 0 rgba(0,0,0,0.08)',
 };
 
@@ -144,10 +160,18 @@ export const radii = {
 
 // ── Component style guidance ──────────────────────────────────────────────────
 /**
+ * Color hierarchy
+ *   brand-600  (#2563eb) — primary actions, links, active nav, selected states — BLUE DOMINATES
+ *   green-600  (#16a34a) — success states, secondary CTAs, supporting badge accents
+ *   accent-500 (#d97706) — highlights, "popular" labels, premium badges — USE SPARINGLY
+ *   emerald    — confirmed / success states
+ *   amber      — pending / warning states
+ *   red        — error / cancelled states
+ *
  * Buttons
  *   btn-primary   → solid brand-600 fill. Use for primary CTA actions.
- *   btn-gradient  → brand→accent gradient. Use for hero CTA, featured actions.
- *   btn-accent    → solid accent-500 fill. Use sparingly for secondary emphasis.
+ *   btn-gradient  → brand blue gradient. Use for hero CTA, featured actions.
+ *   btn-accent    → solid accent-500 fill (gold). Use sparingly for special emphasis.
  *   btn-secondary → outlined brand variant. Use for secondary actions beside a primary.
  *   btn-ghost     → transparent with hover. Use in navbars and inline actions.
  *
@@ -157,25 +181,19 @@ export const radii = {
  *   card-gradient → soft brand-gradient background. Use for feature highlight sections.
  *
  * Sections / page backgrounds
- *   white / dark bg-[#0e0a1f]   → default page background
- *   section-muted (#f8f7ff / #130d2e) → alternate sections for visual rhythm
- *   hero section: use bg-hero-gradient (dark purple) always, even in light mode.
+ *   white / dark bg-[#071524]  → default page background
+ *   section-muted (#f0f7ff / #0d1f3c) → alternate sections for visual rhythm
+ *   hero section: use bg-hero-gradient (dark navy) always, even in light mode.
  *
  * Brand gradient usage
  *   Use on: hero backgrounds, large CTA banners, section dividers, gradient text headings.
  *   Avoid: body text, small labels, table rows — restraint makes it impactful.
- *
- * Color hierarchy
- *   brand-600  (#6e26ff) — primary actions, links, active nav, selected states
- *   accent-500 (#fa26ae) — highlights, badges, "new" / "popular" labels, gradient accent
- *   emerald    — confirmed / success states
- *   amber      — pending / warning states
- *   red        — error / cancelled states
  */
 export const guidance = {
   buttons: {
     primaryAction:   'btn-primary',
     heroCTA:         'btn-gradient',
+    positiveAction:  'btn-green',
     secondaryAction: 'btn-secondary',
     ghostAction:     'btn-ghost',
   },
@@ -185,8 +203,8 @@ export const guidance = {
     feature:     'card-gradient',
   },
   sectionBg: {
-    default: 'bg-white dark:bg-[#0e0a1f]',
-    muted:   'bg-[#f8f7ff] dark:bg-[#130d2e]',
+    default: 'bg-white dark:bg-[#071524]',
+    muted:   'bg-[#f0f7ff] dark:bg-[#0d1f3c]',
     hero:    'bg-hero-gradient',
   },
 };

@@ -46,11 +46,11 @@ function BookingStatusBadge({ status, t }) {
 function TimeseriesLineChart({ title, data, dataKey, color, formatY, empty }) {
   const { theme } = useTheme();
   const dark = theme === 'dark';
-  const gridColor     = dark ? '#2d1a5e' : '#e8e3ff';
-  const axisColor     = dark ? '#7c6fa0' : '#9a8ec0';
-  const tooltipBg     = dark ? '#1a1035' : '#ffffff';
-  const tooltipBorder = dark ? '#2d1a5e' : '#e8e3ff';
-  const tooltipText   = dark ? '#e2d9f3' : '#1e1040';
+  const gridColor     = dark ? '#1e3a5f' : '#dbeafe';
+  const axisColor     = dark ? '#94a3b8' : '#64748b';
+  const tooltipBg     = dark ? '#112040' : '#ffffff';
+  const tooltipBorder = dark ? '#1e3a5f' : '#dbeafe';
+  const tooltipText   = dark ? '#e2e8f0' : '#1e293b';
 
   const allZero = data.length > 0 && data.every(d => !d[dataKey]);
   const showEmpty = allZero || data.length === 0;
@@ -247,7 +247,7 @@ export default function AdminDashboard() {
                 title={t('adminBookingsOverTime')}
                 data={bookingsChartData}
                 dataKey="value"
-                color="#6e26ff"
+                color="#2563eb"
                 empty={loadingTs ? '…' : tsError ? t('adminChartError') : t('adminChartNoRecentData')}
               />
               <TimeseriesLineChart
@@ -267,7 +267,7 @@ export default function AdminDashboard() {
               <DashboardChart
                 title={t('adminStatusDistribution')}
                 data={statusChartData}
-                colors={['#10b981', '#f59e0b', '#ef4444', '#6e26ff']}
+                colors={['#10b981', '#f59e0b', '#ef4444', '#2563eb']}
                 height={200}
                 empty={t('adminEmptyState')}
               />
