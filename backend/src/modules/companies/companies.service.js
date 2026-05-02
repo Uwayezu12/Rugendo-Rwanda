@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client';
 import prisma from '../../lib/prisma.js';
+import { createNotification } from '../notifications/notifications.service.js';
 
 const companySelect = {
   id: true,
@@ -236,6 +237,25 @@ export async function updateCompanyStatus(id, isActive) {
       data: { isActive },
       select: companySelect,
     });
+
+    const companyAdmins = await prisma.user.findMany({
+      where: { companyId: id, role: 'COMPANY_ADMIN' },
+      select: { id: true },
+    });
+    const statusText = isActive ? 'activated' : 'deactivated';
+    await Promise.all(
+      companyAdmins.map((admin) =>
+        createNotification({
+          userId: admin.id,
+          title: 'Company Status Changed',
+          message: `Your company ${updated.name} has been ${statusText}.`,
+          type: 'COMPANY',
+          priority: 'URGENT',
+          actionUrl: '/company-admin',
+          metadata: { companyId: id },
+        })
+      )
+    );
 
     return withScheduleMetrics(updated);
   } catch (err) {

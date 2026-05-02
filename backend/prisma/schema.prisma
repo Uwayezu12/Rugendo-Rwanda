@@ -50,6 +50,30 @@ enum ScheduleStatus {
   CANCELLED
 }
 
+enum NotificationType {
+  BOOKING
+  PAYMENT
+  SCHEDULE
+  BOARDING
+  ACCOUNT
+  COMPANY
+  SYSTEM
+  SECURITY
+}
+
+enum NotificationPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+enum NotificationStatus {
+  UNREAD
+  READ
+  ARCHIVED
+}
+
 // ─── Models ──────────────────────────────────────────────────────────────────
 
 model User {
@@ -77,6 +101,7 @@ model User {
   bookings           Booking[]
   validatedBoardings Booking[]      @relation("BoardingValidator")
   refreshTokens      RefreshToken[]
+  notifications      Notification[]
   company            Company?       @relation(fields: [companyId], references: [id])
 
   @@index([companyId])
@@ -253,4 +278,27 @@ model PlatformSetting {
   updatedAt DateTime @updatedAt
 
   @@map("platform_settings")
+}
+
+model Notification {
+  id       Int                  @id @default(autoincrement())
+  userId   Int
+  user     User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  title     String
+  message   String               @db.Text
+  type      NotificationType
+  priority  NotificationPriority @default(NORMAL)
+  status    NotificationStatus   @default(UNREAD)
+
+  actionUrl String?
+  metadata  Json?
+
+  readAt    DateTime?
+  createdAt DateTime             @default(now())
+  updatedAt DateTime             @updatedAt
+
+  @@index([userId, status])
+  @@index([userId, createdAt])
+  @@map("notifications")
 }

@@ -1,6 +1,7 @@
 import crypto from 'crypto';
 import { OAuth2Client } from 'google-auth-library';
 import prisma from '../../lib/prisma.js';
+import { createNotification } from '../notifications/notifications.service.js';
 import { hashPassword, comparePassword } from '../../utils/bcrypt.utils.js';
 import { signAccessToken, signRefreshToken, verifyRefreshToken } from '../../utils/jwt.utils.js';
 import { env } from '../../config/env.js';
@@ -199,6 +200,15 @@ export async function resetPassword({ token, password }) {
       passwordResetToken:     null,
       passwordResetExpiresAt: null,
     },
+  });
+
+  await createNotification({
+    userId: user.id,
+    title: 'Password Changed',
+    message: 'Your password was successfully reset.',
+    type: 'SECURITY',
+    priority: 'HIGH',
+    actionUrl: '/',
   });
 }
 

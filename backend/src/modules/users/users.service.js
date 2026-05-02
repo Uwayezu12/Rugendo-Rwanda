@@ -1,4 +1,5 @@
 import prisma from '../../lib/prisma.js';
+import { createNotification } from '../notifications/notifications.service.js';
 
 const safeSelect = {
   id: true, name: true, email: true, phone: true,
@@ -63,7 +64,18 @@ export async function updateUser(id, { name, email, phone }) {
   if (email !== undefined) data.email = cleanEmail;
   if (phone !== undefined) data.phone = cleanPhone;
 
-  return prisma.user.update({ where: { id }, data, select: safeSelect });
+  const updated = await prisma.user.update({ where: { id }, data, select: safeSelect });
+
+  await createNotification({
+    userId: id,
+    title: 'Profile Updated',
+    message: 'Your profile information has been updated.',
+    type: 'ACCOUNT',
+    priority: 'LOW',
+    actionUrl: '/',
+  });
+
+  return updated;
 }
 
 // ── Super-admin: user management ─────────────────────────────────────────────

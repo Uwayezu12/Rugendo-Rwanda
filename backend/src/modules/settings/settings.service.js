@@ -1,4 +1,5 @@
 import prisma from '../../lib/prisma.js';
+import { createNotification } from '../notifications/notifications.service.js';
 
 export const ALLOWED_SETTINGS_KEYS = [
   'default_language',
@@ -62,6 +63,24 @@ export async function upsertSetting(key, value) {
       update: { value: String(value) },
       create: { key, value: String(value) },
     });
+
+    const superAdmins = await prisma.user.findMany({
+      where: { role: 'SUPER_ADMIN' },
+      select: { id: true },
+    });
+    await Promise.all(
+      superAdmins.map((admin) =>
+        createNotification({
+          userId: admin.id,
+          title: 'Platform Settings Updated',
+          message: `Setting "${key}" was updated.`,
+          type: 'SYSTEM',
+          priority: 'NORMAL',
+          actionUrl: '/super-admin/settings',
+          metadata: { key },
+        })
+      )
+    );
 
     return row;
   } catch (err) {
