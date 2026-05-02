@@ -206,6 +206,33 @@ export default function HomePage() {
   const { t } = useLanguage();
   const bookTripPath = user ? '/routes' : '/register';
 
+  const [liveStats, setLiveStats] = useState(null);
+  const [statsLoading, setStatsLoading] = useState(true);
+
+  useEffect(() => {
+    let ignore = false;
+    api.get('/public/stats')
+      .then(({ data: res }) => {
+        if (ignore) return;
+        if (res && res.success && res.data) {
+          setLiveStats(res.data);
+        } else {
+          setLiveStats({});
+        }
+      })
+      .catch((err) => {
+        if (ignore) return;
+        if (process.env.NODE_ENV !== 'production') {
+          console.warn('[HomePage] /public/stats failed:', err?.response?.status, err?.message);
+        }
+        setLiveStats({});
+      })
+      .finally(() => {
+        if (!ignore) setStatsLoading(false);
+      });
+    return () => { ignore = true; };
+  }, []);
+
   const STEPS = [
     { step: '01', title: t('homeStep1Title'), desc: t('homeStep1Desc'), icon: '🔍' },
     { step: '02', title: t('homeStep2Title'), desc: t('homeStep2Desc'), icon: '🗓️' },
@@ -219,11 +246,17 @@ export default function HomePage() {
     { title: t('homeBenefit4Title'), desc: t('homeBenefit4Desc'), icon: '📋' },
   ];
 
+  const fmt = (n) => {
+    if (statsLoading) return '—';
+    const num = typeof n === 'number' ? n : 0;
+    return `${num}+`;
+  };
+
   const STATS = [
-    { value: '50+',  label: t('homeStatRoutes')     },
-    { value: '200+', label: t('homeStatDepartures') },
-    { value: '15+',  label: t('homeStatCities')     },
-    { value: '98%',  label: t('homeStatOnTime')     },
+    { value: fmt(liveStats?.activeRoutes),    label: t('homeStatRoutes')     },
+    { value: fmt(liveStats?.todayDepartures), label: t('homeStatDepartures') },
+    { value: fmt(liveStats?.connectedCities), label: t('homeStatCities')     },
+    { value: fmt(liveStats?.activeCompanies), label: t('homeStatCompanies')  },
   ];
 
   const TRUST_ITEMS = [
@@ -338,7 +371,9 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {STATS.map((s) => (
               <div key={s.label}>
-                <p className="text-3xl font-extrabold text-brand-600 dark:text-brand-400">{s.value}</p>
+                <p className="text-3xl font-extrabold text-brand-600 dark:text-brand-400">
+                  {s.value}
+                </p>
                 <p className="text-sm text-gray-500 dark:text-slate-400 mt-1">{s.label}</p>
               </div>
             ))}

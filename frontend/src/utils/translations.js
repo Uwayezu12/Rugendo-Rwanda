@@ -1114,7 +1114,7 @@ export const translations = {
     homeStatRoutes: "Routes across Rwanda",
     homeStatDepartures: "Daily departures",
     homeStatCities: "Cities connected",
-    homeStatOnTime: "On-time departure rate",
+    homeStatCompanies: "Trusted bus operators",
     homeStepsBadge: "Simple process",
     homeStepsTitle: "Book in three steps",
     homeStepsSubtitle:
@@ -2619,7 +2619,7 @@ export const translations = {
     homeStatRoutes: "Inzira mu Rwanda hose",
     homeStatDepartures: "Imihaguruke ya buri munsi",
     homeStatCities: "Imijyi ihuzwa",
-    homeStatOnTime: "Igipimo cy'imihaguruke ku gihe",
+    homeStatCompanies: "Ibigo by'amagari zizewe",
     homeStepsBadge: "Inzira yoroshye",
     homeStepsTitle: "Buka mu ntera eshatu",
     homeStepsSubtitle:
@@ -4153,7 +4153,7 @@ export const translations = {
     homeStatRoutes: "Trajets dans tout le Rwanda",
     homeStatDepartures: "Départs quotidiens",
     homeStatCities: "Villes connectées",
-    homeStatOnTime: "Taux de départ à l'heure",
+    homeStatCompanies: "Opérateurs de bus de confiance",
     homeStepsBadge: "Processus simple",
     homeStepsTitle: "Réservez en trois étapes",
     homeStepsSubtitle:
@@ -5650,7 +5650,7 @@ export const translations = {
     homeStatRoutes: "Njia kote Rwanda",
     homeStatDepartures: "Kuondoka kila siku",
     homeStatCities: "Miji iliyounganishwa",
-    homeStatOnTime: "Kiwango cha kuondoka kwa wakati",
+    homeStatCompanies: "Waendeshaji wa mabasi wanaoaminika",
     homeStepsBadge: "Mchakato rahisi",
     homeStepsTitle: "Hifadhi kwa hatua tatu",
     homeStepsSubtitle:
