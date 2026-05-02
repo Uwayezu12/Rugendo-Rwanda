@@ -79,13 +79,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 shrink-0">
-          <img src="/logo.png" alt="Rugendo Rwanda" className="h-8 w-auto object-contain" />
-          <span
-            className="text-xl font-extrabold bg-clip-text text-transparent"
-            style={{ backgroundImage: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)' }}
-          >
-            Rugendo Rwanda
-          </span>
+          <img src="/logo.png" alt="Rugendo Rwanda logo" className="h-12 md:h-14 w-auto object-contain" />
         </Link>
 
         {/* Desktop nav links */}
