@@ -21,6 +21,7 @@ import settingsRoutes from "./modules/settings/settings.routes.js";
 import companyRoutes from "./modules/companies/companies.routes.js";
 import companyAdminRoutes from "./modules/companyAdmin/companyAdmin.routes.js";
 import notificationRoutes from "./modules/notifications/notifications.routes.js";
+import publicRoutes from "./modules/public/public.routes.js";
 
 // Middleware imports
 import { notFoundHandler } from "./middlewares/notFound.middleware.js";
@@ -59,6 +60,7 @@ app.use("/api/settings", settingsRoutes);
 app.use("/api/companies", companyRoutes);
 app.use("/api/company-admin", companyAdminRoutes);
 app.use("/api/notifications", notificationRoutes);
+app.use("/api/public", publicRoutes);
 
 // ── Error handling (must be last) ────────────────────────────────────────────
 app.use(notFoundHandler);
