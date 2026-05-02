@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Sidebar from '../components/common/Sidebar.jsx';
+import NotificationBell from '../components/common/NotificationBell.jsx';
 import { useLanguage } from '../contexts/LanguageContext.jsx';
 import { useTheme } from '../contexts/ThemeContext.jsx';
 
@@ -59,8 +60,9 @@ export default function PassengerLayout() {
             <p className="text-xs text-gray-500 dark:text-slate-400">{t('navDashboard')}</p>
           </div>
 
-          {/* Right: language + theme (always visible) */}
+          {/* Right: notifications + language + theme (always visible) */}
           <div className="ml-auto flex items-center gap-2">
+            <NotificationBell />
             <select
               value={language}
               onChange={(e) => changeLanguage(e.target.value)}

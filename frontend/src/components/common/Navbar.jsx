@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../contexts/ThemeContext.jsx';
 import { useLanguage } from '../../contexts/LanguageContext.jsx';
 import { useAuth } from '../../contexts/AuthContext.jsx';
+import NotificationBell from './NotificationBell.jsx';
 
 const NAV_LINK_KEYS = [
   { to: '/',             key: 'navHome',        end: true },
@@ -118,6 +119,13 @@ export default function Navbar() {
             {theme === 'dark' ? '☀️' : '🌙'}
           </button>
 
+          {/* Notification bell — logged-in users only */}
+          {user && (
+            <div className="hidden sm:block">
+              <NotificationBell />
+            </div>
+          )}
+
           {/* Auth controls */}
           {user ? (
             <div className="hidden sm:block relative" ref={avatarRef}>
@@ -214,6 +222,9 @@ export default function Navbar() {
             {user ? (
               <>
                 <div className="px-3 py-2 text-sm text-gray-700 dark:text-slate-200 font-semibold">{user.name}</div>
+                <div className="px-3 py-1">
+                  <NotificationBell />
+                </div>
                 <Link
                   to={profilePath}
                   onClick={() => setMenuOpen(false)}

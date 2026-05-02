@@ -317,6 +317,36 @@ Format: `## N. Title` → `**Decision:**` → `**Why:**` → `**Date:**`
 
 ---
 
+## 32. In-App Notifications: Database-Backed Only (MVP)
+
+**Decision:** The first version of notifications is database-backed (MySQL via Prisma) with a REST polling model. No WebSockets, email, SMS, or push notifications in this phase.
+
+**Why:** WebSockets add infrastructure complexity (connection management, reconnection, scaling). A simple DB + polling approach is reliable, easy to reason about, and sufficient for MVP usage patterns. WebSockets can be layered on later if real-time delivery becomes a hard requirement.
+
+**Date:** 2026-05-02
+
+---
+
+## 33. Notification Ownership Enforced in Service Layer (Not Route Middleware)
+
+**Decision:** Notification endpoints have no role restriction at the route level. All authenticated users share the same endpoints. Ownership (userId match) is enforced inside the service functions `markAsRead` and `archiveNotification`.
+
+**Why:** All five roles share the same notification model and actions. A role guard at the route level would require duplicating routes per role with no benefit. Service-layer ownership enforcement is consistent with how bookings and boarding already work.
+
+**Date:** 2026-05-02
+
+---
+
+## 34. Notification Creation Failures Are Silent
+
+**Decision:** `createNotification()` wraps its Prisma call in try/catch and returns `null` on failure. It never re-throws to the caller.
+
+**Why:** Notifications are supplementary to the core business action (booking, payment, boarding, etc.). A notification write failure must never roll back or block the primary action. Callers must not wrap `createNotification` in their own transaction.
+
+**Date:** 2026-05-02
+
+---
+
 ## 33. Boarding Lookup: Token/Reference Only [SUPERSEDED by #34]
 
 **Decision:** `GET /api/boarding/lookup` accepts only a booking reference (`RW-XXXXXXXX` format). Phone and email lookup were removed. The query is validated against the reference regex before the service is called. The endpoint returns an array of 0 or 1 booking.
@@ -571,6 +601,18 @@ Blue dominates. Green supports. Gold is sparing. Raw flag-color tones are avoide
 **Why:** The previous purple/magenta palette had no meaningful connection to the platform's Rwanda context. A premium blue/green/gold palette reads as modern and trustworthy while referencing Rwanda's visual culture without being literal or garish. Gold accents convey premium quality for a paid booking service.
 
 **Date:** 2026-04-29
+
+---
+
+## 59. Company-Side Booking Notifications: Two Events, Two Distinct Messages
+
+**Decision:** Company-side staff (COMPANY_ADMIN + OPERATOR) receive two separate booking notifications:
+1. **"New Pending Booking"** (BOOKING / HIGH) — fired immediately when a passenger creates a booking. Uses wording "seats requested" and "projected remaining if paid" because `seatsAvailable` is NOT decremented at booking creation; seats are only held after payment.
+2. **"Booking Confirmed"** (BOOKING / HIGH) — fired after the payment transaction succeeds and `seatsAvailable` is atomically decremented. Uses "remaining seats" which reflects the true post-decrement count, calculated as `originalSchedule.seatsAvailable - seatsBooked`.
+
+**Why:** Using the word "remaining seats" on a PENDING booking would be misleading — the seat is not actually reserved until payment. Sending only one notification (on payment) would mean staff miss the heads-up about booking intent. Two events give staff actionable information at each stage.
+
+**Date:** 2026-05-02
 
 ---
 

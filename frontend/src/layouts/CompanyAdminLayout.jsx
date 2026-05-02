@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
+import NotificationBell from '../components/common/NotificationBell.jsx';
 import { useLanguage } from '../contexts/LanguageContext.jsx';
 import { useTheme } from '../contexts/ThemeContext.jsx';
 import { useAuth } from '../contexts/AuthContext.jsx';
@@ -134,6 +135,7 @@ export default function CompanyAdminLayout() {
           </div>
 
           <div className="ml-auto flex items-center gap-2">
+            <NotificationBell />
             <select value={language} onChange={(e) => changeLanguage(e.target.value)} className="text-xs bg-transparent border border-gray-200 dark:border-slate-600 rounded-lg px-2 py-1.5 text-gray-600 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-brand-500 cursor-pointer" aria-label={t('languageSelectLabel')}>
               {SUPPORTED_LANGUAGES.map((lang) => (
                 <option key={lang.code} value={lang.code}>{lang.label}</option>
