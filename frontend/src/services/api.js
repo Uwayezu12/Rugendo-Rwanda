@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: API_BASE_URL,
   withCredentials: true, // send refresh token cookie
   headers: {
     'Content-Type': 'application/json',
@@ -26,7 +28,7 @@ api.interceptors.response.use(
       original._retry = true;
       try {
         const refreshToken = localStorage.getItem('rugendo-refresh-token');
-        const { data } = await axios.post('/api/auth/refresh', { refreshToken }, { withCredentials: true });
+        const { data } = await axios.post(`${API_BASE_URL}/auth/refresh`, { refreshToken }, { withCredentials: true });
         const newAccess = data.data?.accessToken || data.accessToken;
         const newRefresh = data.data?.refreshToken || data.refreshToken;
         localStorage.setItem('rugendo-access-token', newAccess);
