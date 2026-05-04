@@ -256,7 +256,7 @@ export const translations = {
     paymentAmountDue: "Amount due",
     paymentSimulated: "Simulated payment — no real money will be charged.",
     paymentProcessing: "Processing…",
-    paymentPayBtn: "Pay RWF {amount}",
+    paymentPayBtn: "Pay RWF {amount} (MVP simulated payment)",
     paymentSimFail: "Simulate payment failure (dev)",
     paymentBack: "← Back to booking summary",
     paymentNoBooking: "No booking found",
@@ -463,22 +463,27 @@ export const translations = {
     companyAdminSidebarRevenue: "Revenue",
     companyAdminSidebarProfile: "Company Profile",
     companyAdminDashboardTitle: "Company Dashboard",
-    companyAdminDashboardSubtitle: "Your company's operations, bookings, fleet, and revenue.",
+    companyAdminDashboardSubtitle:
+      "Your company's operations, bookings, fleet, and revenue.",
     companyAdminCreateSchedule: "Create schedule",
-    companyAdminLoadError: "Could not load company admin data. Please try again.",
+    companyAdminLoadError:
+      "Could not load company admin data. Please try again.",
     companyAdminKpiTodayTrips: "Today's trips",
     companyAdminKpiUpcoming: "Upcoming schedules",
     companyAdminKpiCompletedTrips: "Completed trips",
     companyAdminKpiActiveDrivers: "Active drivers",
     companyAdminUpcomingSchedules: "Upcoming schedules",
     companyAdminBookingsTitle: "Company Bookings",
-    companyAdminBookingsSubtitle: "Bookings attached to your company's schedules only.",
+    companyAdminBookingsSubtitle:
+      "Bookings attached to your company's schedules only.",
     companyAdminSearchReference: "Search booking reference",
     companyAdminCancelBooking: "Cancel booking",
     companyAdminBookingCancelled: "Booking cancelled.",
     companyAdminSchedulesTitle: "Company Schedules",
-    companyAdminSchedulesSubtitle: "Create and manage schedules using official routes and fares.",
-    companyAdminScheduleFareHint: "Schedule price is set from the official route fare.",
+    companyAdminSchedulesSubtitle:
+      "Create and manage schedules using official routes and fares.",
+    companyAdminScheduleFareHint:
+      "Schedule price is set from the official route fare.",
     companyAdminFormRequired: "Complete all required fields.",
     companyAdminSelectRouteForFare: "Select a route to view fare",
     companyAdminSaved: "Changes saved.",
@@ -487,11 +492,13 @@ export const translations = {
     companyAdminDriversTitle: "Drivers",
     companyAdminDriversSubtitle: "Manage your company's driver records.",
     companyAdminOperatorsTitle: "Operators",
-    companyAdminOperatorsSubtitle: "Manage boarding-only operator accounts for your company.",
+    companyAdminOperatorsSubtitle:
+      "Manage boarding-only operator accounts for your company.",
     companyAdminEditOperator: "Edit operator",
     companyAdminOperatorUpdateError: "Could not update operator.",
     companyAdminRevenueTitle: "Revenue",
-    companyAdminRevenueSubtitle: "Company-scoped payment and booking revenue summary.",
+    companyAdminRevenueSubtitle:
+      "Company-scoped payment and booking revenue summary.",
     companyAdminCount: "Count",
     companyAdminTotalRevenue: "Total revenue",
     companyAdminTodayRevenue: "Today's revenue",
@@ -1527,10 +1534,10 @@ export const translations = {
     navOrRegister: "cyangwa iyandikishe ukoresheje imeyili / telefone",
 
     sidebarDashboard: "Amakuru",
-    sidebarBookABus: "Buka Bisi",
+    sidebarBookABus: "Bika Bisi",
     sidebarMyBookings: "Amatike Yanjye",
     sidebarSchedules: "Gahunda",
-    sidebarBuses: "Amamodoka",
+    sidebarBuses: "Imodoka",
     sidebarDrivers: "Abashoferi",
     sidebarRoutes: "Inzira",
     sidebarBookings: "Amatike",
@@ -1613,7 +1620,7 @@ export const translations = {
     authPanelFallbackNote:
       "Ushobora gukomeza kwinjira cyangwa kwiyandikisha mu gihe incamake ya porogaramu irimo kongera kwikurura.",
     authPanelCopyright: "© 2026 Rugendo Rwanda. Uburenganzira bwose bwabitswe.",
-    authMobileSubtitle: "Kubika ibisi ry'imujyi",
+    authMobileSubtitle: "Kubika bisi ry'imujyi",
 
     loginTitle: "Injira",
     loginSubtitle: "Murakaza neza. Andika amakuru yawe gukomeza.",
@@ -1753,7 +1760,7 @@ export const translations = {
     paymentAmountDue: "Amafaranga akwiye",
     paymentSimulated: "Kwishyura gupimisha — nta mafaranga nyayo azakurwa.",
     paymentProcessing: "Birimo guchakatwa…",
-    paymentPayBtn: "Ishyura RWF {amount}",
+    paymentPayBtn: "Ishyura RWF {amount} (ubwishyu bugeragezwa bwa MVP)",
     paymentSimFail: "Gupimisha gushindwa kwishyura (dev)",
     paymentBack: "← Garuka ku ncamake y'itike",
     paymentNoBooking: "Nta tike ibonetse",
@@ -1955,22 +1962,27 @@ export const translations = {
     companyAdminSidebarRevenue: "Amafaranga yinjiye",
     companyAdminSidebarProfile: "Umwirondoro w'ikigo",
     companyAdminDashboardTitle: "Dashibodi y'ikigo",
-    companyAdminDashboardSubtitle: "Ibikorwa, amatike, pariki n'amafaranga by'ikigo cyawe.",
+    companyAdminDashboardSubtitle:
+      "Ibikorwa, amatike, pariki n'amafaranga by'ikigo cyawe.",
     companyAdminCreateSchedule: "Kora urugendo",
-    companyAdminLoadError: "Ntibyashobotse gufungura amakuru y'umuyobozi w'ikigo. Ongera ugerageze.",
+    companyAdminLoadError:
+      "Ntibyashobotse gufungura amakuru y'umuyobozi w'ikigo. Ongera ugerageze.",
     companyAdminKpiTodayTrips: "Ingendo z'uyu munsi",
     companyAdminKpiUpcoming: "Ingendo ziteganyijwe",
     companyAdminKpiCompletedTrips: "Ingendo zarangiye",
     companyAdminKpiActiveDrivers: "Abashoferi bakora",
     companyAdminUpcomingSchedules: "Ingendo ziteganyijwe",
     companyAdminBookingsTitle: "Amatike y'ikigo",
-    companyAdminBookingsSubtitle: "Amatike ajyanye gusa n'ingendo z'ikigo cyawe.",
+    companyAdminBookingsSubtitle:
+      "Amatike ajyanye gusa n'ingendo z'ikigo cyawe.",
     companyAdminSearchReference: "Shaka nimero y'itike",
     companyAdminCancelBooking: "Hagarika itike",
     companyAdminBookingCancelled: "Itike yahagaritswe.",
     companyAdminSchedulesTitle: "Ingendo z'ikigo",
-    companyAdminSchedulesSubtitle: "Kora kandi ucunge ingendo ukoresheje imihanda n'ibiciro byemewe.",
-    companyAdminScheduleFareHint: "Igiciro cy'urugendo gituruka ku giciro cyemewe cy'umuhanda.",
+    companyAdminSchedulesSubtitle:
+      "Kora kandi ucunge ingendo ukoresheje imihanda n'ibiciro byemewe.",
+    companyAdminScheduleFareHint:
+      "Igiciro cy'urugendo gituruka ku giciro cyemewe cy'umuhanda.",
     companyAdminFormRequired: "Uzuza ahasabwa hose.",
     companyAdminSelectRouteForFare: "Hitamo umuhanda urebe igiciro",
     companyAdminSaved: "Impinduka zabitswe.",
@@ -1979,11 +1991,13 @@ export const translations = {
     companyAdminDriversTitle: "Abashoferi",
     companyAdminDriversSubtitle: "Cunga amakuru y'abashoferi b'ikigo cyawe.",
     companyAdminOperatorsTitle: "Abagenzura kwinjira",
-    companyAdminOperatorsSubtitle: "Cunga konti z'abagenzura kwinjira gusa mu kigo cyawe.",
+    companyAdminOperatorsSubtitle:
+      "Cunga konti z'abagenzura kwinjira gusa mu kigo cyawe.",
     companyAdminEditOperator: "Hindura umukozi",
     companyAdminOperatorUpdateError: "Ntibyashobotse kuvugurura umukozi.",
     companyAdminRevenueTitle: "Amafaranga yinjiye",
-    companyAdminRevenueSubtitle: "Incamake y'amafaranga n'amatike by'ikigo cyawe.",
+    companyAdminRevenueSubtitle:
+      "Incamake y'amafaranga n'amatike by'ikigo cyawe.",
     companyAdminCount: "Umubare",
     companyAdminTotalRevenue: "Amafaranga yose",
     companyAdminTodayRevenue: "Ay'uyu munsi",
@@ -2165,14 +2179,14 @@ export const translations = {
 
     manageCompaniesTitle: "Gucunga Sosiyete",
     manageCompaniesSubtitle:
-      "Reba, andika, hindura, kandi ucunge amakuru ya sosiyete z'ibisi.",
+      "Reba, andika, hindura, kandi ucunge amakuru ya sosiyete z'bisi.",
     manageCompaniesSearch:
       "Shakisha izina rya sosiyete cyangwa nimero y'uruhushya…",
     manageCompaniesAllStatuses: "Imiterere yose",
     manageCompaniesCreateButton: "Andika sosiyete",
     manageCompaniesCreateTitle: "Andika sosiyete",
     manageCompaniesCreateSubtitle:
-      "Ongeramo amakuru mashya ya sosiyete y'ibisi ku rwego rwa porogaramu.",
+      "Ongeramo amakuru mashya ya sosiyete y'bisi ku rwego rwa porogaramu.",
     manageCompaniesCreateSubmit: "Andika sosiyete",
     manageCompaniesCreating: "Birimo gukora…",
     manageCompaniesCreateSuccess: "Sosiyete yanditswe neza.",
@@ -2210,7 +2224,7 @@ export const translations = {
     manageCompaniesActivated: "Sosiyete yongeye gufungurwa neza.",
     manageCompaniesDeactivated: "Sosiyete yahagaritswe neza.",
     manageCompaniesLinkedOperators: "Abakoresha",
-    manageCompaniesLinkedBuses: "Ibisi",
+    manageCompaniesLinkedBuses: "bisi",
     manageCompaniesLinkedDrivers: "Abashoferi",
     manageCompaniesLinkedSchedules: "Gahunda",
 
@@ -2573,7 +2587,7 @@ export const translations = {
     searchTripsTravelDate: "Italiki y'ingendo",
     searchTripsDateHint: "Ni uyu munsi niba utahinduye.",
     searchTripsBrowseRoutes: "Reba inzira zose",
-    searchTripsSearchBtn: "Shakisha ibisi",
+    searchTripsSearchBtn: "Shakisha bisi",
     searchTripsPopularRoutes: "Inzira zikunzwe — kanda kuzuzwa:",
 
     // ── Search Results ────────────────────────────────────────────────────────
@@ -2582,12 +2596,12 @@ export const translations = {
     searchResultsPassengers: "Abagenzi {n}",
     searchResultsTripsFound: "Ingendo {n} zabonetse",
     searchResultsTripFound: "Ingendo 1 yabonetse",
-    searchResultsSearching: "Ibisi zihari zirashakishwa…",
+    searchResultsSearching: "bisi zihari zirashakishwa…",
     searchResultsError: "Hari ikitagenze neza",
     searchResultsTryAgain: "Gerageza nanone",
     searchResultsEnterSearch: "Andika shakisha ryawe",
     searchResultsChooseOriginDest:
-      "Nyamuneka hitamo aho uvuye n'aho ujya gushakisha ibisi.",
+      "Nyamuneka hitamo aho uvuye n'aho ujya gushakisha bisi.",
     searchResultsSortBy: "Shyira mu murongo:",
     searchResultsSortDeparture: "Igihe cyo guhaguruka",
     searchResultsSortPrice: "Igiciro",
@@ -2608,22 +2622,21 @@ export const translations = {
       "Urubuga rwa kijyambere rwo kubika amatike ya bisi mu Rwanda",
     homeHeroTitle: "Ngenda mu Rwanda",
     homeHeroHighlight: "nziza, yoroshye,",
-    homeHeroTitleEnd: "zizekanye.",
-    homeHeroSubtitle:
-      "Shakisha gahunda za bisi hagati y'imijyi, bika intebe yawe kuri interineti, ubone itike disitatali — byose mu munota 2.",
-    homeBookTrip: "Buka ingendo",
+    homeHeroTitleEnd: "yizewe.",
+    homeHeroSubtitle: "Genda mu Rwanda byihuse hose, byoroshye kandi byizewe.",
+    homeBookTrip: "Bika Urugendo",
     homeHowItWorks: "Uko bikorwa",
-    homeTrustSecure: "Kwishyura byizekanye",
+    homeTrustSecure: "Kwishyura byizewe",
     homeTrustInstant: "Kwemeza vuba",
-    homeTrustDigital: "Kwinjira kwa disitatali",
+    homeTrustDigital: "Kwinjira mwisi ya digitali",
     homeStatRoutes: "Inzira mu Rwanda hose",
-    homeStatDepartures: "Imihaguruke ya buri munsi",
+    homeStatDepartures: "Ingendo za buri munsi",
     homeStatCities: "Imijyi ihuzwa",
-    homeStatCompanies: "Ibigo by'amagari zizewe",
+    homeStatCompanies: "Company Zitwara abantu",
     homeStepsBadge: "Inzira yoroshye",
     homeStepsTitle: "Buka mu ntera eshatu",
     homeStepsSubtitle:
-      "Ntakindi gutegereza ku kibuga cy'ibisi. Buka ukoresheje telefone mu manya make.",
+      "Ntakindi gutegereza ku kibuga cy'bisi. Buka ukoresheje telefone mu manya make.",
     homeStep1Title: "Shakisha inzira yawe",
     homeStep1Desc:
       "Andika umujyi wo guhagurukira, intego, n'itariki y'ingendo urebe gahunda zose za bisi zihari.",
@@ -2632,7 +2645,7 @@ export const translations = {
       "Geranya ingendo zihari hashingiwe ku gihe cyo guhaguruka, umukoresha, ubwoko bwa bisi, n'igiciro. Hitamo ikubobera.",
     homeStep3Title: "Ishyura ubone itike",
     homeStep3Desc:
-      "Rangiza kwishyura byizekanye. Akira nimero yihariye y'itike kuri telefone yawe — nta gutunga ikarata bikenewe.",
+      "Rangiza kwishyura byizewe. Akira nimero yihariye y'itike kuri telefone yawe — nta gutunga ikarata bikenewe.",
     homeLearnMore: "Menya byinshi ku kubika",
     homeRoutesBadge: "Inzira zikunzwe",
     homeRoutesTitle: "Ujya he?",
@@ -2646,17 +2659,17 @@ export const translations = {
     homeBenefitsTitle: "Uburyo bwiza bwo kugenda",
     homeBenefit1Title: "Buka ahantu hose",
     homeBenefit1Desc:
-      "Bika intebe yawe igihe cyose ukoresheje telefone cyangwa mudasobwa — nta gutegereza ku kibuga cy'ibisi.",
+      "Bika intebe yawe igihe cyose ukoresheje telefone cyangwa mudasobwa — nta gutegereza ku kibuga cy'bisi.",
     homeBenefit2Title: "Kwemeza vuba",
     homeBenefit2Desc:
       "Itike yawe yemezwa vuba hamwe na nimero yihariye. Injira ufite icyizere.",
     homeBenefit3Title: "Uburyo bwinshi bwo kwishyura",
     homeBenefit3Desc:
-      "Ishyura ukoresheje MTN Mobile Money, Airtel Money, cyangwa karita ya banki. Byihuse, byizekanye, kandi bishimishije.",
+      "Ishyura ukoresheje MTN Mobile Money, Airtel Money, cyangwa karita ya banki. Byihuse, byizewe, kandi bishimishije.",
     homeBenefit4Title: "Simbuza ingendo zawe",
     homeBenefit4Desc:
       "Reba, kurikirana, usimbuze amatike yawe yose ahantu hamwe. Amateka y'ingendo zawe uzabona vuba.",
-    homeTrustBadge: "Byizekanye",
+    homeTrustBadge: "byizewe",
     homeTrustTitle: "Itike yawe, amahoro yawe",
     homeTrust1:
       "Itike yose ikira nimero yihariye — erekana kuri telefone yawe mu kwinjira.",
@@ -2666,17 +2679,17 @@ export const translations = {
     homeTrust4:
       "Serivisi z'umukiriya zihari kugira ngo zigufashe ikibazo cyose cy'itike mbere y'ingendo.",
     homeTrustCard1Title: "Kwishyura bifashishije kode",
-    homeTrustCard1Sub: "Ibikorwa byose byizekanye",
+    homeTrustCard1Sub: "Ibikorwa byose byizewe",
     homeTrustCard2Title: "Kwinjira kwa disitatali",
     homeTrustCard2Sub: "Nta karata ya papuro ikenewe",
     homeTrustCard3Title: "Gahunda za igihe nyacyo",
     homeTrustCard3Sub: "Buri gihe bishyuguriwe",
     homeTrustCard4Title: "Ibanga ry'amakuru",
     homeTrustCard4Sub: "Amahame ajyanye na GDPR",
-    homeCtaTitle: "Witegure ingendo yawe ikurikira?",
+    homeCtaTitle: "Witeguye urugendo rwawe rukurikira?",
     homeCtaSubtitle:
       "Fungura konti ubuntu ubike ingendo yawe ya mbere mu manya make. Intebe zuzura vuba — ntuzabiruke.",
-    homeCtaCreate: "Fungura konti ubuntu",
+    homeCtaCreate: "Fungura konti k'ubuntu",
     homeCtaSearch: "Shakisha ingendo",
 
     // ── Routes Page ───────────────────────────────────────────────────────────
@@ -2691,7 +2704,7 @@ export const translations = {
     routesColRoute: "Inzira",
     routesColDistance: "Intera",
     routesColDuration: "Igihe",
-    routesColDepartures: "Imihaguruke ya buri munsi",
+    routesColDepartures: "Ingendo za buri munsi",
     routesColPrice: "Kuva",
     routesViewSchedules: "Reba gahunda",
     routesPopularBadge: "Zikunzwe",
@@ -2725,13 +2738,13 @@ export const translations = {
       "Kuva kubika kugeza kwinjira, byose ni disitatali. Nta karata ya papuro, nta mutarizo w'amafaranga, nta guhagararaho.",
     aboutValue3Title: "Guzerwa no gusesengura",
     aboutValue3Desc:
-      "Ibiciro bisobanutse, amatike yemejwe, no kwishyura byizekanye. Nta mishahara ihishwe, nta makeke.",
+      "Ibiciro bisobanutse, amatike yemejwe, no kwishyura byizewe. Nta mishahara ihishwe, nta makeke.",
     aboutValue4Title: "Gushyigikira abakoresha bo hano",
     aboutValue4Desc:
-      "Dukorana na sosiyete z'ibisi z'Abanyarwanda kuzifasha kugera ku bagenzi benshi no gukora neza.",
+      "Dukorana na sosiyete z'bisi z'Abanyarwanda kuzifasha kugera ku bagenzi benshi no gukora neza.",
     aboutCtaTitle: "Injira mu bagenzi ibihumbi b'Abanyarwanda",
     aboutCtaSubtitle:
-      "Buka ingendo yawe ikurikira ya mujyi kuri interineti — byihuse, byizekanye, kandi bworoshye.",
+      "Buka ingendo yawe ikurikira ya mujyi kuri interineti — byihuse, byizewe, kandi bworoshye.",
     aboutCreateAccount: "Fungura konti",
     aboutContactUs: "Twunganire",
 
@@ -2804,11 +2817,11 @@ export const translations = {
       "Vugisha itsinda ryo gufasha ufite nimero ya telefone yawe na makuru yo kwishyura. Tuzakurikirana ibikorwa no kwemeza itike yawe cyangwa gusubiza amafaranga mu masaa 24.",
     faqT1Q: "Ni iki itike y'ingendo?",
     faqT1A:
-      "Itike y'ingendo (nimero y'itike) ni kode yihariye ukira nyuma yo kubika neza. Uyerekana ku kibuga cy'ibisi kugira ngo umukoresha yemeze ibitswe.",
+      "Itike y'ingendo (nimero y'itike) ni kode yihariye ukira nyuma yo kubika neza. Uyerekana ku kibuga cy'bisi kugira ngo umukoresha yemeze ibitswe.",
     faqT2Q: "Ngomba gutunga karata?",
     faqT2A:
       "Oya. Erekana nimero y'itike kuri telefone yawe. Iboneka kuri ekrani ni byo bikenewe.",
-    faqT3Q: "Kugeza ryari ku kibuga cy'ibisi?",
+    faqT3Q: "Kugeza ryari ku kibuga cy'bisi?",
     faqT3A:
       "Twakwifuriza kugera nibura iminota 20 mbere yo guhaguruka kugira ngo kwemeza kwinjira.",
     faqC1Q: "Mbasha guhagarika itike yanjye?",
@@ -2828,7 +2841,7 @@ export const translations = {
       "Guhera ku gushaka inzira kugeza kwinjira mu bisi — dore uko inzira yo kubika ikorwa.",
     howStep1Title: "Fungura konti yawe",
     howStep1Desc:
-      "Iyandikishe ukoresheje imeyili n'nimero ya telefone. Birenda munota umwe. Konti yawe ibika ingendo zawe na makuru bwite byizekanye.",
+      "Iyandikishe ukoresheje imeyili n'nimero ya telefone. Birenda munota umwe. Konti yawe ibika ingendo zawe na makuru bwite byizewe.",
     howStep1Detail:
       "Nta tike ikenewe gufungura konti. Ushobora gushakisha no kureba gahunda utiyandikishije.",
     howStep2Title: "Shakisha inzira yawe",
@@ -2838,15 +2851,15 @@ export const translations = {
       "Ushobora gushaka inzira nka Kigali → Butare, Kigali → Musanze, Butare → Gisenyi, n'izindi nyinshi. Gahunda zihemulirizwa mu gihe nyacyo.",
     howStep3Title: "Hitamo gahunda",
     howStep3Desc:
-      "Reba ibisi zose zihari ku nzira yawe no ku itariki. Geranya igihe cyo guhaguruka, abakoresha, ubwoko bwa bisi, intebe zihari, n'igiciro.",
+      "Reba bisi zose zihari ku nzira yawe no ku itariki. Geranya igihe cyo guhaguruka, abakoresha, ubwoko bwa bisi, intebe zihari, n'igiciro.",
     howStep3Detail:
-      "Buri nyandiko yerekana ikigo cy'ibisi, ubwoko bwa bisi (isanzwe/ihuta/nziza), n'intebe zisigaye. Hitamo iyo ikubobera.",
+      "Buri nyandiko yerekana ikigo cy'bisi, ubwoko bwa bisi (isanzwe/ihuta/nziza), n'intebe zisigaye. Hitamo iyo ikubobera.",
     howStep4Title: "Hitamo intebe yawe",
     howStep4Desc:
       "Hitamo intebe ihariye ku ikarita ya bisi, cyangwa reka uburyo busimbuze intebe ikurikira ihari.",
     howStep4Detail:
       "Intebe hafi y'idirishya, inkorgo, n'imirongo hafi imbere byose bishobora guhiswamo aho bihari.",
-    howStep5Title: "Ishyura byizekanye",
+    howStep5Title: "Ishyura byizewe",
     howStep5Desc:
       "Ishyura ukoresheje MTN Mobile Money, Airtel Money, cyangwa karita ya banki. Kwishyura kwemezwa vuba.",
     howStep5Detail:
@@ -2855,7 +2868,7 @@ export const translations = {
     howStep6Desc:
       "Itike yawe yemejwe. Akira nimero yihariye y'itike kuri SMS no muri tableau de bord.",
     howStep6Detail:
-      "Erekana iri nimero ku kibuga cy'ibisi — umukoresha ayisoma cyangwa ayirebera kwemeza kwinjira. Nta gutunga ikarata bikenewe.",
+      "Erekana iri nimero ku kibuga cy'bisi — umukoresha ayisoma cyangwa ayirebera kwemeza kwinjira. Nta gutunga ikarata bikenewe.",
     howFaqTitle: "Ibibazo bikunzwe",
     howFaq1Q: "Mbasha kubika impushya y'undi muntu?",
     howFaq1A:
@@ -2863,7 +2876,7 @@ export const translations = {
     howFaq2Q: "Niba ntereye bisi?",
     howFaq2A:
       "Vugisha umukoresha vuba cyangwa itsinda ryo gufasha. Amabwiriza yo gusubiramo itike ateganywa n'umukoresha n'igihe gisigaye mbere yo guhaguruka.",
-    howFaq3Q: "Kugeza ryari ku kibuga cy'ibisi?",
+    howFaq3Q: "Kugeza ryari ku kibuga cy'bisi?",
     howFaq3A:
       "Twakwifuriza kugera nibura iminota 20 mbere yo guhaguruka kugira ngo kwemeza kwinjira.",
     howFaq4Q: "Niba bisi yatakiriwe?",
@@ -2894,7 +2907,7 @@ export const translations = {
       "Gushaka itike usabwa kwiyandikisha konti hamwe na makuru y'ukuri. Uri inzira yo kubungabunga umutekano w'ibanga rya konti yawe no gukora ibikorwa byose mu konti yawe. Tumenye vuba niba ugira amakenga y'ibintu byangwa bishinjura konti yawe.",
     termsS4Title: "4. Amatike n'ibitswe by'intebe",
     termsS4Body:
-      "Itike yemezwa gusa nyuma yo kwishyura neza. Nimero y'itike (token) ni ibimenyetso by'ibitswe byawe. Rugendo Rwanda ikorwa nk'inzira hagati y'abagenzi n'abakoresha ba bisi. Ntitukora ibisi kandi ntitwishingira imyifatire y'abakoresha cyangwa ibihe birangiye, ihagarikwa, cyangwa ibizungira mu ngendo.",
+      "Itike yemezwa gusa nyuma yo kwishyura neza. Nimero y'itike (token) ni ibimenyetso by'ibitswe byawe. Rugendo Rwanda ikorwa nk'inzira hagati y'abagenzi n'abakoresha ba bisi. Ntitukora bisi kandi ntitwishingira imyifatire y'abakoresha cyangwa ibihe birangiye, ihagarikwa, cyangwa ibizungira mu ngendo.",
     termsS5Title: "5. Kwishyura",
     termsS5Body:
       "Kwishyura byose bikorwa binyuze mu bashaka kwishyura bemewe. Ibiciro birerekana mu Amafaranga y'Urwanda (RWF). Urangiza kwishyura wemera gutyoza urubuga ku buryo bwawe bwo kwishyura wahiswemo. Rugendo Rwanda ntibika nimero nzima za karita cyangwa PIN za mobile money.",
@@ -2974,7 +2987,7 @@ export const translations = {
       "Niba umukoresha avuye gahunda, abagenzi bose bafite amatike yemejwe ku gahunda iyo bazabimenyeshwa kuri SMS no mu konti yabo. Gusubizwa amafaranga yose bikorwa vuba. Rugendo Rwanda ntishingira ku binonko biteye n'iri hagarika birenga agaciro k'itike.",
     policyS8Title: "Kwinjira",
     policyS8Body:
-      "Gera ku kibuga cy'ibisi nibura iminota 20 mbere yo guhaguruka. Erekana token y'itike (ekrani ya telefone cyangwa SMS) ku mukoresha. Gutagera ku gihe bishobora gutera gutakaza intebe yawe nta gusubizwa amafaranga.",
+      "Gera ku kibuga cy'bisi nibura iminota 20 mbere yo guhaguruka. Erekana token y'itike (ekrani ya telefone cyangwa SMS) ku mukoresha. Gutagera ku gihe bishobora gutera gutakaza intebe yawe nta gusubizwa amafaranga.",
     policyS9Title: "Imizigo",
     policyS9Body:
       "Umutwaro usanzwe w'imizigo ni igice 1 (ntarengwa kg 20) ku mugenzi umwe. Imizigo yiyongera cyangwa nini birashingira ku mabwiriza y'umukoresha ubwayo kandi bishobora gutwara ibindi binonko bishorwa vuba ku mukoresha.",
@@ -2986,7 +2999,7 @@ export const translations = {
     notifications: "Amazajyane",
     notificationBell: "Amazajyane",
     notificationMarkAllRead: "Shyiraho ko byose bisomwe",
-    notificationViewAll: "Reba amazajyane yose",
+    notificationViewAll: "Reba notification zose",
     notificationEmpty: "Nta mazajyane arahari",
     notificationNoNotifications: "Nta mazajyane arahari",
     notificationUnreadCount: "{count} itasomwe",
@@ -3260,7 +3273,7 @@ export const translations = {
     paymentAmountDue: "Montant dû",
     paymentSimulated: "Paiement simulé — aucun argent réel ne sera débité.",
     paymentProcessing: "Traitement en cours…",
-    paymentPayBtn: "Payer RWF {amount}",
+    paymentPayBtn: "Payer RWF {amount} (paiement simulé MVP)",
     paymentSimFail: "Simuler un échec de paiement (dev)",
     paymentBack: "← Retour au récapitulatif",
     paymentNoBooking: "Aucune réservation trouvée",
@@ -3477,35 +3490,44 @@ export const translations = {
     companyAdminSidebarRevenue: "Revenus",
     companyAdminSidebarProfile: "Profil de la compagnie",
     companyAdminDashboardTitle: "Tableau de bord compagnie",
-    companyAdminDashboardSubtitle: "Opérations, réservations, flotte et revenus de votre compagnie.",
+    companyAdminDashboardSubtitle:
+      "Opérations, réservations, flotte et revenus de votre compagnie.",
     companyAdminCreateSchedule: "Créer un horaire",
-    companyAdminLoadError: "Impossible de charger les données de compagnie. Veuillez réessayer.",
+    companyAdminLoadError:
+      "Impossible de charger les données de compagnie. Veuillez réessayer.",
     companyAdminKpiTodayTrips: "Trajets du jour",
     companyAdminKpiUpcoming: "Horaires à venir",
     companyAdminKpiCompletedTrips: "Trajets terminés",
     companyAdminKpiActiveDrivers: "Chauffeurs actifs",
     companyAdminUpcomingSchedules: "Horaires à venir",
     companyAdminBookingsTitle: "Réservations de la compagnie",
-    companyAdminBookingsSubtitle: "Réservations liées uniquement aux horaires de votre compagnie.",
+    companyAdminBookingsSubtitle:
+      "Réservations liées uniquement aux horaires de votre compagnie.",
     companyAdminSearchReference: "Rechercher une référence",
     companyAdminCancelBooking: "Annuler la réservation",
     companyAdminBookingCancelled: "Réservation annulée.",
     companyAdminSchedulesTitle: "Horaires de la compagnie",
-    companyAdminSchedulesSubtitle: "Créez et gérez les horaires avec les itinéraires et tarifs officiels.",
-    companyAdminScheduleFareHint: "Le prix de l'horaire vient du tarif officiel de l'itinéraire.",
+    companyAdminSchedulesSubtitle:
+      "Créez et gérez les horaires avec les itinéraires et tarifs officiels.",
+    companyAdminScheduleFareHint:
+      "Le prix de l'horaire vient du tarif officiel de l'itinéraire.",
     companyAdminFormRequired: "Complétez tous les champs obligatoires.",
-    companyAdminSelectRouteForFare: "Sélectionnez un itinéraire pour voir le tarif",
+    companyAdminSelectRouteForFare:
+      "Sélectionnez un itinéraire pour voir le tarif",
     companyAdminSaved: "Modifications enregistrées.",
     companyAdminBusesTitle: "Bus / Flotte",
     companyAdminBusesSubtitle: "Gérez les bus affectés à votre compagnie.",
     companyAdminDriversTitle: "Chauffeurs",
-    companyAdminDriversSubtitle: "Gérez les dossiers des chauffeurs de votre compagnie.",
+    companyAdminDriversSubtitle:
+      "Gérez les dossiers des chauffeurs de votre compagnie.",
     companyAdminOperatorsTitle: "Opérateurs",
-    companyAdminOperatorsSubtitle: "Gérez les comptes opérateurs limités à l'embarquement.",
+    companyAdminOperatorsSubtitle:
+      "Gérez les comptes opérateurs limités à l'embarquement.",
     companyAdminEditOperator: "Modifier l'opérateur",
     companyAdminOperatorUpdateError: "Impossible de mettre à jour l'opérateur.",
     companyAdminRevenueTitle: "Revenus",
-    companyAdminRevenueSubtitle: "Résumé des paiements et revenus de votre compagnie.",
+    companyAdminRevenueSubtitle:
+      "Résumé des paiements et revenus de votre compagnie.",
     companyAdminCount: "Nombre",
     companyAdminTotalRevenue: "Revenu total",
     companyAdminTodayRevenue: "Revenu du jour",
@@ -3517,7 +3539,8 @@ export const translations = {
     companyAdminPaymentSummary: "Résumé des statuts de paiement",
     companyAdminNoRevenue: "Aucune donnée de revenu pour le moment.",
     companyAdminProfileTitle: "Profil de la compagnie",
-    companyAdminProfileSubtitle: "Informations de compagnie en lecture seule pour ce MVP.",
+    companyAdminProfileSubtitle:
+      "Informations de compagnie en lecture seule pour ce MVP.",
     companyAdminLicenseNo: "Numéro de licence",
     companyAdminDataSource: "Source des données",
     companyAdminVerifiedStatus: "Opérateur vérifié",
@@ -4549,7 +4572,8 @@ export const translations = {
     notificationTabArchived: "Archivées",
     notificationArchive: "Archiver",
     notificationOpen: "Ouvrir",
-    notificationLoadError: "Impossible de charger les notifications. Veuillez réessayer.",
+    notificationLoadError:
+      "Impossible de charger les notifications. Veuillez réessayer.",
   },
 
   // ─────────────────────────────────────────────────────────────────────────────
@@ -4793,7 +4817,7 @@ export const translations = {
     paymentAmountDue: "Kiasi kinachostahili",
     paymentSimulated: "Malipo ya maonyesho — pesa halisi haitatozwa.",
     paymentProcessing: "Inachakata…",
-    paymentPayBtn: "Lipa RWF {amount}",
+    paymentPayBtn: "Lipa RWF {amount} (malipo ya kuigwa ya MVP)",
     paymentSimFail: "Simula kushindwa kwa malipo (dev)",
     paymentBack: "← Rudi kwenye muhtasari wa hifadhi",
     paymentNoBooking: "Hakuna hifadhi iliyopatikana",
@@ -5001,22 +5025,27 @@ export const translations = {
     companyAdminSidebarRevenue: "Mapato",
     companyAdminSidebarProfile: "Wasifu wa kampuni",
     companyAdminDashboardTitle: "Dashibodi ya kampuni",
-    companyAdminDashboardSubtitle: "Uendeshaji, hifadhi, mabasi, na mapato ya kampuni yako.",
+    companyAdminDashboardSubtitle:
+      "Uendeshaji, hifadhi, mabasi, na mapato ya kampuni yako.",
     companyAdminCreateSchedule: "Unda ratiba",
-    companyAdminLoadError: "Imeshindikana kupakia data ya kampuni. Tafadhali jaribu tena.",
+    companyAdminLoadError:
+      "Imeshindikana kupakia data ya kampuni. Tafadhali jaribu tena.",
     companyAdminKpiTodayTrips: "Safari za leo",
     companyAdminKpiUpcoming: "Ratiba zijazo",
     companyAdminKpiCompletedTrips: "Safari zilizokamilika",
     companyAdminKpiActiveDrivers: "Madereva hai",
     companyAdminUpcomingSchedules: "Ratiba zijazo",
     companyAdminBookingsTitle: "Hifadhi za kampuni",
-    companyAdminBookingsSubtitle: "Hifadhi zinazohusiana tu na ratiba za kampuni yako.",
+    companyAdminBookingsSubtitle:
+      "Hifadhi zinazohusiana tu na ratiba za kampuni yako.",
     companyAdminSearchReference: "Tafuta kumbukumbu ya hifadhi",
     companyAdminCancelBooking: "Ghairi hifadhi",
     companyAdminBookingCancelled: "Hifadhi imeghairiwa.",
     companyAdminSchedulesTitle: "Ratiba za kampuni",
-    companyAdminSchedulesSubtitle: "Unda na simamia ratiba kwa njia na nauli rasmi.",
-    companyAdminScheduleFareHint: "Bei ya ratiba hutokana na nauli rasmi ya njia.",
+    companyAdminSchedulesSubtitle:
+      "Unda na simamia ratiba kwa njia na nauli rasmi.",
+    companyAdminScheduleFareHint:
+      "Bei ya ratiba hutokana na nauli rasmi ya njia.",
     companyAdminFormRequired: "Jaza sehemu zote zinazohitajika.",
     companyAdminSelectRouteForFare: "Chagua njia kuona nauli",
     companyAdminSaved: "Mabadiliko yamehifadhiwa.",
@@ -5025,11 +5054,13 @@ export const translations = {
     companyAdminDriversTitle: "Madereva",
     companyAdminDriversSubtitle: "Simamia rekodi za madereva wa kampuni yako.",
     companyAdminOperatorsTitle: "Waendeshaji",
-    companyAdminOperatorsSubtitle: "Simamia akaunti za waendeshaji wa uthibitisho wa kupanda pekee.",
+    companyAdminOperatorsSubtitle:
+      "Simamia akaunti za waendeshaji wa uthibitisho wa kupanda pekee.",
     companyAdminEditOperator: "Hariri mwendeshaji",
     companyAdminOperatorUpdateError: "Imeshindikana kusasisha mwendeshaji.",
     companyAdminRevenueTitle: "Mapato",
-    companyAdminRevenueSubtitle: "Muhtasari wa malipo na mapato ya kampuni yako.",
+    companyAdminRevenueSubtitle:
+      "Muhtasari wa malipo na mapato ya kampuni yako.",
     companyAdminCount: "Idadi",
     companyAdminTotalRevenue: "Mapato yote",
     companyAdminTodayRevenue: "Mapato ya leo",
@@ -5041,7 +5072,8 @@ export const translations = {
     companyAdminPaymentSummary: "Muhtasari wa hali ya malipo",
     companyAdminNoRevenue: "Hakuna data ya mapato bado.",
     companyAdminProfileTitle: "Wasifu wa kampuni",
-    companyAdminProfileSubtitle: "Taarifa za kampuni za kusoma pekee kwa MVP hii.",
+    companyAdminProfileSubtitle:
+      "Taarifa za kampuni za kusoma pekee kwa MVP hii.",
     companyAdminLicenseNo: "Nambari ya leseni",
     companyAdminDataSource: "Chanzo cha data",
     companyAdminVerifiedStatus: "Mwendeshaji aliyethibitishwa",

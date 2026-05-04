@@ -6,7 +6,7 @@ import prisma from "./lib/prisma.js";
 async function main() {
   // Verify DB connection
   await prisma.$connect();
-  console.log("✔ Database connected");
+  console.log("✔ Database connected successfully!");
 
   app.listen(env.port, () => {
     console.log(
