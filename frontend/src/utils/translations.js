@@ -2621,8 +2621,8 @@ export const translations = {
     homeBadgePlatform:
       "Urubuga rwa kijyambere rwo kubika amatike ya bisi mu Rwanda",
     homeHeroTitle: "Genda mu Rwanda",
-    homeHeroHighlight: "nziza, yoroshye,",
-    homeHeroTitleEnd: "yizewe.",
+    homeHeroHighlight: "nziza, biroroshye,",
+    homeHeroTitleEnd: "Kandi birizewe.",
     homeHeroSubtitle: "Genda mu Rwanda byihuse hose, byoroshye kandi byizewe.",
     homeBookTrip: "Bika Urugendo",
     homeHowItWorks: "Uko bikorwa",
