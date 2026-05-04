@@ -163,15 +163,6 @@ export default function PaymentPage() {
 
         <button
           type="button"
-          onClick={() => handlePay('fail')}
-          disabled={paying}
-          className="btn-secondary w-full text-sm py-2 opacity-70 hover:opacity-100"
-        >
-          {t('paymentSimFail')}
-        </button>
-
-        <button
-          type="button"
           onClick={() => navigate(-1)}
           disabled={paying}
           className="text-sm text-gray-500 dark:text-slate-400 hover:underline text-center"
