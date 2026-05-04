@@ -2620,7 +2620,7 @@ export const translations = {
     // ── Home Page ─────────────────────────────────────────────────────────────
     homeBadgePlatform:
       "Urubuga rwa kijyambere rwo kubika amatike ya bisi mu Rwanda",
-    homeHeroTitle: "Ngenda mu Rwanda",
+    homeHeroTitle: "Genda mu Rwanda",
     homeHeroHighlight: "nziza, yoroshye,",
     homeHeroTitleEnd: "yizewe.",
     homeHeroSubtitle: "Genda mu Rwanda byihuse hose, byoroshye kandi byizewe.",
@@ -2634,7 +2634,7 @@ export const translations = {
     homeStatCities: "Imijyi ihuzwa",
     homeStatCompanies: "Company Zitwara abantu",
     homeStepsBadge: "Inzira yoroshye",
-    homeStepsTitle: "Buka mu ntera eshatu",
+    homeStepsTitle: "Buka mu ntambwe eshatu",
     homeStepsSubtitle:
       "Ntakindi gutegereza ku kibuga cy'bisi. Buka ukoresheje telefone mu manya make.",
     homeStep1Title: "Shakisha inzira yawe",
