@@ -56,7 +56,7 @@ export default function PassengerLayout() {
             ☰
           </button>
           <div className="min-w-0 md:hidden">
-            <p className="text-sm font-semibold text-gray-900 dark:text-white">Rugendo Rwanda</p>
+            <p className="text-sm font-semibold text-gray-900 dark:text-white">Safe Travel Rwanda</p>
             <p className="text-xs text-gray-500 dark:text-slate-400">{t('navDashboard')}</p>
           </div>
 

@@ -1,4 +1,4 @@
-# CLAUDE.md — Rugendo Rwanda
+# CLAUDE.md — Safe Travel Rwanda
 
 Claude-specific guidance for working in this repository.
 
@@ -18,7 +18,7 @@ Before doing anything, read:
 
 ## Project Goal
 
-Build **Rugendo Rwanda** — a production-quality intercity bus booking platform for Rwanda.
+Build **Safe Travel Rwanda** — a production-quality intercity bus booking platform for Rwanda.
 
 This is not a demo. It is an operational platform with two audiences:
 - **Passengers** — search, book, pay, manage trips.
@@ -127,7 +127,7 @@ A frontend brand refresh is planned but **not yet implemented**.
 Before making any frontend styling changes for brand purposes, read `BRAND_REFRESH_PLAN.md` first.
 It contains the approved palette, the full list of files to inspect, implementation rules, verification pages, and the build checklist.
 
-**Resume trigger:** If the user says "continue the Rugendo Rwanda brand refresh" or "let us continue son", read `BRAND_REFRESH_PLAN.md` immediately, then start in Plan mode.
+**Resume trigger:** If the user says "continue the Safe Travel Rwanda brand refresh" or "let us continue son", read `BRAND_REFRESH_PLAN.md` immediately, then start in Plan mode.
 
 ---
 

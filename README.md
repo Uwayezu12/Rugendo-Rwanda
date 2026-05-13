@@ -1,14 +1,14 @@
-# Rugendo Rwanda
+# Safe Travel Rwanda
 
 **Your Journey, Our Priority**
 
-Rugendo Rwanda is an online intercity bus booking platform for Rwanda. It helps passengers search routes and schedules, book seats, pay digitally, receive a booking token, manage trips, and board through operator validation.
+Safe Travel Rwanda is an online intercity bus booking platform for Rwanda. It helps passengers search routes and schedules, book seats, pay digitally, receive a booking token, manage trips, and board through operator validation.
 
 ---
 
 ## Overview
 
-Rwanda’s intercity bus booking process is often offline, cash-based, and inconvenient. Rugendo Rwanda solves that by providing a modern web platform where passengers can:
+Rwanda’s intercity bus booking process is often offline, cash-based, and inconvenient. Safe Travel Rwanda solves that by providing a modern web platform where passengers can:
 
 - create an account
 - search routes and schedules
@@ -303,7 +303,7 @@ Language selection is global and persists using local storage.
 
 ## Problem the Project Solves
 
-Rugendo Rwanda addresses major intercity transport pain points in Rwanda:
+Safe Travel Rwanda addresses major intercity transport pain points in Rwanda:
 
 - no reliable advance booking
 - poor schedule visibility
@@ -323,10 +323,10 @@ This project is for educational, MVP, and product development purposes unless yo
 
 ## Team
 
-**Rugendo Rwanda**
+**Safe Travel Rwanda**
 Online Bus Booking Platform for Rwanda
 
-**Team:** Rugendo Dev Team
+**Team:** Safe Travel Dev Team
 
 ---
 
@@ -336,5 +336,5 @@ Update this section with your real contact details, domain, or deployment links.
 
 Example:
 
-- Website: `https://rugendorwanda.rw`
-- Email: `info@rugendorwanda.rw`
+- Website: `https://safetravelrwanda.rw`
+- Email: `info@safetravelrwanda.rw`

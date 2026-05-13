@@ -1,4 +1,4 @@
-# DECISIONS.md — Rugendo Rwanda
+# DECISIONS.md — Safe Travel Rwanda
 
 A numbered log of architectural and product decisions made during this project.
 Add a new entry whenever a meaningful decision is made. Never delete entries — mark superseded ones as `[SUPERSEDED by #N]`.
@@ -589,7 +589,7 @@ Format: `## N. Title` → `**Decision:**` → `**Why:**` → `**Date:**`
 
 ## 57. Brand Refresh: Royal Blue as Primary, Green as Support, Gold as Accent
 
-**Decision:** Rugendo Rwanda's frontend is moving from a purple/magenta brand palette to a premium Rwanda-inspired visual identity. Approved palette:
+**Decision:** Safe Travel Rwanda's frontend is moving from a purple/magenta brand palette to a premium Rwanda-inspired visual identity. Approved palette:
 - Primary: Royal/Cobalt Blue `#2563EB`
 - Supporting: Forest Green `#16A34A`
 - Accent: Warm Gold `#D97706`

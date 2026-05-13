@@ -1,4 +1,4 @@
-# AGENTS.md — Rugendo Rwanda
+# AGENTS.md — Safe Travel Rwanda
 
 Working guide for AI coding agents (Claude Code, Codex, etc.) operating in this repository.
 Read this file before making any changes. It is the authoritative source of architectural constraints and workflow rules for this project.
@@ -7,11 +7,13 @@ Read this file before making any changes. It is the authoritative source of arch
 
 ## Project Context
 
-**Rugendo Rwanda** is an online intercity bus booking platform for Rwanda.
+**Safe Travel Rwanda** is an online intercity bus booking platform for Rwanda.
 It has two audiences: passengers (public-facing booking flow) and operations staff (admin, super-admin, operator dashboards).
 Both are first-class citizens of the MVP — not one primary and one secondary.
 
 See `PROJECT_BRIEF.md` for full product context, MVP scope, and excluded features.
+
+Recent note: Completed fresh user-facing rebrand from Rugendo Rwanda to Safe Travel Rwanda across visible text, translations, metadata, and relevant backend/email/demo text. Logo and hero image were already changed, so image assets were not modified. Internal technical identifiers were left unchanged where renaming could break functionality.
 
 ---
 

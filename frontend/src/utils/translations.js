@@ -96,12 +96,12 @@ export const translations = {
     authPanelTagline:
       "Plan your next trip with a clear view of today's network.",
     authPanelSubtitle:
-      "Rugendo Rwanda brings current routes, departures, and operating bus companies together in one place before you sign in.",
+      "Safe Travel Rwanda brings current routes, departures, and operating bus companies together in one place before you sign in.",
     authPanelStatRoutes: "Active routes",
     authPanelStatDepartures: "Today's departures",
     authPanelStatCompanies: "Active bus companies",
     authPanelSupportTitle: "Need help before you continue?",
-    authPanelSupportSubtitle: "Contact the Rugendo Rwanda support team.",
+    authPanelSupportSubtitle: "Contact the Safe Travel Rwanda support team.",
     authPanelLoadingTagline: "Preparing today's travel snapshot…",
     authPanelLoadingSubtitle:
       "Current routes, departures, and support details are loading now.",
@@ -110,7 +110,7 @@ export const translations = {
       "The live network snapshot is temporarily unavailable.",
     authPanelFallbackNote:
       "You can still sign in or create an account while the platform summary reloads.",
-    authPanelCopyright: "© 2026 Rugendo Rwanda. All rights reserved.",
+    authPanelCopyright: "© 2026 Safe Travel Rwanda. All rights reserved.",
     authMobileSubtitle: "Intercity Bus Booking",
 
     // ── Auth — Login ────────────────────────────────────────────────────────
@@ -173,7 +173,7 @@ export const translations = {
 
     // ── Auth — Reset Password ───────────────────────────────────────────────
     resetTitle: "Set a new password",
-    resetSubtitle: "Choose a strong password for your Rugendo Rwanda account.",
+    resetSubtitle: "Choose a strong password for your Safe Travel Rwanda account.",
     resetNewPassword: "New password",
     resetPasswordHint: "At least 8 characters",
     resetConfirmPassword: "Confirm new password",
@@ -1144,7 +1144,7 @@ export const translations = {
     homeDestination: "Destination",
     homePassengerN: "{n} passenger",
     homePassengersN: "{n} passengers",
-    homeBenefitsBadge: "Why Rugendo Rwanda",
+    homeBenefitsBadge: "Why Safe Travel Rwanda",
     homeBenefitsTitle: "The smarter way to travel",
     homeBenefit1Title: "Book from anywhere",
     homeBenefit1Desc:
@@ -1186,7 +1186,7 @@ export const translations = {
     routesBadge: "All destinations",
     routesTitle: "Routes & destinations",
     routesSubtitle:
-      "Browse all intercity routes covered by Rugendo Rwanda — from short city hops to full cross-country journeys.",
+      "Browse all intercity routes covered by Safe Travel Rwanda — from short city hops to full cross-country journeys.",
     routesPopularTitle: "Most popular routes",
     routesFilterFrom: "Filter by departure city",
     routesFilterTo: "Filter by destination",
@@ -1206,13 +1206,13 @@ export const translations = {
     aboutBadge: "About us",
     aboutTitle: "We're building Rwanda's modern transport platform",
     aboutSubtitle:
-      "Rugendo Rwanda is an online intercity bus booking platform designed for Rwandan travellers — simple to use, reliable, and built for how people actually travel today.",
+      "Safe Travel Rwanda is an online intercity bus booking platform designed for Rwandan travellers — simple to use, reliable, and built for how people actually travel today.",
     aboutMissionBadge: "Our mission",
     aboutMissionTitle: "Making intercity travel as easy as sending a message",
     aboutMissionP1:
       "Every day, thousands of Rwandans travel between cities for work, family, and opportunity. The process of finding a bus, booking a seat, and confirming your journey should not be complicated.",
     aboutMissionP2:
-      "Rugendo Rwanda brings scheduling, seat booking, and digital boarding together in one platform — accessible from any phone, at any time.",
+      "Safe Travel Rwanda brings scheduling, seat booking, and digital boarding together in one platform — accessible from any phone, at any time.",
     aboutStat1: "Routes covered",
     aboutStat2: "Daily departures",
     aboutStat3: "Cities connected",
@@ -1282,7 +1282,7 @@ export const translations = {
       "Search for your route on the homepage or the Search Trips page, choose a schedule, select your seat, pay, and receive your booking token. The whole process takes under 2 minutes.",
     faqB2Q: "Do I need an account to book?",
     faqB2A:
-      "Yes. You need a free Rugendo Rwanda account to complete a booking. This lets us store your booking reference and send you confirmations.",
+      "Yes. You need a free Safe Travel Rwanda account to complete a booking. This lets us store your booking reference and send you confirmations.",
     faqB3Q: "Can I book for another person?",
     faqB3A:
       "Yes. When completing your booking you can enter a different passenger name. You manage the booking through your own account.",
@@ -1297,7 +1297,7 @@ export const translations = {
       "MTN Mobile Money, Airtel Money, and major bank cards are accepted.",
     faqP2Q: "Is it safe to pay online?",
     faqP2A:
-      "Yes. Payments are processed through encrypted, trusted channels. Rugendo Rwanda does not store your card or mobile money credentials.",
+      "Yes. Payments are processed through encrypted, trusted channels. Safe Travel Rwanda does not store your card or mobile money credentials.",
     faqP3Q: "When is my card or mobile money charged?",
     faqP3A:
       "Payment is processed immediately at the time of booking. Your seat is only confirmed once payment is successful.",
@@ -1326,7 +1326,7 @@ export const translations = {
 
     // ── How It Works ────────────────────────────────────────────────────────
     howBadge: "Simple & clear",
-    howTitle: "How Rugendo Rwanda works",
+    howTitle: "How Safe Travel Rwanda works",
     howSubtitle:
       "From searching a route to boarding your bus — here's exactly how the booking process works.",
     howStep1Title: "Create your account",
@@ -1388,40 +1388,40 @@ export const translations = {
     termsTitle: "Terms of Service",
     termsS1Title: "1. Acceptance of terms",
     termsS1Body:
-      "By accessing or using the Rugendo Rwanda platform (website and mobile applications), you agree to be bound by these Terms of Service. If you do not agree to these terms, you may not use the platform. We reserve the right to update these terms at any time; continued use after changes constitutes acceptance.",
+      "By accessing or using the Safe Travel Rwanda platform (website and mobile applications), you agree to be bound by these Terms of Service. If you do not agree to these terms, you may not use the platform. We reserve the right to update these terms at any time; continued use after changes constitutes acceptance.",
     termsS2Title: "2. Use of the platform",
     termsS2Body:
-      "Rugendo Rwanda provides an online interface for searching intercity bus schedules, booking seats, and managing travel bookings. You agree to use the platform only for lawful purposes and in compliance with these terms. You must not misuse the platform, attempt to access it by any means other than the interface we provide, or engage in any behaviour that could damage, disable, or impair the platform.",
+      "Safe Travel Rwanda provides an online interface for searching intercity bus schedules, booking seats, and managing travel bookings. You agree to use the platform only for lawful purposes and in compliance with these terms. You must not misuse the platform, attempt to access it by any means other than the interface we provide, or engage in any behaviour that could damage, disable, or impair the platform.",
     termsS3Title: "3. Account registration",
     termsS3Body:
       "To make a booking you must register an account with accurate, complete information. You are responsible for maintaining the security of your account credentials and for all activity that occurs under your account. Notify us immediately if you suspect unauthorised access to your account.",
     termsS4Title: "4. Bookings and seat reservations",
     termsS4Body:
-      "A booking is confirmed only upon successful payment. Your booking reference (token) is proof of your confirmed reservation. Rugendo Rwanda acts as an intermediary between passengers and bus operators. We do not operate the buses and are not responsible for the conduct of operators or for delays, cancellations, or incidents during travel.",
+      "A booking is confirmed only upon successful payment. Your booking reference (token) is proof of your confirmed reservation. Safe Travel Rwanda acts as an intermediary between passengers and bus operators. We do not operate the buses and are not responsible for the conduct of operators or for delays, cancellations, or incidents during travel.",
     termsS5Title: "5. Payments",
     termsS5Body:
-      "All payments are processed through authorised payment processors. Prices are shown in Rwandan Francs (RWF). By completing payment you authorise the charge to your selected payment method. Rugendo Rwanda does not store full card numbers or mobile money PINs.",
+      "All payments are processed through authorised payment processors. Prices are shown in Rwandan Francs (RWF). By completing payment you authorise the charge to your selected payment method. Safe Travel Rwanda does not store full card numbers or mobile money PINs.",
     termsS6Title: "6. Cancellations and refunds",
     termsS6Body:
-      "Cancellation and refund eligibility depends on the operator's policy and the time remaining before departure. Rugendo Rwanda will facilitate refunds as described in the Booking Policy. We are not liable for refund delays caused by payment processors or operators.",
+      "Cancellation and refund eligibility depends on the operator's policy and the time remaining before departure. Safe Travel Rwanda will facilitate refunds as described in the Booking Policy. We are not liable for refund delays caused by payment processors or operators.",
     termsS7Title: "7. Limitation of liability",
     termsS7Body:
-      "To the maximum extent permitted by applicable law, Rugendo Rwanda and its affiliates are not liable for any indirect, incidental, or consequential damages arising from your use of the platform or from travel on a booked bus. Our total liability to you for any claim shall not exceed the amount paid for the booking giving rise to the claim.",
+      "To the maximum extent permitted by applicable law, Safe Travel Rwanda and its affiliates are not liable for any indirect, incidental, or consequential damages arising from your use of the platform or from travel on a booked bus. Our total liability to you for any claim shall not exceed the amount paid for the booking giving rise to the claim.",
     termsS8Title: "8. Intellectual property",
     termsS8Body:
-      "All content on the Rugendo Rwanda platform — including text, graphics, logos, and software — is owned by or licensed to Rugendo Rwanda. You may not reproduce, distribute, or create derivative works without our express written consent.",
+      "All content on the Safe Travel Rwanda platform — including text, graphics, logos, and software — is owned by or licensed to Safe Travel Rwanda. You may not reproduce, distribute, or create derivative works without our express written consent.",
     termsS9Title: "9. Governing law",
     termsS9Body:
       "These terms are governed by and construed in accordance with the laws of the Republic of Rwanda. Any disputes shall be resolved in the courts of Rwanda.",
     termsS10Title: "10. Contact",
     termsS10Body:
-      "For questions about these terms, contact us at legal@rugendorwanda.rw.",
+      "For questions about these terms, contact us at legal@safetravelrwanda.rw.",
 
     // ── Privacy Policy ──────────────────────────────────────────────────────
     privacyTitle: "Privacy Policy",
     privacyS1Title: "1. Who we are",
     privacyS1Body:
-      "Rugendo Rwanda operates the online bus booking platform accessible at rugendorwanda.rw. We are responsible for the personal data we collect when you use our platform.",
+      "Safe Travel Rwanda operates the online bus booking platform accessible at safetravelrwanda.rw. We are responsible for the personal data we collect when you use our platform.",
     privacyS2Title: "2. What data we collect",
     privacyS2Body:
       "We collect: account data (name, email, phone, hashed password); booking data (origin, destination, date, passenger name, reference); payment data (transaction reference and status — we do not store card numbers or mobile money PINs); and usage data (pages visited, search queries, device/browser information).",
@@ -1436,7 +1436,7 @@ export const translations = {
       "We retain your account data for as long as your account is active. Booking records are retained for 3 years for legal and financial compliance. You may request deletion of your account; some data may be retained for legal obligations.",
     privacyS6Title: "6. Your rights",
     privacyS6Body:
-      "You have the right to access, correct, or request deletion of your personal data. You may also request a copy of the data we hold about you. To exercise any of these rights, contact us at privacy@rugendorwanda.rw.",
+      "You have the right to access, correct, or request deletion of your personal data. You may also request a copy of the data we hold about you. To exercise any of these rights, contact us at privacy@safetravelrwanda.rw.",
     privacyS7Title: "7. Security",
     privacyS7Body:
       "We apply industry-standard security measures including encryption in transit (TLS), hashed passwords, and access controls. No system is perfectly secure; in the event of a data breach we will notify affected users as required by applicable law.",
@@ -1448,18 +1448,18 @@ export const translations = {
       "We may update this policy from time to time. We will notify you of significant changes by email or in-platform notice. Continued use after changes constitutes acceptance.",
     privacyS10Title: "10. Contact",
     privacyS10Body:
-      "For privacy enquiries, contact privacy@rugendorwanda.rw or write to: Rugendo Rwanda, KN 5 Road, Kigali, Rwanda.",
+      "For privacy enquiries, contact privacy@safetravelrwanda.rw or write to: Safe Travel Rwanda, KN 5 Road, Kigali, Rwanda.",
 
     // ── Booking Policy ──────────────────────────────────────────────────────
     policyTitle: "Booking Policy",
     policySubtitle:
-      "Please read this policy before booking. By completing a booking on Rugendo Rwanda you agree to these terms.",
+      "Please read this policy before booking. By completing a booking on Safe Travel Rwanda you agree to these terms.",
     policyS1Title: "Booking confirmation",
     policyS1Body:
       "A booking is only confirmed after payment is successfully processed. Upon confirmation you receive a unique booking token (reference number) by SMS and in your account dashboard. This token is your proof of reserved seat and must be presented at boarding.",
     policyS2Title: "Seat reservation",
     policyS2Body:
-      "Your seat is reserved under your booking reference from the moment payment is confirmed. If you selected a specific seat on the seat map, that seat is held for you. Rugendo Rwanda guarantees the seat number or class booked; exact physical seat assignment may occasionally be adjusted by the operator without notice for operational reasons.",
+      "Your seat is reserved under your booking reference from the moment payment is confirmed. If you selected a specific seat on the seat map, that seat is held for you. Safe Travel Rwanda guarantees the seat number or class booked; exact physical seat assignment may occasionally be adjusted by the operator without notice for operational reasons.",
     policyS3Title: "Passenger name",
     policyS3Body:
       "The name on the booking must match the passenger who boards. Operators may verify identity at boarding. Bookings are non-transferable once issued.",
@@ -1474,7 +1474,7 @@ export const translations = {
       "Rescheduling to a different departure date or time may be possible for some operators. Contact support at least 4 hours before your original departure with your booking reference. A rescheduling fee may apply and is subject to seat availability on the new schedule.",
     policyS7Title: "Operator cancellations",
     policyS7Body:
-      "If an operator cancels a scheduled departure, all passengers with confirmed bookings on that schedule will be notified by SMS and in their account. A full refund is automatically issued. Rugendo Rwanda is not liable for costs incurred due to the cancellation beyond the value of the booking.",
+      "If an operator cancels a scheduled departure, all passengers with confirmed bookings on that schedule will be notified by SMS and in their account. A full refund is automatically issued. Safe Travel Rwanda is not liable for costs incurred due to the cancellation beyond the value of the booking.",
     policyS8Title: "Boarding",
     policyS8Body:
       "Arrive at the designated bus park at least 20 minutes before departure. Present your booking token (phone display or SMS) to the operator. Failure to arrive on time may result in forfeiture of your seat and no refund.",
@@ -1604,13 +1604,13 @@ export const translations = {
     authPanelTagline:
       "Tegura urugendo rwawe ukurikiye amakuru y'uyu munsi ya neti y'ingendo.",
     authPanelSubtitle:
-      "Rugendo Rwanda ihuriza hamwe inzira zikora, gahunda zo guhaguruka, n'ibigo bya bisi bikora mbere yo kwinjira.",
+      "Safe Travel Rwanda ihuriza hamwe inzira zikora, gahunda zo guhaguruka, n'ibigo bya bisi bikora mbere yo kwinjira.",
     authPanelStatRoutes: "Inzira zikora",
     authPanelStatDepartures: "Guhaguruka uyu munsi",
     authPanelStatCompanies: "Ibigo bya bisi bikora",
     authPanelSupportTitle: "Ukeneye ubufasha mbere yo gukomeza?",
     authPanelSupportSubtitle:
-      "Vugana n'itsinda ry'ubufasha rya Rugendo Rwanda.",
+      "Vugana n'itsinda ry'ubufasha rya Safe Travel Rwanda.",
     authPanelLoadingTagline: "Incamake y'ingendo z'uyu munsi iri gutegurwa…",
     authPanelLoadingSubtitle:
       "Amakuru y'inzira, gahunda, n'ubufasha ari gukururwa ubu.",
@@ -1619,7 +1619,7 @@ export const translations = {
       "Incamake ya neti y'ingendo ntabashije kuboneka by'igihe gito.",
     authPanelFallbackNote:
       "Ushobora gukomeza kwinjira cyangwa kwiyandikisha mu gihe incamake ya porogaramu irimo kongera kwikurura.",
-    authPanelCopyright: "© 2026 Rugendo Rwanda. Uburenganzira bwose bwabitswe.",
+    authPanelCopyright: "© 2026 Safe Travel Rwanda. Uburenganzira bwose bwabitswe.",
     authMobileSubtitle: "Kubika bisi ry'imujyi",
 
     loginTitle: "Injira",
@@ -1680,7 +1680,7 @@ export const translations = {
 
     resetTitle: "Shyiraho Ijambo Ry'Ibanga Rishya",
     resetSubtitle:
-      "Hitamo ijambo ry'ibanga rikomeye kuri konti yawe ya Rugendo Rwanda.",
+      "Hitamo ijambo ry'ibanga rikomeye kuri konti yawe ya Safe Travel Rwanda.",
     resetNewPassword: "Ijambo ry'ibanga rishya",
     resetPasswordHint: "Nibura imibare 8",
     resetConfirmPassword: "Emeza ijambo ry'ibanga rishya",
@@ -2655,7 +2655,7 @@ export const translations = {
     homeDestination: "Intego",
     homePassengerN: "Umugenzi {n}",
     homePassengersN: "Abagenzi {n}",
-    homeBenefitsBadge: "Impamvu ya Rugendo Rwanda",
+    homeBenefitsBadge: "Impamvu ya Safe Travel Rwanda",
     homeBenefitsTitle: "Uburyo bwiza bwo kugenda",
     homeBenefit1Title: "Buka ahantu hose",
     homeBenefit1Desc:
@@ -2696,7 +2696,7 @@ export const translations = {
     routesBadge: "Intego zose",
     routesTitle: "Inzira n'Intego",
     routesSubtitle:
-      "Reba inzira zose za hagati y'imijyi zifashwa na Rugendo Rwanda — kuva ingendo ngufi kugeza inzira ndefu.",
+      "Reba inzira zose za hagati y'imijyi zifashwa na Safe Travel Rwanda — kuva ingendo ngufi kugeza inzira ndefu.",
     routesPopularTitle: "Inzira zikunzwe cyane",
     routesFilterFrom: "Shungura hashingiwe ku mujyi wo guhagurukira",
     routesFilterTo: "Shungura hashingiwe ku ntego",
@@ -2717,14 +2717,14 @@ export const translations = {
     aboutTitle:
       "Turimo kubaka urubuga rwa kijyambere rw'ubutwererane mu Rwanda",
     aboutSubtitle:
-      "Rugendo Rwanda ni urubuga rwa interineti rwo kubika amatike ya bisi za mujyi rugenewe abagenzi b'Abanyarwanda — yoroshye gukoresha, zizekanye, kandi rugezwaho uburyo abantu bagenda.",
+      "Safe Travel Rwanda ni urubuga rwa interineti rwo kubika amatike ya bisi za mujyi rugenewe abagenzi b'Abanyarwanda — yoroshye gukoresha, zizekanye, kandi rugezwaho uburyo abantu bagenda.",
     aboutMissionBadge: "Intego yacu",
     aboutMissionTitle:
       "Gukora ko ingendo hagati y'imijyi yoroshe nk'ubutumwa bwohereza",
     aboutMissionP1:
       "Buri munsi, ibihumbi by'Abanyarwanda bagenda hagati y'imijyi kubera akazi, umuryango, n'amahirwe. Inzira yo gushaka bisi, kubika intebe, no kwemeza ingendo yawe ntikwiriye kuba ikomeye.",
     aboutMissionP2:
-      "Rugendo Rwanda ihuriza hamwe gahunda, kubika intebe, n'ukwinjira kwa disitatali mu rubuga rumwe — ruboneka kuri telefone yose, igihe cyose.",
+      "Safe Travel Rwanda ihuriza hamwe gahunda, kubika intebe, n'ukwinjira kwa disitatali mu rubuga rumwe — ruboneka kuri telefone yose, igihe cyose.",
     aboutStat1: "Inzira zifashwe",
     aboutStat2: "Imihaguruke ya buri munsi",
     aboutStat3: "Imijyi ihuzwa",
@@ -2794,7 +2794,7 @@ export const translations = {
       "Shakisha inzira yawe ku rupapuro rw'ahabanza cyangwa ku rupapuro rwo gushakisha ingendo, hitamo gahunda, hitamo intebe, ishyura, ubone itike. Inzira yose irenda munota 2.",
     faqB2Q: "Ngomba konti gushaka itike?",
     faqB2A:
-      "Yego. Ukeneye konti ubuntu ya Rugendo Rwanda gukora itike. Biduhesha kubika nimero yawe no kukwoherereza kwemeza.",
+      "Yego. Ukeneye konti ubuntu ya Safe Travel Rwanda gukora itike. Biduhesha kubika nimero yawe no kukwoherereza kwemeza.",
     faqB3Q: "Mbasha kubika impushya y'undi muntu?",
     faqB3A:
       "Yego. Igihe ubika, ushobora kwandika izina nduzi ry'umugenzi. Ureba itike binyuze mu konti yawe.",
@@ -2808,7 +2808,7 @@ export const translations = {
     faqP1A: "MTN Mobile Money, Airtel Money, na karita nkuru za banki zihabwa.",
     faqP2Q: "Kwishyura kuri interineti birasohoka?",
     faqP2A:
-      "Yego. Kwishyura bikorwa binyuze mu nzira zizekanye. Rugendo Rwanda ntibika nimero zawe za karita cyangwa PIN ya mobile money.",
+      "Yego. Kwishyura bikorwa binyuze mu nzira zizekanye. Safe Travel Rwanda ntibika nimero zawe za karita cyangwa PIN ya mobile money.",
     faqP3Q: "Karita cyangwa mobile money yange izakurwamo ryari?",
     faqP3A:
       "Kwishyura bikorwa vuba igihe ubika. Intebe yawe yemezwa gusa kwishyura kuyigeze.",
@@ -2836,7 +2836,7 @@ export const translations = {
 
     // ── How It Works ──────────────────────────────────────────────────────────
     howBadge: "Yoroshye kandi bisobanura",
-    howTitle: "Uko Rugendo Rwanda ikorwa",
+    howTitle: "Uko Safe Travel Rwanda ikorwa",
     howSubtitle:
       "Guhera ku gushaka inzira kugeza kwinjira mu bisi — dore uko inzira yo kubika ikorwa.",
     howStep1Title: "Fungura konti yawe",
@@ -2898,40 +2898,40 @@ export const translations = {
     termsTitle: "Amategeko y'Imikoreshereze",
     termsS1Title: "1. Kwemera amategeko",
     termsS1Body:
-      "Ukoresha urubuga rwa Rugendo Rwanda (urubuga rwa interineti cyangwa porogaramu), wemera aya mategeko y'imikoreshereze. Niba utabemeye, ntushobora gukoresha urubuga. Tufite uburenganzira bwo guhindura aya mategeko igihe cyose; gukomeza gukoresha nyuma y'impinduka bisobanura kwemera.",
+      "Ukoresha urubuga rwa Safe Travel Rwanda (urubuga rwa interineti cyangwa porogaramu), wemera aya mategeko y'imikoreshereze. Niba utabemeye, ntushobora gukoresha urubuga. Tufite uburenganzira bwo guhindura aya mategeko igihe cyose; gukomeza gukoresha nyuma y'impinduka bisobanura kwemera.",
     termsS2Title: "2. Gukoresha urubuga",
     termsS2Body:
-      "Rugendo Rwanda itanga urubuga rwa interineti rwo gushakisha gahunda za bisi za mujyi, kubika intebe, no gucunga ingendo. Wemera gukoresha urubuga gusa ku mpamvu z'amategeko no hujuru n'aya mategeko. Ntukwiriye gukoresha nabi urubuga, kugerageza kubugera mu buryo ubundi butari ubw'inzira twatanze, cyangwa gukora ibyo bishobora guhungabanya urubuga.",
+      "Safe Travel Rwanda itanga urubuga rwa interineti rwo gushakisha gahunda za bisi za mujyi, kubika intebe, no gucunga ingendo. Wemera gukoresha urubuga gusa ku mpamvu z'amategeko no hujuru n'aya mategeko. Ntukwiriye gukoresha nabi urubuga, kugerageza kubugera mu buryo ubundi butari ubw'inzira twatanze, cyangwa gukora ibyo bishobora guhungabanya urubuga.",
     termsS3Title: "3. Kwiyandikisha konti",
     termsS3Body:
       "Gushaka itike usabwa kwiyandikisha konti hamwe na makuru y'ukuri. Uri inzira yo kubungabunga umutekano w'ibanga rya konti yawe no gukora ibikorwa byose mu konti yawe. Tumenye vuba niba ugira amakenga y'ibintu byangwa bishinjura konti yawe.",
     termsS4Title: "4. Amatike n'ibitswe by'intebe",
     termsS4Body:
-      "Itike yemezwa gusa nyuma yo kwishyura neza. Nimero y'itike (token) ni ibimenyetso by'ibitswe byawe. Rugendo Rwanda ikorwa nk'inzira hagati y'abagenzi n'abakoresha ba bisi. Ntitukora bisi kandi ntitwishingira imyifatire y'abakoresha cyangwa ibihe birangiye, ihagarikwa, cyangwa ibizungira mu ngendo.",
+      "Itike yemezwa gusa nyuma yo kwishyura neza. Nimero y'itike (token) ni ibimenyetso by'ibitswe byawe. Safe Travel Rwanda ikorwa nk'inzira hagati y'abagenzi n'abakoresha ba bisi. Ntitukora bisi kandi ntitwishingira imyifatire y'abakoresha cyangwa ibihe birangiye, ihagarikwa, cyangwa ibizungira mu ngendo.",
     termsS5Title: "5. Kwishyura",
     termsS5Body:
-      "Kwishyura byose bikorwa binyuze mu bashaka kwishyura bemewe. Ibiciro birerekana mu Amafaranga y'Urwanda (RWF). Urangiza kwishyura wemera gutyoza urubuga ku buryo bwawe bwo kwishyura wahiswemo. Rugendo Rwanda ntibika nimero nzima za karita cyangwa PIN za mobile money.",
+      "Kwishyura byose bikorwa binyuze mu bashaka kwishyura bemewe. Ibiciro birerekana mu Amafaranga y'Urwanda (RWF). Urangiza kwishyura wemera gutyoza urubuga ku buryo bwawe bwo kwishyura wahiswemo. Safe Travel Rwanda ntibika nimero nzima za karita cyangwa PIN za mobile money.",
     termsS6Title: "6. Guhagarika n'gusubizwa amafaranga",
     termsS6Body:
-      "Uburenganzira bwo guhagarika no gusubizwa amafaranga bushingiye ku mabwiriza y'umukoresha n'igihe gisigaye mbere yo guhaguruka. Rugendo Rwanda izasaidia gusubiza amafaranga nkuko byavuzwe mu mabwiriza yo kubika. Ntitwihangira ibihe birangiye gusubizwa biterwa n'abashaka kwishyura cyangwa abakoresha.",
+      "Uburenganzira bwo guhagarika no gusubizwa amafaranga bushingiye ku mabwiriza y'umukoresha n'igihe gisigaye mbere yo guhaguruka. Safe Travel Rwanda izasaidia gusubiza amafaranga nkuko byavuzwe mu mabwiriza yo kubika. Ntitwihangira ibihe birangiye gusubizwa biterwa n'abashaka kwishyura cyangwa abakoresha.",
     termsS7Title: "7. Igenamigambi ry'inshingano",
     termsS7Body:
-      "Rugendo Rwanda n'abayifitanye imbata ntibagira inshingano ku bikorwa bitaziguye, bidasanzwe, cyangwa bikomoka ku gukoresha urubuga cyangwa ingendo kuri bisi yabitswe. Inshingano zacu ku bibazo ni zisumba amafaranga yishyuwe yo kubika kibazo kibyaye.",
+      "Safe Travel Rwanda n'abayifitanye imbata ntibagira inshingano ku bikorwa bitaziguye, bidasanzwe, cyangwa bikomoka ku gukoresha urubuga cyangwa ingendo kuri bisi yabitswe. Inshingano zacu ku bibazo ni zisumba amafaranga yishyuwe yo kubika kibazo kibyaye.",
     termsS8Title: "8. Ubuhanzi bwa sosiyete",
     termsS8Body:
-      "Ibiriho byose kuri urubuga rwa Rugendo Rwanda — harimo inyandiko, ishusho, logo, na porogaramu — bifitwe na Rugendo Rwanda cyangwa bihereshejwe uburenganzira. Ntushobora gusubiramo, gusangira, cyangwa gukora ingaruka nta kwemera kwanditse kwacu.",
+      "Ibiriho byose kuri urubuga rwa Safe Travel Rwanda — harimo inyandiko, ishusho, logo, na porogaramu — bifitwe na Safe Travel Rwanda cyangwa bihereshejwe uburenganzira. Ntushobora gusubiramo, gusangira, cyangwa gukora ingaruka nta kwemera kwanditse kwacu.",
     termsS9Title: "9. Amategeko abanza",
     termsS9Body:
       "Aya mategeko ateganwa kandi agahindurwa hashingiwe ku mategeko ya Repubulika y'U Rwanda. Amakimbirane yose azabonerwa mu nkiko z'Urwanda.",
     termsS10Title: "10. Twunganire",
     termsS10Body:
-      "Ku bibazo kuri aya mategeko, twunganire kuri legal@rugendorwanda.rw.",
+      "Ku bibazo kuri aya mategeko, twunganire kuri legal@safetravelrwanda.rw.",
 
     // ── Privacy Policy ────────────────────────────────────────────────────────
     privacyTitle: "Amabwiriza y'Ibanga",
     privacyS1Title: "1. Abo turi bo",
     privacyS1Body:
-      "Rugendo Rwanda ikoresha urubuga rwa interineti rwo kubika amatike ya bisi ruboneka kuri rugendorwanda.rw. Twitwara ko turi inzira y'amakuru bwite tureba igihe ukoresha urubuga rwacu.",
+      "Safe Travel Rwanda ikoresha urubuga rwa interineti rwo kubika amatike ya bisi ruboneka kuri safetravelrwanda.rw. Twitwara ko turi inzira y'amakuru bwite tureba igihe ukoresha urubuga rwacu.",
     privacyS2Title: "2. Amakuru dukusanya",
     privacyS2Body:
       "Dukusanya: amakuru ya konti (amazina, imeyili, telefone, ijambo ry'ibanga rifashishijwe kode); amakuru y'itike (intangiriro, intego, itariki, izina ry'umugenzi, nimero y'itike); amakuru yo kwishyura (nimero y'ibikorwa na imiterere — ntibika nimero za karita cyangwa PIN); na makuru yo gukoresha (urupapuro rwasurwe, gushakisha, amakuru ya mudasobwa).",
@@ -2946,7 +2946,7 @@ export const translations = {
       "Tubika amakuru ya konti yawe igihe konti yawe iri muri gahunda. Amakuru y'amatike abitswe imyaka 3 kubera amategeko n'imari. Ushobora gusaba gusibwa konti yawe; amakuru amwe ashobora kubikwa kubera inshingano z'amategeko.",
     privacyS6Title: "6. Uburenganzira bwawe",
     privacyS6Body:
-      "Ufite uburenganzira bwo kureba, gusubagiza, cyangwa gusaba gusibwa amakuru yawe bwite. Ushobora gusaba kopi y'amakuru dufite kuri we. Kugira ngo wifuze izi ngengabitekerezo, twunganire kuri privacy@rugendorwanda.rw.",
+      "Ufite uburenganzira bwo kureba, gusubagiza, cyangwa gusaba gusibwa amakuru yawe bwite. Ushobora gusaba kopi y'amakuru dufite kuri we. Kugira ngo wifuze izi ngengabitekerezo, twunganire kuri privacy@safetravelrwanda.rw.",
     privacyS7Title: "7. Umutekano",
     privacyS7Body:
       "Dukoresha ingamba z'umutekano harimo guterurura igihe biyandikirwa (TLS), amagambo y'ibanga akozwe mu kode, n'uburinganire bw'inyigisho. Nta sisitemu iri salama rwose; mu gihe cy'ibanga rya data, tuzamenyesha abakoresha babishingiwe n'amategeko.",
@@ -2958,18 +2958,18 @@ export const translations = {
       "Twashobora guhindura aya mabwiriza rimwe na rimwe. Tuzabimenyesha ku mpinduka nkuru binyuze mu imeyili cyangwa intangazo kuri urubuga. Gukomeza gukoresha nyuma y'impinduka bisobanura kwemera.",
     privacyS10Title: "10. Twunganire",
     privacyS10Body:
-      "Ku bibazo by'ibanga, twunganire kuri privacy@rugendorwanda.rw cyangwa wandike kuri: Rugendo Rwanda, KN 5 Road, Kigali, Rwanda.",
+      "Ku bibazo by'ibanga, twunganire kuri privacy@safetravelrwanda.rw cyangwa wandike kuri: Safe Travel Rwanda, KN 5 Road, Kigali, Rwanda.",
 
     // ── Booking Policy ────────────────────────────────────────────────────────
     policyTitle: "Amabwiriza yo Kubika",
     policySubtitle:
-      "Nyamuneka soma aya mabwiriza mbere yo kubika. Ukora itike kuri Rugendo Rwanda wemera aya mategeko.",
+      "Nyamuneka soma aya mabwiriza mbere yo kubika. Ukora itike kuri Safe Travel Rwanda wemera aya mategeko.",
     policyS1Title: "Kwemeza itike",
     policyS1Body:
       "Itike yemezwa gusa nyuma yo kwishyura neza. Nyuma yo kwemeza ukira token yihariye y'itike kuri SMS no mu tableau de bord. Iyi token ni ibimenyetso by'intebe yawe ibitswe kandi igomba kwerekanywa igihe winjira.",
     policyS2Title: "Kubika intebe",
     policyS2Body:
-      "Intebe yawe ibitswe munsi ya nimero y'itike kuva kwishyura kwemezwa. Niba wahisemo intebe ihariye ku ikarita, iyo ntebe igumizwa iwowe. Rugendo Rwanda iremeza numero cyangwa ubwoko bw'intebe yabitswe; igenamiterere nyacyo ry'intebe ryashobora guhindurwa rimwe na rimwe n'umukoresha nta butumwa kubera impamvu z'imirimo.",
+      "Intebe yawe ibitswe munsi ya nimero y'itike kuva kwishyura kwemezwa. Niba wahisemo intebe ihariye ku ikarita, iyo ntebe igumizwa iwowe. Safe Travel Rwanda iremeza numero cyangwa ubwoko bw'intebe yabitswe; igenamiterere nyacyo ry'intebe ryashobora guhindurwa rimwe na rimwe n'umukoresha nta butumwa kubera impamvu z'imirimo.",
     policyS3Title: "Izina ry'umugenzi",
     policyS3Body:
       "Izina riri ku itike rigomba guhuza n'umugenzi winjira. Abakoresha bashobora kureba indangamuntu igihe winjira. Amatike ntayoshakira undi nyuma yo guhabwa.",
@@ -2984,7 +2984,7 @@ export const translations = {
       "Guhindura ku itariki nduzi cyangwa igihe birashoboka ku bakoresha bamwe. Vugisha serivisi nibura amasaha 4 mbere yo guhaguruka ufite nimero y'itike yawe. Igiciro cyo guhindura gishobora gukoreshwa kandi gushingira ku ntebe zihari ku gahunda nshya.",
     policyS7Title: "Guhagarika n'umukoresha",
     policyS7Body:
-      "Niba umukoresha avuye gahunda, abagenzi bose bafite amatike yemejwe ku gahunda iyo bazabimenyeshwa kuri SMS no mu konti yabo. Gusubizwa amafaranga yose bikorwa vuba. Rugendo Rwanda ntishingira ku binonko biteye n'iri hagarika birenga agaciro k'itike.",
+      "Niba umukoresha avuye gahunda, abagenzi bose bafite amatike yemejwe ku gahunda iyo bazabimenyeshwa kuri SMS no mu konti yabo. Gusubizwa amafaranga yose bikorwa vuba. Safe Travel Rwanda ntishingira ku binonko biteye n'iri hagarika birenga agaciro k'itike.",
     policyS8Title: "Kwinjira",
     policyS8Body:
       "Gera ku kibuga cy'bisi nibura iminota 20 mbere yo guhaguruka. Erekana token y'itike (ekrani ya telefone cyangwa SMS) ku mukoresha. Gutagera ku gihe bishobora gutera gutakaza intebe yawe nta gusubizwa amafaranga.",
@@ -3112,13 +3112,13 @@ export const translations = {
     authPanelTagline:
       "Préparez votre prochain trajet avec une vue claire du réseau du jour.",
     authPanelSubtitle:
-      "Rugendo Rwanda réunit les trajets actifs, les départs du jour et les compagnies de bus en service avant votre connexion.",
+      "Safe Travel Rwanda réunit les trajets actifs, les départs du jour et les compagnies de bus en service avant votre connexion.",
     authPanelStatRoutes: "Trajets actifs",
     authPanelStatDepartures: "Départs du jour",
     authPanelStatCompanies: "Compagnies de bus actives",
     authPanelSupportTitle: "Besoin d’aide avant de continuer ?",
     authPanelSupportSubtitle:
-      "Contactez l’équipe d’assistance de Rugendo Rwanda.",
+      "Contactez l’équipe d’assistance de Safe Travel Rwanda.",
     authPanelLoadingTagline: "Préparation de l’aperçu des trajets du jour…",
     authPanelLoadingSubtitle:
       "Les routes, départs et contacts d’assistance sont en cours de chargement.",
@@ -3127,7 +3127,7 @@ export const translations = {
       "L’aperçu live du réseau est temporairement indisponible.",
     authPanelFallbackNote:
       "Vous pouvez quand même vous connecter ou créer un compte pendant le rechargement du résumé de la plateforme.",
-    authPanelCopyright: "© 2026 Rugendo Rwanda. Tous droits réservés.",
+    authPanelCopyright: "© 2026 Safe Travel Rwanda. Tous droits réservés.",
     authMobileSubtitle: "Réservation de bus intercité",
 
     loginTitle: "Se connecter",
@@ -3189,7 +3189,7 @@ export const translations = {
 
     resetTitle: "Définir un nouveau mot de passe",
     resetSubtitle:
-      "Choisissez un mot de passe fort pour votre compte Rugendo Rwanda.",
+      "Choisissez un mot de passe fort pour votre compte Safe Travel Rwanda.",
     resetNewPassword: "Nouveau mot de passe",
     resetPasswordHint: "Au moins 8 caractères",
     resetConfirmPassword: "Confirmer le nouveau mot de passe",
@@ -4199,7 +4199,7 @@ export const translations = {
     homeDestination: "Destination",
     homePassengerN: "{n} passager",
     homePassengersN: "{n} passagers",
-    homeBenefitsBadge: "Pourquoi Rugendo Rwanda",
+    homeBenefitsBadge: "Pourquoi Safe Travel Rwanda",
     homeBenefitsTitle: "La façon la plus intelligente de voyager",
     homeBenefit1Title: "Réservez de partout",
     homeBenefit1Desc:
@@ -4241,7 +4241,7 @@ export const translations = {
     routesBadge: "Toutes les destinations",
     routesTitle: "Trajets et destinations",
     routesSubtitle:
-      "Parcourez tous les trajets interurbains couverts par Rugendo Rwanda — des courts trajets aux longs voyages.",
+      "Parcourez tous les trajets interurbains couverts par Safe Travel Rwanda — des courts trajets aux longs voyages.",
     routesPopularTitle: "Trajets les plus populaires",
     routesFilterFrom: "Filtrer par ville de départ",
     routesFilterTo: "Filtrer par destination",
@@ -4262,14 +4262,14 @@ export const translations = {
     aboutTitle:
       "Nous construisons la plateforme de transport moderne du Rwanda",
     aboutSubtitle:
-      "Rugendo Rwanda est une plateforme en ligne de réservation de bus interurbains conçue pour les voyageurs rwandais — simple d'utilisation, fiable et adaptée aux habitudes de voyage actuelles.",
+      "Safe Travel Rwanda est une plateforme en ligne de réservation de bus interurbains conçue pour les voyageurs rwandais — simple d'utilisation, fiable et adaptée aux habitudes de voyage actuelles.",
     aboutMissionBadge: "Notre mission",
     aboutMissionTitle:
       "Rendre le voyage interurbain aussi simple qu'envoyer un message",
     aboutMissionP1:
       "Chaque jour, des milliers de Rwandais voyagent entre les villes pour le travail, la famille et les opportunités. Le processus pour trouver un bus, réserver une place et confirmer son voyage ne devrait pas être compliqué.",
     aboutMissionP2:
-      "Rugendo Rwanda réunit la consultation des horaires, la réservation de places et l'embarquement numérique en une seule plateforme — accessible depuis n'importe quel téléphone, à tout moment.",
+      "Safe Travel Rwanda réunit la consultation des horaires, la réservation de places et l'embarquement numérique en une seule plateforme — accessible depuis n'importe quel téléphone, à tout moment.",
     aboutStat1: "Trajets couverts",
     aboutStat2: "Départs quotidiens",
     aboutStat3: "Villes connectées",
@@ -4339,7 +4339,7 @@ export const translations = {
       "Recherchez votre trajet sur la page d'accueil ou la page Rechercher des trajets, choisissez un horaire, sélectionnez votre siège, payez et recevez votre billet. L'ensemble du processus prend moins de 2 minutes.",
     faqB2Q: "Dois-je avoir un compte pour réserver ?",
     faqB2A:
-      "Oui. Vous avez besoin d'un compte gratuit Rugendo Rwanda pour effectuer une réservation. Cela nous permet de stocker votre référence et de vous envoyer des confirmations.",
+      "Oui. Vous avez besoin d'un compte gratuit Safe Travel Rwanda pour effectuer une réservation. Cela nous permet de stocker votre référence et de vous envoyer des confirmations.",
     faqB3Q: "Puis-je réserver pour une autre personne ?",
     faqB3A:
       "Oui. Lors de la réservation, vous pouvez entrer un nom de passager différent. Vous gérez la réservation via votre propre compte.",
@@ -4354,7 +4354,7 @@ export const translations = {
       "MTN Mobile Money, Airtel Money et les principales cartes bancaires sont acceptés.",
     faqP2Q: "Est-il sûr de payer en ligne ?",
     faqP2A:
-      "Oui. Les paiements sont traités via des canaux chiffrés et de confiance. Rugendo Rwanda ne stocke pas vos identifiants de carte ou de mobile money.",
+      "Oui. Les paiements sont traités via des canaux chiffrés et de confiance. Safe Travel Rwanda ne stocke pas vos identifiants de carte ou de mobile money.",
     faqP3Q: "Quand ma carte ou mobile money est-elle débitée ?",
     faqP3A:
       "Le paiement est traité immédiatement au moment de la réservation. Votre siège n'est confirmé qu'une fois le paiement réussi.",
@@ -4383,7 +4383,7 @@ export const translations = {
 
     // ── How It Works ──────────────────────────────────────────────────────────
     howBadge: "Simple et clair",
-    howTitle: "Comment fonctionne Rugendo Rwanda",
+    howTitle: "Comment fonctionne Safe Travel Rwanda",
     howSubtitle:
       "De la recherche d'un trajet à l'embarquement — voici exactement comment fonctionne le processus de réservation.",
     howStep1Title: "Créez votre compte",
@@ -4445,40 +4445,40 @@ export const translations = {
     termsTitle: "Conditions d'utilisation",
     termsS1Title: "1. Acceptation des conditions",
     termsS1Body:
-      "En accédant ou en utilisant la plateforme Rugendo Rwanda (site web et applications mobiles), vous acceptez d'être lié par ces Conditions d'utilisation. Si vous n'acceptez pas ces conditions, vous ne pouvez pas utiliser la plateforme. Nous nous réservons le droit de mettre à jour ces conditions à tout moment ; la poursuite de l'utilisation après les modifications constitue une acceptation.",
+      "En accédant ou en utilisant la plateforme Safe Travel Rwanda (site web et applications mobiles), vous acceptez d'être lié par ces Conditions d'utilisation. Si vous n'acceptez pas ces conditions, vous ne pouvez pas utiliser la plateforme. Nous nous réservons le droit de mettre à jour ces conditions à tout moment ; la poursuite de l'utilisation après les modifications constitue une acceptation.",
     termsS2Title: "2. Utilisation de la plateforme",
     termsS2Body:
-      "Rugendo Rwanda fournit une interface en ligne pour rechercher des horaires de bus interurbains, réserver des places et gérer des réservations. Vous acceptez d'utiliser la plateforme uniquement à des fins légales et conformément à ces conditions. Vous ne devez pas utiliser la plateforme de manière abusive, tenter d'y accéder par des moyens autres que l'interface fournie, ou vous livrer à des comportements susceptibles de l'endommager ou de l'altérer.",
+      "Safe Travel Rwanda fournit une interface en ligne pour rechercher des horaires de bus interurbains, réserver des places et gérer des réservations. Vous acceptez d'utiliser la plateforme uniquement à des fins légales et conformément à ces conditions. Vous ne devez pas utiliser la plateforme de manière abusive, tenter d'y accéder par des moyens autres que l'interface fournie, ou vous livrer à des comportements susceptibles de l'endommager ou de l'altérer.",
     termsS3Title: "3. Inscription au compte",
     termsS3Body:
       "Pour effectuer une réservation, vous devez créer un compte avec des informations exactes et complètes. Vous êtes responsable de la sécurité de vos identifiants et de toute activité sous votre compte. Notifiez-nous immédiatement si vous suspectez un accès non autorisé.",
     termsS4Title: "4. Réservations et sièges",
     termsS4Body:
-      "Une réservation n'est confirmée qu'après un paiement réussi. Votre référence de réservation (jeton) est la preuve de votre réservation confirmée. Rugendo Rwanda agit comme intermédiaire entre passagers et opérateurs de bus. Nous n'exploitons pas les bus et ne sommes pas responsables de la conduite des opérateurs.",
+      "Une réservation n'est confirmée qu'après un paiement réussi. Votre référence de réservation (jeton) est la preuve de votre réservation confirmée. Safe Travel Rwanda agit comme intermédiaire entre passagers et opérateurs de bus. Nous n'exploitons pas les bus et ne sommes pas responsables de la conduite des opérateurs.",
     termsS5Title: "5. Paiements",
     termsS5Body:
-      "Tous les paiements sont traités via des processeurs de paiement autorisés. Les prix sont affichés en Francs Rwandais (RWF). En effectuant un paiement, vous autorisez le débit de votre méthode de paiement choisie. Rugendo Rwanda ne stocke pas les numéros de carte complets ni les PINs de mobile money.",
+      "Tous les paiements sont traités via des processeurs de paiement autorisés. Les prix sont affichés en Francs Rwandais (RWF). En effectuant un paiement, vous autorisez le débit de votre méthode de paiement choisie. Safe Travel Rwanda ne stocke pas les numéros de carte complets ni les PINs de mobile money.",
     termsS6Title: "6. Annulations et remboursements",
     termsS6Body:
-      "L'éligibilité aux annulations et remboursements dépend de la politique de l'opérateur et du temps restant avant le départ. Rugendo Rwanda facilitera les remboursements comme décrit dans la Politique de réservation. Nous ne sommes pas responsables des retards de remboursement causés par les processeurs de paiement ou les opérateurs.",
+      "L'éligibilité aux annulations et remboursements dépend de la politique de l'opérateur et du temps restant avant le départ. Safe Travel Rwanda facilitera les remboursements comme décrit dans la Politique de réservation. Nous ne sommes pas responsables des retards de remboursement causés par les processeurs de paiement ou les opérateurs.",
     termsS7Title: "7. Limitation de responsabilité",
     termsS7Body:
-      "Dans toute la mesure permise par la loi applicable, Rugendo Rwanda et ses affiliés ne sont pas responsables des dommages indirects, accessoires ou consécutifs découlant de votre utilisation de la plateforme. Notre responsabilité totale ne dépassera pas le montant payé pour la réservation en cause.",
+      "Dans toute la mesure permise par la loi applicable, Safe Travel Rwanda et ses affiliés ne sont pas responsables des dommages indirects, accessoires ou consécutifs découlant de votre utilisation de la plateforme. Notre responsabilité totale ne dépassera pas le montant payé pour la réservation en cause.",
     termsS8Title: "8. Propriété intellectuelle",
     termsS8Body:
-      "Tout le contenu de la plateforme Rugendo Rwanda — textes, graphiques, logos, logiciels — est détenu par ou sous licence de Rugendo Rwanda. Vous ne pouvez pas reproduire, distribuer ou créer des œuvres dérivées sans notre consentement écrit exprès.",
+      "Tout le contenu de la plateforme Safe Travel Rwanda — textes, graphiques, logos, logiciels — est détenu par ou sous licence de Safe Travel Rwanda. Vous ne pouvez pas reproduire, distribuer ou créer des œuvres dérivées sans notre consentement écrit exprès.",
     termsS9Title: "9. Loi applicable",
     termsS9Body:
       "Ces conditions sont régies par les lois de la République du Rwanda. Tout litige sera résolu devant les tribunaux rwandais.",
     termsS10Title: "10. Contact",
     termsS10Body:
-      "Pour toute question sur ces conditions, contactez-nous à legal@rugendorwanda.rw.",
+      "Pour toute question sur ces conditions, contactez-nous à legal@safetravelrwanda.rw.",
 
     // ── Privacy Policy ────────────────────────────────────────────────────────
     privacyTitle: "Politique de confidentialité",
     privacyS1Title: "1. Qui sommes-nous",
     privacyS1Body:
-      "Rugendo Rwanda exploite la plateforme de réservation de bus en ligne accessible à rugendorwanda.rw. Nous sommes responsables des données personnelles collectées lors de votre utilisation de notre plateforme.",
+      "Safe Travel Rwanda exploite la plateforme de réservation de bus en ligne accessible à safetravelrwanda.rw. Nous sommes responsables des données personnelles collectées lors de votre utilisation de notre plateforme.",
     privacyS2Title: "2. Données collectées",
     privacyS2Body:
       "Nous collectons : les données de compte (nom, e-mail, téléphone, mot de passe haché) ; les données de réservation (origine, destination, date, nom du passager, référence) ; les données de paiement (référence de transaction et statut) ; et les données d'utilisation (pages visitées, recherches, informations sur l'appareil).",
@@ -4493,7 +4493,7 @@ export const translations = {
       "Nous conservons vos données de compte tant que votre compte est actif. Les réservations sont conservées 3 ans pour la conformité légale. Vous pouvez demander la suppression de votre compte ; certaines données peuvent être conservées pour des obligations légales.",
     privacyS6Title: "6. Vos droits",
     privacyS6Body:
-      "Vous avez le droit d'accéder, de corriger ou de demander la suppression de vos données. Contactez-nous à privacy@rugendorwanda.rw pour exercer ces droits.",
+      "Vous avez le droit d'accéder, de corriger ou de demander la suppression de vos données. Contactez-nous à privacy@safetravelrwanda.rw pour exercer ces droits.",
     privacyS7Title: "7. Sécurité",
     privacyS7Body:
       "Nous appliquons des mesures de sécurité standard incluant le chiffrement en transit (TLS), les mots de passe hachés et les contrôles d'accès. En cas de violation, nous notifierons les utilisateurs concernés conformément à la loi.",
@@ -4505,18 +4505,18 @@ export const translations = {
       "Nous pouvons mettre à jour cette politique. Nous vous informerons des changements importants par e-mail ou notification sur la plateforme. La poursuite de l'utilisation vaut acceptation.",
     privacyS10Title: "10. Contact",
     privacyS10Body:
-      "Pour toute question relative à la confidentialité, contactez privacy@rugendorwanda.rw ou écrivez à : Rugendo Rwanda, KN 5 Road, Kigali, Rwanda.",
+      "Pour toute question relative à la confidentialité, contactez privacy@safetravelrwanda.rw ou écrivez à : Safe Travel Rwanda, KN 5 Road, Kigali, Rwanda.",
 
     // ── Booking Policy ────────────────────────────────────────────────────────
     policyTitle: "Politique de réservation",
     policySubtitle:
-      "Veuillez lire cette politique avant de réserver. En effectuant une réservation sur Rugendo Rwanda, vous acceptez ces conditions.",
+      "Veuillez lire cette politique avant de réserver. En effectuant une réservation sur Safe Travel Rwanda, vous acceptez ces conditions.",
     policyS1Title: "Confirmation de réservation",
     policyS1Body:
       "Une réservation n'est confirmée qu'après un paiement réussi. Vous recevez un jeton de réservation unique par SMS et dans votre tableau de bord. Ce jeton est la preuve de votre siège réservé et doit être présenté à l'embarquement.",
     policyS2Title: "Réservation du siège",
     policyS2Body:
-      "Votre siège est réservé sous votre référence dès que le paiement est confirmé. Rugendo Rwanda garantit le numéro ou la classe de siège réservé ; l'attribution physique exacte peut occasionnellement être ajustée par l'opérateur pour des raisons opérationnelles.",
+      "Votre siège est réservé sous votre référence dès que le paiement est confirmé. Safe Travel Rwanda garantit le numéro ou la classe de siège réservé ; l'attribution physique exacte peut occasionnellement être ajustée par l'opérateur pour des raisons opérationnelles.",
     policyS3Title: "Nom du passager",
     policyS3Body:
       "Le nom sur la réservation doit correspondre au passager qui embarque. Les opérateurs peuvent vérifier l'identité à l'embarquement. Les réservations ne sont pas transférables une fois émises.",
@@ -4660,12 +4660,12 @@ export const translations = {
     authPanelTagline:
       "Panga safari yako ijayo ukiwa na mwonekano wazi wa mtandao wa leo.",
     authPanelSubtitle:
-      "Rugendo Rwanda hukusanya njia zinazotumika, safari za leo, na kampuni za mabasi zinazofanya kazi kabla hujaingia.",
+      "Safe Travel Rwanda hukusanya njia zinazotumika, safari za leo, na kampuni za mabasi zinazofanya kazi kabla hujaingia.",
     authPanelStatRoutes: "Njia zinazotumika",
     authPanelStatDepartures: "Safari za leo",
     authPanelStatCompanies: "Kampuni za mabasi hai",
     authPanelSupportTitle: "Unahitaji msaada kabla ya kuendelea?",
-    authPanelSupportSubtitle: "Wasiliana na timu ya msaada ya Rugendo Rwanda.",
+    authPanelSupportSubtitle: "Wasiliana na timu ya msaada ya Safe Travel Rwanda.",
     authPanelLoadingTagline: "Inaandaa muhtasari wa safari za leo…",
     authPanelLoadingSubtitle:
       "Njia, safari, na maelezo ya msaada yanapakiwa sasa.",
@@ -4674,7 +4674,7 @@ export const translations = {
       "Muhtasari wa moja kwa moja wa mtandao haupatikani kwa muda.",
     authPanelFallbackNote:
       "Bado unaweza kuingia au kufungua akaunti wakati muhtasari wa mfumo unaendelea kupakiwa tena.",
-    authPanelCopyright: "© 2026 Rugendo Rwanda. Haki zote zimehifadhiwa.",
+    authPanelCopyright: "© 2026 Safe Travel Rwanda. Haki zote zimehifadhiwa.",
     authMobileSubtitle: "Hifadhi ya Basi la Mjini",
 
     loginTitle: "Ingia",
@@ -4734,7 +4734,7 @@ export const translations = {
     forgotError: "Kitu kimekwenda vibaya. Tafadhali jaribu tena.",
 
     resetTitle: "Weka Nywila Mpya",
-    resetSubtitle: "Chagua nywila kali kwa akaunti yako ya Rugendo Rwanda.",
+    resetSubtitle: "Chagua nywila kali kwa akaunti yako ya Safe Travel Rwanda.",
     resetNewPassword: "Nywila mpya",
     resetPasswordHint: "Angalau herufi 8",
     resetConfirmPassword: "Thibitisha nywila mpya",
@@ -5705,7 +5705,7 @@ export const translations = {
     homeDestination: "Marudio",
     homePassengerN: "Abiria {n}",
     homePassengersN: "Abiria {n}",
-    homeBenefitsBadge: "Kwa nini Rugendo Rwanda",
+    homeBenefitsBadge: "Kwa nini Safe Travel Rwanda",
     homeBenefitsTitle: "Njia bora ya kusafiri",
     homeBenefit1Title: "Hifadhi kutoka popote",
     homeBenefit1Desc:
@@ -5747,7 +5747,7 @@ export const translations = {
     routesBadge: "Marudio yote",
     routesTitle: "Njia na marudio",
     routesSubtitle:
-      "Angalia njia zote za miji zinazofunikwa na Rugendo Rwanda — kutoka safari fupi hadi safari ndefu.",
+      "Angalia njia zote za miji zinazofunikwa na Safe Travel Rwanda — kutoka safari fupi hadi safari ndefu.",
     routesPopularTitle: "Njia maarufu zaidi",
     routesFilterFrom: "Chuja kwa mji wa kuondokea",
     routesFilterTo: "Chuja kwa marudio",
@@ -5767,13 +5767,13 @@ export const translations = {
     aboutBadge: "Kuhusu Sisi",
     aboutTitle: "Tunajenga jukwaa la kisasa la usafiri Rwanda",
     aboutSubtitle:
-      "Rugendo Rwanda ni jukwaa la mtandaoni la kuhifadhi basi za miji lililoundwa kwa wasafiri wa Rwanda — rahisi kutumia, la kuaminika, na lililojengwa kwa jinsi watu wanavyosafiri leo.",
+      "Safe Travel Rwanda ni jukwaa la mtandaoni la kuhifadhi basi za miji lililoundwa kwa wasafiri wa Rwanda — rahisi kutumia, la kuaminika, na lililojengwa kwa jinsi watu wanavyosafiri leo.",
     aboutMissionBadge: "Dhamira yetu",
     aboutMissionTitle: "Kufanya safari za miji ziwe rahisi kama kutuma ujumbe",
     aboutMissionP1:
       "Kila siku, maelfu ya Wanyarwanda husafiri kati ya miji kwa ajili ya kazi, familia, na fursa. Mchakato wa kutafuta basi, kuhifadhi kiti, na kuthibitisha safari yako haipaswi kuwa ngumu.",
     aboutMissionP2:
-      "Rugendo Rwanda inaunganisha ratiba, kuhifadhi viti, na upandaji wa dijitali katika jukwaa moja — linalopatikana kwenye simu yoyote, wakati wowote.",
+      "Safe Travel Rwanda inaunganisha ratiba, kuhifadhi viti, na upandaji wa dijitali katika jukwaa moja — linalopatikana kwenye simu yoyote, wakati wowote.",
     aboutStat1: "Njia zinazofunikwa",
     aboutStat2: "Kuondoka kila siku",
     aboutStat3: "Miji iliyounganishwa",
@@ -5843,7 +5843,7 @@ export const translations = {
       "Tafuta njia yako kwenye ukurasa wa nyumbani au ukurasa wa Tafuta Safari, chagua ratiba, chagua kiti chako, lipa, na upokee tikiti yako. Mchakato mzima huchukua chini ya dakika 2.",
     faqB2Q: "Ninahitaji akaunti kuhifadhi?",
     faqB2A:
-      "Ndiyo. Unahitaji akaunti ya bure ya Rugendo Rwanda kukamilisha hifadhi. Hii inatuwezesha kuhifadhi kumbukumbu yako na kukutumia uthibitisho.",
+      "Ndiyo. Unahitaji akaunti ya bure ya Safe Travel Rwanda kukamilisha hifadhi. Hii inatuwezesha kuhifadhi kumbukumbu yako na kukutumia uthibitisho.",
     faqB3Q: "Ninaweza kuhifadhi kwa mtu mwingine?",
     faqB3A:
       "Ndiyo. Unapohifadhi, unaweza kuweka jina tofauti la abiria. Unasimamia hifadhi kupitia akaunti yako mwenyewe.",
@@ -5858,7 +5858,7 @@ export const translations = {
       "MTN Mobile Money, Airtel Money, na kadi kuu za benki zinakubaliwa.",
     faqP2Q: "Je, ni salama kulipa mtandaoni?",
     faqP2A:
-      "Ndiyo. Malipo yanachakatwa kupitia njia zilizofichwa na za kuaminika. Rugendo Rwanda haihifadhi nambari zako za kadi au pesa za simu.",
+      "Ndiyo. Malipo yanachakatwa kupitia njia zilizofichwa na za kuaminika. Safe Travel Rwanda haihifadhi nambari zako za kadi au pesa za simu.",
     faqP3Q: "Kadi yangu au pesa za simu zinatozwa lini?",
     faqP3A:
       "Malipo yanachakatwa mara moja wakati wa kuhifadhi. Kiti chako kinathibitishwa tu malipo yakifanikiwa.",
@@ -5886,7 +5886,7 @@ export const translations = {
 
     // ── How It Works ──────────────────────────────────────────────────────────
     howBadge: "Rahisi na wazi",
-    howTitle: "Jinsi Rugendo Rwanda inavyofanya kazi",
+    howTitle: "Jinsi Safe Travel Rwanda inavyofanya kazi",
     howSubtitle:
       "Kutoka kutafuta njia hadi kupanda basi yako — hivi ndivyo mchakato wa kuhifadhi unavyofanya kazi.",
     howStep1Title: "Fungua akaunti yako",
@@ -5948,40 +5948,40 @@ export const translations = {
     termsTitle: "Masharti ya Huduma",
     termsS1Title: "1. Kukubaliana na masharti",
     termsS1Body:
-      "Kwa kufikia au kutumia jukwaa la Rugendo Rwanda (tovuti na programu za simu), unakubali kufungwa na Masharti haya ya Huduma. Kama hukubaliani, huwezi kutumia jukwaa. Tunahifadhi haki ya kusasisha masharti haya wakati wowote; kuendelea kutumia baada ya mabadiliko kunamaanisha kukubali.",
+      "Kwa kufikia au kutumia jukwaa la Safe Travel Rwanda (tovuti na programu za simu), unakubali kufungwa na Masharti haya ya Huduma. Kama hukubaliani, huwezi kutumia jukwaa. Tunahifadhi haki ya kusasisha masharti haya wakati wowote; kuendelea kutumia baada ya mabadiliko kunamaanisha kukubali.",
     termsS2Title: "2. Matumizi ya jukwaa",
     termsS2Body:
-      "Rugendo Rwanda inatoa kiolesura cha mtandaoni cha kutafuta ratiba za basi za miji, kuhifadhi viti, na kusimamia hifadhi za safari. Unakubali kutumia jukwaa kwa madhumuni ya kisheria tu. Usitumie vibaya jukwaa, kujaribu kufikia kwa njia nyingine, au kufanya chochote kinachoweza kudhuru jukwaa.",
+      "Safe Travel Rwanda inatoa kiolesura cha mtandaoni cha kutafuta ratiba za basi za miji, kuhifadhi viti, na kusimamia hifadhi za safari. Unakubali kutumia jukwaa kwa madhumuni ya kisheria tu. Usitumie vibaya jukwaa, kujaribu kufikia kwa njia nyingine, au kufanya chochote kinachoweza kudhuru jukwaa.",
     termsS3Title: "3. Usajili wa akaunti",
     termsS3Body:
       "Kuhifadhi, lazima usajilishe akaunti na taarifa sahihi na kamili. Unawajibika kulinda usalama wa vibali vya akaunti yako na kwa shughuli zote zinazoendeshwa kwake. Tujulishe mara moja ukishuku ufikiaji usioidhinishwa.",
     termsS4Title: "4. Hifadhi na viti",
     termsS4Body:
-      "Hifadhi inathibitishwa tu baada ya malipo kufanikiwa. Kumbukumbu yako ya hifadhi (tokeni) ni ushahidi wa nafasi yako iliyothibitishwa. Rugendo Rwanda inafanya kazi kama wasuluhishi kati ya abiria na waendeshaji wa basi. Hatuendesha mabasi na hatuwajibiki kwa mwenendo wa waendeshaji.",
+      "Hifadhi inathibitishwa tu baada ya malipo kufanikiwa. Kumbukumbu yako ya hifadhi (tokeni) ni ushahidi wa nafasi yako iliyothibitishwa. Safe Travel Rwanda inafanya kazi kama wasuluhishi kati ya abiria na waendeshaji wa basi. Hatuendesha mabasi na hatuwajibiki kwa mwenendo wa waendeshaji.",
     termsS5Title: "5. Malipo",
     termsS5Body:
-      "Malipo yote yanachakatwa kupitia wasindikaji wa malipo walioidhinishwa. Bei zinaonyeshwa kwa Faranga za Rwanda (RWF). Ukikamilisha malipo, unaidhinisha kutoza kwa njia yako ya malipo iliyochaguliwa. Rugendo Rwanda haihifadhi nambari kamili za kadi au PIN za pesa za simu.",
+      "Malipo yote yanachakatwa kupitia wasindikaji wa malipo walioidhinishwa. Bei zinaonyeshwa kwa Faranga za Rwanda (RWF). Ukikamilisha malipo, unaidhinisha kutoza kwa njia yako ya malipo iliyochaguliwa. Safe Travel Rwanda haihifadhi nambari kamili za kadi au PIN za pesa za simu.",
     termsS6Title: "6. Kughairi na marejesho",
     termsS6Body:
-      "Ustahili wa kughairi na marejesho unategemea sera ya mwendeshaji na muda uliobaki kabla ya kuondoka. Rugendo Rwanda itasaidia marejesho kama ilivyoelezwa katika Sera ya Hifadhi. Hatuwajibiki kwa ucheleweshaji wa marejesho unaosababishwa na wasindikaji wa malipo au waendeshaji.",
+      "Ustahili wa kughairi na marejesho unategemea sera ya mwendeshaji na muda uliobaki kabla ya kuondoka. Safe Travel Rwanda itasaidia marejesho kama ilivyoelezwa katika Sera ya Hifadhi. Hatuwajibiki kwa ucheleweshaji wa marejesho unaosababishwa na wasindikaji wa malipo au waendeshaji.",
     termsS7Title: "7. Mipaka ya dhima",
     termsS7Body:
-      "Kwa kiwango kinachoruhusiwa na sheria inayotumika, Rugendo Rwanda na washirika wake hawajibiki kwa uharibifu wa moja kwa moja, wa bahati mbaya, au wa ziada unaotokana na matumizi yako ya jukwaa. Dhima yetu yote kwako haitazidi kiasi kilicholipwa kwa hifadhi inayosababisha dai.",
+      "Kwa kiwango kinachoruhusiwa na sheria inayotumika, Safe Travel Rwanda na washirika wake hawajibiki kwa uharibifu wa moja kwa moja, wa bahati mbaya, au wa ziada unaotokana na matumizi yako ya jukwaa. Dhima yetu yote kwako haitazidi kiasi kilicholipwa kwa hifadhi inayosababisha dai.",
     termsS8Title: "8. Mali ya kiakili",
     termsS8Body:
-      "Maudhui yote kwenye jukwaa la Rugendo Rwanda — ikiwemo maandishi, picha, nembo, na programu — yanamilikiwa na au kwa leseni ya Rugendo Rwanda. Huwezi kunakili, kusambaza, au kuunda kazi zinazochanganyika bila idhini yetu ya maandishi.",
+      "Maudhui yote kwenye jukwaa la Safe Travel Rwanda — ikiwemo maandishi, picha, nembo, na programu — yanamilikiwa na au kwa leseni ya Safe Travel Rwanda. Huwezi kunakili, kusambaza, au kuunda kazi zinazochanganyika bila idhini yetu ya maandishi.",
     termsS9Title: "9. Sheria inayotumika",
     termsS9Body:
       "Masharti haya yanafuata na kutafsiriwa kwa mujibu wa sheria za Jamhuri ya Rwanda. Migogoro yote itatatuliwa mahakamani Rwanda.",
     termsS10Title: "10. Wasiliana",
     termsS10Body:
-      "Kwa maswali kuhusu Masharti haya ya Huduma, wasiliana nasi kwa legal@rugendorwanda.rw.",
+      "Kwa maswali kuhusu Masharti haya ya Huduma, wasiliana nasi kwa legal@safetravelrwanda.rw.",
 
     // ── Privacy Policy ────────────────────────────────────────────────────────
     privacyTitle: "Sera ya Faragha",
     privacyS1Title: "1. Sisi ni nani",
     privacyS1Body:
-      "Rugendo Rwanda inaendesha jukwaa la mtandaoni la kuhifadhi basi linalopatikana kwa rugendorwanda.rw. Tunawajibika kwa data ya kibinafsi tunayokusanya unapotumia jukwaa letu.",
+      "Safe Travel Rwanda inaendesha jukwaa la mtandaoni la kuhifadhi basi linalopatikana kwa safetravelrwanda.rw. Tunawajibika kwa data ya kibinafsi tunayokusanya unapotumia jukwaa letu.",
     privacyS2Title: "2. Data tunayokusanya",
     privacyS2Body:
       "Tunakusanya: data ya akaunti (jina, barua pepe, simu, nywila iliyofichwa); data ya hifadhi (chanzo, marudio, tarehe, jina la abiria, kumbukumbu); data ya malipo (kumbukumbu ya muamala na hali); na data ya matumizi (kurasa zilizotembelewa, utafutaji, maelezo ya kifaa).",
@@ -5996,7 +5996,7 @@ export const translations = {
       "Tunahifadhi data ya akaunti yako muda wote akaunti yako ikiwa hai. Rekodi za hifadhi zinahifadhiwa kwa miaka 3 kwa ufuatano wa kisheria na wa kifedha. Unaweza kuomba kufutwa kwa akaunti yako; baadhi ya data inaweza kuhifadhiwa kwa wajibu wa kisheria.",
     privacyS6Title: "6. Haki zako",
     privacyS6Body:
-      "Una haki ya kufikia, kurekebisha, au kuomba kufutwa kwa data yako ya kibinafsi. Wasiliana nasi kwa privacy@rugendorwanda.rw kutekeleza haki hizi.",
+      "Una haki ya kufikia, kurekebisha, au kuomba kufutwa kwa data yako ya kibinafsi. Wasiliana nasi kwa privacy@safetravelrwanda.rw kutekeleza haki hizi.",
     privacyS7Title: "7. Usalama",
     privacyS7Body:
       "Tunatumia hatua za usalama za kawaida ikiwemo usimbaji wakati wa uhamisho (TLS), nywila zilizofichwa, na udhibiti wa ufikiaji. Hakuna mfumo ulio salama kabisa; katika tukio la ukiukaji wa data tutawajulisha watumiaji walioathiriwa kama inavyohitajika na sheria.",
@@ -6008,18 +6008,18 @@ export const translations = {
       "Tunaweza kusasisha sera hii mara kwa mara. Tutakujulisha mabadiliko muhimu kwa barua pepe au taarifa kwenye jukwaa. Kuendelea kutumia baada ya mabadiliko kunamaanisha kukubali.",
     privacyS10Title: "10. Wasiliana",
     privacyS10Body:
-      "Kwa maswali ya faragha, wasiliana kwa privacy@rugendorwanda.rw au andika kwa: Rugendo Rwanda, KN 5 Road, Kigali, Rwanda.",
+      "Kwa maswali ya faragha, wasiliana kwa privacy@safetravelrwanda.rw au andika kwa: Safe Travel Rwanda, KN 5 Road, Kigali, Rwanda.",
 
     // ── Booking Policy ────────────────────────────────────────────────────────
     policyTitle: "Sera ya Hifadhi",
     policySubtitle:
-      "Tafadhali soma sera hii kabla ya kuhifadhi. Kwa kukamilisha hifadhi kwenye Rugendo Rwanda unakubali masharti haya.",
+      "Tafadhali soma sera hii kabla ya kuhifadhi. Kwa kukamilisha hifadhi kwenye Safe Travel Rwanda unakubali masharti haya.",
     policyS1Title: "Uthibitisho wa hifadhi",
     policyS1Body:
       "Hifadhi inathibitishwa tu baada ya malipo kufanikiwa. Ukithibitishwa unapokea tokeni ya kipekee ya hifadhi kwa SMS na kwenye dashibodi yako. Tokeni hii ni ushahidi wa kiti chako kilichohifadhiwa na lazima iwasilishwe wakati wa kupanda.",
     policyS2Title: "Uhifadhi wa kiti",
     policyS2Body:
-      "Kiti chako kimehifadhiwa chini ya kumbukumbu yako ya hifadhi tangu malipo yakithibitishwa. Rugendo Rwanda inadhaminisha nambari au darasa la kiti kilichohifadhiwa; ugawaji halisi wa kiti unaweza wakati mwingine kurekebishwa na mwendeshaji bila taarifa kwa sababu za kiuendeshaji.",
+      "Kiti chako kimehifadhiwa chini ya kumbukumbu yako ya hifadhi tangu malipo yakithibitishwa. Safe Travel Rwanda inadhaminisha nambari au darasa la kiti kilichohifadhiwa; ugawaji halisi wa kiti unaweza wakati mwingine kurekebishwa na mwendeshaji bila taarifa kwa sababu za kiuendeshaji.",
     policyS3Title: "Jina la abiria",
     policyS3Body:
       "Jina kwenye hifadhi lazima lilingane na abiria anayepanda. Waendeshaji wanaweza kuthibitisha utambulisho wakati wa kupanda. Hifadhi hazihamishiwi mara zinapotolewa.",

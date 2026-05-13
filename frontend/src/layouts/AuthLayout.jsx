@@ -75,12 +75,12 @@ export default function AuthLayout() {
 
         <div className="relative">
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="Rugendo Rwanda" className="h-8 w-auto object-contain brightness-0 invert" />
+            <img src="/logo.png?v=safe-travel-rwanda" alt="Safe Travel Rwanda logo" className="h-8 w-auto object-contain brightness-0 invert" />
             <span
               className="text-xl font-extrabold bg-clip-text text-transparent"
               style={{ backgroundImage: 'linear-gradient(90deg, #60a5fa 0%, #2563eb 100%)' }}
             >
-              Rugendo Rwanda
+              Safe Travel Rwanda
             </span>
           </Link>
         </div>
@@ -144,12 +144,12 @@ export default function AuthLayout() {
         {/* Mobile logo */}
         <div className="lg:hidden mb-8 text-center">
           <Link to="/" className="inline-flex items-center gap-2 justify-center">
-            <img src="/logo.png" alt="Rugendo Rwanda" className="h-8 w-auto object-contain" />
+            <img src="/logo.png?v=safe-travel-rwanda" alt="Safe Travel Rwanda logo" className="h-8 w-auto object-contain" />
             <span
               className="text-2xl font-extrabold bg-clip-text text-transparent"
               style={{ backgroundImage: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)' }}
             >
-              Rugendo Rwanda
+              Safe Travel Rwanda
             </span>
           </Link>
           <p className="text-gray-500 dark:text-slate-400 text-sm mt-1">{t('authMobileSubtitle')}</p>

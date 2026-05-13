@@ -1,8 +1,8 @@
-# BRAND_REFRESH_PLAN.md — Rugendo Rwanda Frontend Brand Refresh
+# BRAND_REFRESH_PLAN.md — Safe Travel Rwanda Frontend Brand Refresh
 
 ## Status: PENDING (saved handoff — not yet implemented)
 
-This file is the authoritative handoff plan for the Rugendo Rwanda frontend brand refresh.
+This file is the authoritative handoff plan for the Safe Travel Rwanda frontend brand refresh.
 It was written at the end of a planning session that hit the context limit before implementation began.
 **No frontend styling has been changed yet. No backend code has been touched. No commits have been made.**
 
@@ -39,7 +39,7 @@ not a raw flag-color exercise.
 
 ## Logo / Image Direction
 
-- Use the uploaded Rugendo Rwanda logo/brand image as the main logo.
+- Use the uploaded Safe Travel Rwanda logo/brand image as the main logo.
 - Preserve meaning and content exactly. Do not distort.
 - Compact usage in navbars, sidebars, and app shells.
 - If used in the homepage hero, present tastefully and professionally.
@@ -181,7 +181,7 @@ These are not in scope for the initial refresh — note them for later:
 
 ## How to Resume This Plan
 
-When the user says **"continue the Rugendo Rwanda brand refresh"** or **"let us continue son"**, Claude Code should:
+When the user says **"continue the Safe Travel Rwanda brand refresh"** or **"let us continue son"**, Claude Code should:
 
 1. Read this file (`BRAND_REFRESH_PLAN.md`) first.
 2. Read `TASKS.md` to confirm the brand refresh task is still pending.

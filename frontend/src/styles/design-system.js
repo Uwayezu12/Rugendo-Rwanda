@@ -1,5 +1,5 @@
 /**
- * Rugendo Rwanda — Design System Tokens
+ * Safe Travel Rwanda — Design System Tokens
  *
  * Single source of truth for the visual language.
  * Mirrors values in tailwind.config.js and index.css.

@@ -1,4 +1,4 @@
-# TASKS.md — Rugendo Rwanda
+# TASKS.md — Safe Travel Rwanda
 
 ## How to use this file
 
@@ -11,6 +11,8 @@
 ---
 
 ## Current Phase: Phase 4 — Booking, Simulated Payment & Confirmation (implemented; migration + manual testing pending)
+
+Recent note: Completed fresh user-facing rebrand from Rugendo Rwanda to Safe Travel Rwanda across visible text, translations, metadata, and relevant backend/email/demo text. Logo and hero image were already changed, so image assets were not modified. Internal technical identifiers were left unchanged where renaming could break functionality.
 
 ---
 
@@ -51,10 +53,10 @@
 
 ### Brand Refresh — Frontend Visual Identity
 
-- [ ] Continue Rugendo Rwanda brand refresh using `BRAND_REFRESH_PLAN.md` (saved plan, not yet implemented)
+- [ ] Continue Safe Travel Rwanda brand refresh using `BRAND_REFRESH_PLAN.md` (saved plan, not yet implemented)
   - Read `BRAND_REFRESH_PLAN.md` first
   - Start in Plan mode, confirm intended files, then implement
-  - Trigger phrase: "continue the Rugendo Rwanda brand refresh" or "let us continue son"
+  - Trigger phrase: "continue the Safe Travel Rwanda brand refresh" or "let us continue son"
 
 ---
 

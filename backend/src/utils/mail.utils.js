@@ -23,12 +23,12 @@ export async function sendPasswordResetEmail({ to, resetToken }) {
   const resetLink = `${frontendUrl}/reset-password?token=${resetToken}`;
 
   const mailOptions = {
-    from: `"Rugendo Rwanda" <${env.smtpUser}>`,
+    from: `"Safe Travel Rwanda" <${env.smtpUser}>`,
     to,
-    subject: 'Reset your Rugendo Rwanda password',
+    subject: 'Reset your Safe Travel Rwanda password',
     text: `You requested a password reset.\n\nClick the link below to reset your password (valid for 1 hour):\n\n${resetLink}\n\nIf you did not request this, ignore this email.`,
     html: `
-      <p>You requested a password reset for your Rugendo Rwanda account.</p>
+      <p>You requested a password reset for your Safe Travel Rwanda account.</p>
       <p>
         <a href="${resetLink}" style="display:inline-block;padding:12px 24px;background:#16a34a;color:#fff;border-radius:6px;text-decoration:none;font-weight:bold;">
           Reset Password

@@ -1,8 +1,8 @@
-# PROJECT_BRIEF.md — Rugendo Rwanda
+# PROJECT_BRIEF.md — Safe Travel Rwanda
 
 ## Project Summary
 
-**Rugendo Rwanda** is an online intercity bus booking platform for Rwanda.
+**Safe Travel Rwanda** is an online intercity bus booking platform for Rwanda.
 It serves two audiences simultaneously:
 - **Passengers** — search routes, view schedules, book seats, pay, receive booking references, manage upcoming and past trips.
 - **Operations staff** — admins, super-admins, and operators managing routes, schedules, buses, drivers, bookings, payments, and boarding validation.
@@ -117,7 +117,7 @@ Provide a reliable, role-aware intercity bus booking system that:
 
 ## Visual Identity
 
-Rugendo Rwanda is moving toward a premium Rwanda-inspired visual identity:
+Safe Travel Rwanda is moving toward a premium Rwanda-inspired visual identity:
 - **Primary:** Royal/Cobalt Blue (`#2563EB`) — dominant across all UI surfaces.
 - **Supporting:** Forest Green (`#16A34A`) — secondary CTAs, success states, supporting accents.
 - **Accent:** Warm Gold (`#D97706`) — sparing use for highlights, premium badges, and key CTAs.
