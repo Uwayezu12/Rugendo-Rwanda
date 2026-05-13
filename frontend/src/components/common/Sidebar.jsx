@@ -169,9 +169,9 @@ export default function Sidebar({ role, isMobileOpen = false, onClose = () => {}
           onClick={handleLinkClick}
           className="flex min-w-0 flex-1 items-center gap-2 rounded-lg transition-colors hover:bg-gray-50 dark:hover:bg-slate-700/70"
         >
-          <img src="/logo.png" alt="Rugendo Rwanda" className="h-7 w-7 shrink-0 rounded object-contain" />
+          <img src="/logo.png?v=safe-travel-rwanda" alt="Safe Travel Rwanda logo" className="h-7 w-7 shrink-0 rounded object-contain" />
           <div className="min-w-0 py-1">
-            <span className="block truncate text-sm font-bold leading-none text-brand-600">Rugendo Rwanda</span>
+            <span className="block truncate text-sm font-bold leading-none text-brand-600">Safe Travel Rwanda</span>
             <p className="mt-0.5 text-xs capitalize text-gray-400">{roleName} {t('sidebarPanel')}</p>
           </div>
         </Link>

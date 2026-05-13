@@ -8,7 +8,7 @@ export default function ContactPage() {
 
   const CONTACT_INFO = [
     { icon: '📍', label: t('contactAddress'),   value: 'KN 5 Road, Kigali, Rwanda' },
-    { icon: '📧', label: t('contactEmailLabel'), value: 'support@rugendorwanda.rw' },
+    { icon: '📧', label: t('contactEmailLabel'), value: 'support@safetravelrwanda.rw' },
     { icon: '📞', label: t('contactPhone'),      value: '+250 788 000 000' },
     { icon: '🕒', label: t('contactHours'),      value: 'Mon–Sat, 7:00 AM – 8:00 PM' },
   ];

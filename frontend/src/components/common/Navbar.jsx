@@ -79,7 +79,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 shrink-0">
-          <img src="/logo.png" alt="Rugendo Rwanda logo" className="h-12 md:h-14 w-auto object-contain" />
+          <img src="/logo.png?v=safe-travel-rwanda" alt="Safe Travel Rwanda logo" className="h-12 md:h-14 w-auto object-contain" />
         </Link>
 
         {/* Desktop nav links */}

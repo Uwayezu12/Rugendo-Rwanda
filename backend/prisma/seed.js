@@ -1,5 +1,5 @@
 /**
- * Rugendo Rwanda — Seed Script
+ * Safe Travel Rwanda — Seed Script
  *
  * OFFICIAL DATA (from RURA sources — do not modify without verifying source):
  *   - Company names  : RURA public transport operators list
@@ -635,7 +635,7 @@ async function seedBooking({
 // ── Main ───────────────────────────────────────────────────────────────────────
 
 async function main() {
-  console.log('\n=== Rugendo Rwanda Seed Script ===');
+  console.log('\n=== Safe Travel Rwanda Seed Script ===');
   console.log('Environment:', process.env.NODE_ENV ?? '(not set — treating as development)');
   console.log('Clearing data in FK-safe order...');
 

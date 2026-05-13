@@ -1,4 +1,4 @@
-# BUGS.md — Rugendo Rwanda
+# BUGS.md — Safe Travel Rwanda
 
 ## What belongs here
 

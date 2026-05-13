@@ -57,9 +57,9 @@ function CompanyAdminNav({ open, onClose }) {
     <aside className={`fixed inset-y-0 left-0 z-50 flex w-64 max-w-[85vw] transform flex-col border-r border-gray-100 bg-white transition-transform duration-200 ease-out dark:border-slate-700 dark:bg-slate-800 ${open ? 'translate-x-0 shadow-2xl' : '-translate-x-full'} md:static md:min-h-screen md:translate-x-0 md:shadow-none`}>
       <div className="flex items-center gap-3 border-b border-gray-100 p-4 dark:border-slate-700">
         <Link to="/" onClick={onClose} className="flex min-w-0 flex-1 items-center gap-2 rounded-lg transition-colors hover:bg-gray-50 dark:hover:bg-slate-700/70">
-          <img src="/logo.png" alt="Rugendo Rwanda" className="h-7 w-7 shrink-0 rounded object-contain" />
+          <img src="/logo.png?v=safe-travel-rwanda" alt="Safe Travel Rwanda logo" className="h-7 w-7 shrink-0 rounded object-contain" />
           <div className="min-w-0 py-1">
-            <span className="block truncate text-sm font-bold leading-none text-brand-600">Rugendo Rwanda</span>
+            <span className="block truncate text-sm font-bold leading-none text-brand-600">Safe Travel Rwanda</span>
             <p className="mt-0.5 text-xs text-gray-400">{t('companyAdminPanel')}</p>
           </div>
         </Link>
@@ -130,7 +130,7 @@ export default function CompanyAdminLayout() {
             <Icon name="menu" />
           </button>
           <div className="min-w-0 md:hidden">
-            <p className="text-sm font-semibold text-gray-900 dark:text-white">Rugendo Rwanda</p>
+            <p className="text-sm font-semibold text-gray-900 dark:text-white">Safe Travel Rwanda</p>
             <p className="text-xs text-gray-500 dark:text-slate-400">{t('companyAdminPanel')}</p>
           </div>
 

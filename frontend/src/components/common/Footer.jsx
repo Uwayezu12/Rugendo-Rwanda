@@ -48,12 +48,12 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="Rugendo Rwanda" className="h-8 w-auto object-contain brightness-0 invert" />
+              <img src="/logo.png?v=safe-travel-rwanda" alt="Safe Travel Rwanda logo" className="h-8 w-auto object-contain brightness-0 invert" />
               <span
                 className="text-xl font-extrabold bg-clip-text text-transparent"
                 style={{ backgroundImage: 'linear-gradient(90deg, #9b72ff 0%, #fa26ae 100%)' }}
               >
-                Rugendo Rwanda
+                Safe Travel Rwanda
               </span>
             </div>
             <p className="text-sm text-slate-400 mt-3 leading-relaxed">
@@ -85,8 +85,8 @@ export default function Footer() {
 
         {/* Bottom row */}
         <div className="border-t border-[#2d1a5e] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Rugendo Rwanda. {t('footerRights')}</p>
-          <p>Kigali, Rwanda · support@rugendorwanda.rw</p>
+          <p>© {new Date().getFullYear()} Safe Travel Rwanda. {t('footerRights')}</p>
+          <p>Kigali, Rwanda · support@safetravelrwanda.rw</p>
         </div>
       </div>
     </footer>

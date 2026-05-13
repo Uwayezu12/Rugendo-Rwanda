@@ -483,8 +483,8 @@ export default function HomePage() {
                   }}
                 >
                   <img
-                    src="/hero_image.png?v=3"
-                    alt="Rugendo Rwanda intercity bus booking"
+                    src="/hero_image.png"
+                    alt="Safe Travel Rwanda hero"
                     className="block w-full max-w-md lg:max-w-[520px] object-contain"
                     style={{ maxHeight: "520px" }}
                     draggable={false}
